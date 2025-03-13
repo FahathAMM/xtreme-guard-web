@@ -3,8 +3,6 @@
 @section('content')
     <x-site.component.page-title :title="$category->name" :breadcrumbs="[['label' => 'Product', 'url' => route('product.index')], ['label' => $category->name]]" />
 
-
-
     <section class="flat-spacing">
         <div class="container">
 
