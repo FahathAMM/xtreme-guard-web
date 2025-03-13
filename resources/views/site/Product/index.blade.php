@@ -22,6 +22,7 @@
         </div>
     </section>
 
+
     <section class="flat-spacing">
         <div class="container">
             <div class="heading-section-2 wow fadeInUp">
