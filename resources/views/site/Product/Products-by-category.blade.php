@@ -16,7 +16,6 @@
                     </div>
                 </div>
                 <ul class="tf-control-layout">
-
                 </ul>
                 <div class="tf-control-sorting">
                     <p class="d-none d-lg-block text-caption-1">Sort by:</p>
