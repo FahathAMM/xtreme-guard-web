@@ -27,7 +27,7 @@ class ProductController extends Controller
             $query->where('slug', $category);
         })->get();
 
-        return view('site.product.Products-by-category', [
+        return view('site.product.products-by-category', [
             'products' => $products,
             'category' => Category::where('slug', $category)->first(),
         ]);
