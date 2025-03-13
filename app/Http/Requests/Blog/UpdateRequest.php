@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Contact;
+namespace App\Http\Requests\Blog;
 
 use Illuminate\Validation\Rule;
 use App\Traits\failedValidationWithName;

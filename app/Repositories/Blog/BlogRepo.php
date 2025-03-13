@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\BlogRepo;
+namespace App\Repositories\Blog;
 
 use App\Models\Asset\Asset;
 use App\Models\Blogs\Blog;
