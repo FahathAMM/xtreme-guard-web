@@ -28,10 +28,8 @@
         </div>
     </section>
 
-
     <section class="flat-spacing pt-4">
         <div class="container">
-
             <div class="wrapper-control-shop">
                 @if (request()->has('q') && request('q') !== '')
                     <div class="meta-filter-shop">
