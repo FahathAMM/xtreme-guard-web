@@ -154,16 +154,17 @@
                                         <p>
                                             {!! $product->description ?? '' !!}
                                         </p>
+
+                                        <p>
+                                            {!! $product->description ?? '' !!}
+                                        </p>
+
                                     </div>
                                 </div>
                                 <div class="tf-product-info-choose-option">
 
-                                    <div>
-                                        <div class="tf-product-info-by-btn mb_10">
-                                        </div>
-                                        <a href="#" class="btn-style-3 text-btn-uppercase">inquiry now</a>
-                                    </div>
-                                    <div class="tf-product-info-help">
+
+                                    {{-- <div class="tf-product-info-help">
 
                                     </div>
                                     <ul class="tf-product-info-sku">
@@ -187,8 +188,12 @@
                                                 </a>,
                                             </p>
                                         </li>
-                                    </ul>
-
+                                    </ul> --}}
+                                    <div>
+                                        <div class="tf-product-info-by-btn mb_10">
+                                        </div>
+                                        <a href="#" class="btn-style-3 text-btn-uppercase">inquiry now</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -251,22 +256,23 @@
                                 </div>
                             </div>
 
-                            <div class="widget-content-inner">
-                                <div class="tab-shipping">
+                            <div class="widget-content-inner d-flex justify-content-center">
+                                <div class="tab-shipping" style="width: 65% !important;">
                                     <table class="tf-table-page-cart">
                                         <tbody>
                                             @foreach ([1, 2, 3, 4] as $item)
                                                 <tr class="tf-cart-item1 file-delete">
                                                     <td class="tf-cart-item_product">
                                                         <i class="fas fa-file-pdf me-2 fs-2 text-danger"></i>
+                                                        AHEB Datesheet 20240709
                                                     </td>
 
                                                     <td class="remove-cart text-end">
                                                         <span class="fs-12">{{ now()->format('d M Y') }}</span>
-                                                        <span class="d-flex justify-content-end">
+                                                        <a class="d-flex justify-content-end">
                                                             <i class="fas fa-download me-2"></i>
                                                             <span>Download</span>
-                                                        </span>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             @endforeach

@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers\Site\Organization;
 
-use Illuminate\Http\Request;
 use App\Models\Contact\Contact;
-use App\Models\Product\Product;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contact\ContactRepo;
-use App\Http\Requests\Contact\StoreRequest;
 
 class AboutUsController extends Controller
 {

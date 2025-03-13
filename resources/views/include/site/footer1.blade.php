@@ -37,28 +37,24 @@
 @endphp
 
 
-<footer id="footer" class="footer bg-main">
+<footer id="footer" class="footer has-pb">
     <div class="footer-wrap">
-        <div class="footer-body py-5">
+        <div class="footer-body">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="footer-infor">
                             <div class="footer-logo">
                                 <a href="index.html">
-                                    <img src="{{ asset('site/images/logo/3.png') }}" alt="">
+                                    {{-- <img src="images/logo/logo.svg" alt=""> --}}
                                 </a>
                             </div>
-                            {{-- <div class="footer-address">
+                            <div class="footer-address">
                                 <p>{{ $footerData['address'] }}</p>
-                                <a href="{{ url('contact') }}" class="tf-btn-default style-white fw-6">
-                                    GET DIRECTION<i class="icon-arrowUpRight"></i></a>
-                            </div> --}}
+                                <a href="{{ url('contact') }}" class="tf-btn-default fw-6">GET DIRECTION<i
+                                        class="icon-arrowUpRight"></i></a>
+                            </div>
                             <ul class="footer-info">
-                                <li>
-                                    <i class="icon-map-pin"></i>
-                                    <p>{{ $footerData['address'] }}</p>
-                                </li>
                                 <li>
                                     <i class="icon-mail"></i>
                                     <p>{{ $footerData['contact']['email'] }}</p>
@@ -68,12 +64,12 @@
                                     <p>{{ $footerData['contact']['phone'] }}</p>
                                 </li>
                             </ul>
-                            {{-- <ul class="tf-social-icon1 tf-social-icon style-white">
+                            <ul class="tf-social-icon">
                                 @foreach ($footerData['socialLinks'] as $key => $link)
                                     <li><a href="{{ $link }}" class="social-{{ $key }}"><i
                                                 class="icon icon-{{ $key }}"></i></a></li>
                                 @endforeach
-                            </ul> --}}
+                            </ul>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -135,19 +131,12 @@
                                     </form>
                                 </div>
                             </div>
-                            <ul
-                                class="tf-social-icon1 mt-3 tf-social-icon w-100 style-white d-flex justify-content-center">
-                                @foreach ($footerData['socialLinks'] as $key => $link)
-                                    <li><a href="{{ $link }}" class="social-{{ $key }}"><i
-                                                class="icon icon-{{ $key }}"></i></a></li>
-                                @endforeach
-                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        {{-- <div class="footer-bottom">
+        <div class="footer-bottom">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -177,6 +166,6 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
     </div>
 </footer>

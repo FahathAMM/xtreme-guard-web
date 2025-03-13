@@ -19,7 +19,7 @@
             </div>
             <div class="col-xl-3 col-md-4 col-6">
                 <a href="index.html" class="logo-header">
-                    <img src="https://themesflat.co/html/modave/images/logo/logo.svg" alt="logo" class="logo">
+                    <img src="{{ asset('site/images/logo/3.png') }}" alt="logo" class="logo">
                 </a>
             </div>
             <div class="col-xl-6 d-none d-xl-block">
@@ -29,11 +29,10 @@
                 @endphp
                 <nav class="box-navigation text-center">
                     <ul class="box-nav-ul d-flex align-items-center justify-content-center">
-
                         @foreach ($menuItems as $key => $item)
 
                             <li {{ $item['pattern'] }}
-                                class="menu-item {{ request()->is($item['pattern']) ? 'active' : '' }}">
+                                class="menu-item mx-3 {{ request()->is($item['pattern']) ? 'active' : '' }}">
                                 <a href="{{ $item['url'] }}" class="item-link">
                                     {{ $item['name'] }}
                                     @if (!empty($item['sub']))
@@ -75,7 +74,7 @@
 
                             @if ($loop->first)
                                 <li
-                                    class="menu-item {{ request()->is('product-by-category*') || request()->is('product*') ? 'active' : '' }}">
+                                    class="menu-item mx-3 {{ request()->is('product-by-category*') || request()->is('product*') ? 'active' : '' }}">
                                     <div class="tf-list-categories">
                                         <a href="#" class="item-link">
                                             Product
@@ -148,6 +147,56 @@
                     </ul>
                 </nav>
             </div>
+
+            <div class="col-xl-3 col-md-4 col-3">
+                <div class="d-flex justify-content-end align-items-center gap-16 gap-xl-24">
+                    {{-- <span class="br-line type-vertical d-none d-sm-block bg-line"></span> --}}
+                    <form action="{{ url('product') }}" method="GET"
+                        class="form-search d-xl-flex d-none position-relative">
+                        <fieldset class="text w-100">
+                            <input type="text" placeholder="Search Products" class="style-line-bottom" name="q"
+                                tabindex="0" value="" aria-required="true" required=""
+                                style="background:#474b4f;color: white;">
+                        </fieldset>
+                        <button class="" type="submit">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_19494_2214)">
+                                    <path
+                                        d="M10.5 18C14.6421 18 18 14.6421 18 10.5C18 6.35786 14.6421 3 10.5 3C6.35786 3 3 6.35786 3 10.5C3 14.6421 6.35786 18 10.5 18Z"
+                                        stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                    <path d="M15.8047 15.8037L21.0012 21.0003" stroke="#FFFFFF" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round"></path>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_19494_2214">
+                                        <rect width="24" height="24" fill="white"></rect>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+
+                        </button>
+                    </form>
+                    <ul class="nav-icon d-xl-none d-flex justify-content-end align-items-center">
+                        <li class="nav-search">
+                            <a href="#search" data-bs-toggle="modal" class="nav-icon-item">
+                                <svg class="icon" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+                                        stroke="#181818" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                    <path d="M21.35 21.0004L17 16.6504" stroke="#181818" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
         </div>
     </div>
 </header>
@@ -570,3 +619,32 @@
     </div>
 </div>
 <!-- /mobile menu -->
+
+
+<style>
+    header {
+        background: #474B4F !important;
+    }
+
+    #header .box-nav-ul .menu-item.active .item-link,
+    #header .box-nav-ul .menu-item:hover .item-link {
+        color: #00fc2d !important;
+    }
+
+    #header a {
+        color: #ffffff !important
+    }
+
+    .tf-list-categories .list-categories-inner {
+        background-color: #474b4f !important;
+    }
+
+    .tf-list-categories .categories-item:hover .icon {
+        color: #00fc2d !important;
+    }
+
+    .form-search input {
+        padding-right: 40px !important;
+        padding-left: 14px !important;
+    }
+</style>

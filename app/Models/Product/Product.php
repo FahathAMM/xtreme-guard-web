@@ -16,7 +16,6 @@ class Product extends Model
 
     protected $with = ['mainImage'];
 
-
     protected $fillable = [
         'name',
         'description',
@@ -83,6 +82,13 @@ class Product extends Model
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function scopeSearch($query, $request)
+    {
+        return $query->when($request->filled('q'), function ($query) use ($request) {
+            $query->where('name', 'like', '%' . $request->q . '%');
+        });
     }
 
     public function setNameAttribute($value)

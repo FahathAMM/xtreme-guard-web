@@ -9,10 +9,12 @@ use App\Models\Product\Product;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::get();
-        // return $products; Products-by-category
+        $products = Product::search($request)->get();
+
+        // return $products;
+
         return view('site.product.products', [
             'products' => $products,
             'categories' => $products,

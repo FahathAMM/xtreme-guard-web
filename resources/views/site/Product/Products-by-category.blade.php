@@ -1,26 +1,9 @@
 @extends('layout.app-site')
 
 @section('content')
-    <div class="page-title" style="background-image: url({{ asset('site/images/section/page-title.jpg') }});">
-        <div class="container-full">
-            <div class="row">
-                <div class="col-12">
-                    <h3 class="heading text-center">{{ $category->name }}</h3>
-                    <ul class="breadcrumbs d-flex align-items-center justify-content-center">
-                        <li>
-                            <a class="link" href="#">Product</a>
-                        </li>
-                        <li>
-                            <i class="icon-arrRight"></i>
-                        </li>
-                        <li>
-                            {{ $category->name }}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+    <x-site.component.page-title :title="$category->name" :breadcrumbs="[['label' => 'Product', 'url' => route('product.index')], ['label' => $category->name]]" />
+
+
 
     <section class="flat-spacing">
         <div class="container">
@@ -79,7 +62,7 @@
 
 
                     @foreach ($products as $prodduct)
-                        <x-site.compoent.product-card :products="$prodduct" />
+                        <x-site.component.product-card :products="$prodduct" />
                     @endforeach
 
 
@@ -99,12 +82,4 @@
 
         </div>
     </section>
-
-    <style>
-        @media (min-width: 992px) {
-            .page-title {
-                padding: 20px 0 20px;
-            }
-        }
-    </style>
 @endsection
