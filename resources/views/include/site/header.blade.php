@@ -1,11 +1,9 @@
 @php
     $menuItems = [
         ['name' => 'Home', 'url' => url('/'), 'pattern' => '/'],
-        // ['name' => 'Category', 'url' => '#', 'pattern' => 'category', 'sub' => getCategories()],
-        // ['name' => 'Products', 'url' => url('product'), 'pattern' => 'product*'],
         ['name' => 'Blog', 'url' => url('blog'), 'pattern' => 'blog*'],
-        ['name' => 'Contact Us', 'url' => url('contact'), 'pattern' => 'contact'],
-        ['name' => 'About Us', 'url' => url('aboutus'), 'pattern' => 'aboutus'],
+        ['name' => 'Contact', 'url' => url('contact'), 'pattern' => 'contact'],
+        ['name' => 'About', 'url' => url('aboutus'), 'pattern' => 'aboutus'],
     ];
 @endphp
 
@@ -30,6 +28,32 @@
                 <nav class="box-navigation text-center">
                     <ul class="box-nav-ul d-flex align-items-center justify-content-center">
                         @foreach ($menuItems as $key => $item)
+                            @if ($loop->index == 1)
+                                <li class="menu-item mx-3 {{ request()->is('solution*') ? 'active' : '' }}">
+                                    <div class="tf-list-categories">
+                                        <a href="#" class="item-link">
+                                            Solutions
+                                            <i class="icon icon-arrow-down"></i>
+                                        </a>
+                                        <div class="list-categories-inner">
+                                            <ul>
+                                                @foreach (getCategoriesForHeader() as $category)
+                                                    @if (!in_array($category->id, $subCategoryIds))
+                                                        <li class="sub-categories2">
+                                                            <a href="{{ url('product-by-category/' . $category->slug) }}"
+                                                                class="categories-item">
+                                                                <span class="inner-left">
+                                                                    {{ $category->name }}
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endif
 
                             <li class="menu-item mx-3 {{ request()->is($item['pattern']) ? 'active' : '' }}">
                                 <a href="{{ $item['url'] }}" class="item-link">
@@ -38,38 +62,9 @@
                                         <i class="icon icon-arrow-down"></i>
                                     @endif
                                 </a>
-
-                                @if (!empty($item['sub']) && $item['name'] === 'Category')
-                                    <div class="sub-menu mega-menu">
-                                        <div class="container">
-                                            <div class="row-demo">
-                                                @foreach ($item['sub'] as $category)
-                                                    <div class="demo-item active">
-                                                        <a href="home-fashion-eleganceNest.html">
-                                                            <div class="demo-image position-relative"
-                                                                style="height: 80%">
-                                                                <img class="lazyload" data-src="{{ $category->img }}"
-                                                                    src="{{ $category->img }}"
-                                                                    alt="{{ $category->name }}">
-                                                                <div class="demo-label">
-                                                                    <span class="demo-new">New</span>
-                                                                    <span class="demo-hot">Hot</span>
-                                                                </div>
-                                                            </div>
-                                                            <span class="demo-name mt-2">{{ $category->name }}</span>
-                                                        </a>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                            <div class="text-center view-all-demo">
-                                                <a href="#modalDemo" data-bs-toggle="modal" class="tf-btn">
-                                                    <span class="text">View All Products</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
                             </li>
+
+
 
                             @if ($loop->first)
                                 <li
@@ -141,7 +136,34 @@
                                     </div>
                                 </li>
                             @endif
+
                         @endforeach
+
+                        {{-- <li
+                            class="menu-item mx-3 {{ request()->is('product-by-category*') || request()->is('product*') ? 'active' : '' }}">
+                            <div class="tf-list-categories">
+                                <a href="#" class="item-link">
+                                    Solutions
+                                    <i class="icon icon-arrow-down"></i>
+                                </a>
+                                <div class="list-categories-inner">
+                                    <ul>
+                                        @foreach (getCategoriesForHeader() as $category)
+                                            @if (!in_array($category->id, $subCategoryIds))
+                                                <li class="sub-categories2">
+                                                    <a href="{{ url('product-by-category/' . $category->slug) }}"
+                                                        class="categories-item">
+                                                        <span class="inner-left">
+                                                            {{ $category->name }}
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </li> --}}
                     </ul>
                 </nav>
             </div>

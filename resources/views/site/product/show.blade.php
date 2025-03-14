@@ -72,6 +72,22 @@
             </div>
         </div>
     </div>
+
+    {{-- <a href="#ask_question" data-bs-toggle="modal" class="tf-product-extra-icon">
+        <div class="icon">
+            <i class="icon-question"></i>
+        </div>
+        <p class="text-caption-1">Ask A Question</p>
+    </a> --}}
+
+    {{-- <button class="btn btn-primary add-btn" onclick="{{ 'openInquiryModal' }}({{ false }})"><i
+            class="ri-add-line align-bottom me-1"></i>
+        Add Category
+    </button> --}}
+
+    <x-site.component.inquiry />
+
+
     <!-- /breadcrumb -->
 
     <!-- tf-add-cart-success -->
@@ -192,7 +208,8 @@
                                     <div>
                                         <div class="tf-product-info-by-btn mb_10">
                                         </div>
-                                        <a href="#" class="btn-style-3 text-btn-uppercase">inquiry now</a>
+                                        <a href="#" class="btn-style-3 text-btn-uppercase"
+                                            onclick="{{ 'openInquiryModal' }}({{ $product }})">inquiry now</a>
                                     </div>
                                 </div>
                             </div>

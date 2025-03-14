@@ -1,16 +1,9 @@
 <?php
 
-use App\Providers\JTIService;
-use App\Models\Order\OrderLog;
 use App\Models\Category\Category;
-use App\Models\Shipment\Shipment;
-use App\Models\Pickup\OrderPickup;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
-use App\Models\Pickup\PickupTracking;
-use App\Models\Shipment\OrderTracking;
-use App\Models\Shipment\ShipmentDetail;
 
 if (!function_exists('getBrowser')) {
 
