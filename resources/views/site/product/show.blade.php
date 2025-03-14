@@ -257,7 +257,9 @@
                             </div>
 
                             <div class="widget-content-inner d-flex justify-content-center">
-                                <div class="tab-shipping" style="width: 65% !important;">
+                                {{-- <div class="tab-shipping" style="width: 65% !important;"> --}}
+                                <div class="w-100 w-sm-100 w-md-75 w-lg-100 w-xl-50 w-xxl-50">
+
                                     <table class="tf-table-page-cart">
                                         <tbody>
                                             @foreach ([1, 2, 3, 4] as $item)

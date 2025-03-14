@@ -3,7 +3,7 @@
 @section('content')
     <section class="flat-spacing">
         <div class="container">
-            <div class="tf-grid-layout tf-col-2 lg-col-4">
+            <div class="tf-grid-layout tf-col-2 md-col-4 lg-col-4">
                 @foreach ($categories as $category)
                     <div class="collection-position-2 radius-lg style-3 hover-img">
                         <a class="img-style">

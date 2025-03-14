@@ -43,7 +43,7 @@
                     </div>
                 @endif
 
-                <div class="tf-grid-layout wrapper-shop tf-col-7" id="gridLayout">
+                <div class="tf-grid-layout wrapper-shop tf-col-2 md-col-4 lg-col-5 xl-col-6" id="gridLayout">
                     @foreach ($products as $prodduct)
                         <x-site.component.product-card :products="$prodduct" />
                     @endforeach
