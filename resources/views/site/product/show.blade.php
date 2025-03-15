@@ -40,6 +40,11 @@
                 padding: 5px 20px;
             }
         }
+
+        figure .ck-widget__type-around {
+            /* figure .ck .ck-reset_all .ck-widget__type-around { */
+            display: none !important;
+        }
     </style>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -73,17 +78,6 @@
         </div>
     </div>
 
-    {{-- <a href="#ask_question" data-bs-toggle="modal" class="tf-product-extra-icon">
-        <div class="icon">
-            <i class="icon-question"></i>
-        </div>
-        <p class="text-caption-1">Ask A Question</p>
-    </a> --}}
-
-    {{-- <button class="btn btn-primary add-btn" onclick="{{ 'openInquiryModal' }}({{ false }})"><i
-            class="ri-add-line align-bottom me-1"></i>
-        Add Category
-    </button> --}}
 
     <x-site.component.inquiry />
 
@@ -139,7 +133,7 @@
                                     </div>
                                 </div>
                                 <div dir="ltr" class="swiper tf-product-media-main" id="gallery-swiper-started"
-                                    style="background:#FAFAFA;border-radius: 10px;">
+                                    style="background:#FAFAFA;border-radius: 10px;border: 1px solid #ddd;">
                                     <div class="swiper-wrapper">
                                         @foreach ($product->gallery as $img)
                                             <div class="swiper-slide" data-color="gray">
@@ -163,7 +157,7 @@
                                 <div class="tf-product-info-heading">
                                     <div class="tf-product-info-name">
                                         <div class="text text-btn-uppercase">{{ $product->category->name ?? '' }}</div>
-                                        <h3 class="name">{{ $product->name ?? '' }}</h3>
+                                        <h4 class="name">{{ $product->name ?? '' }}</h4>
 
                                     </div>
                                     <div class="tf-product-info-desc content-display">
@@ -171,9 +165,9 @@
                                             {!! $product->description ?? '' !!}
                                         </p>
 
-                                        <p>
+                                        {{-- <p>
                                             {!! $product->description ?? '' !!}
-                                        </p>
+                                        </p> --}}
 
                                     </div>
                                 </div>
@@ -238,9 +232,9 @@
                             <li class="item-title">
                                 <span class="inner">Download</span>
                             </li>
-                            {{-- <li class="item-title">
-                                <span class="inner">Return Policies</span>
-                            </li> --}}
+                            <li class="item-title">
+                                <span class="inner">Videos</span>
+                            </li>
                         </ul>
                         <div class="widget-content-tab">
                             <div class="widget-content-inner active">
@@ -274,61 +268,15 @@
                             </div>
 
                             <div class="widget-content-inner d-flex justify-content-center">
-                                {{-- <div class="tab-shipping" style="width: 65% !important;"> --}}
                                 <div class="w-100 w-sm-100 w-md-75 w-lg-100 w-xl-50 w-xxl-50">
-
-                                    <table class="tf-table-page-cart">
-                                        <tbody>
-                                            @foreach ([1, 2, 3, 4] as $item)
-                                                <tr class="tf-cart-item1 file-delete">
-                                                    <td class="tf-cart-item_product">
-                                                        <i class="fas fa-file-pdf me-2 fs-2 text-danger"></i>
-                                                        AHEB Datesheet 20240709
-                                                    </td>
-
-                                                    <td class="remove-cart text-end">
-                                                        <span class="fs-12">{{ now()->format('d M Y') }}</span>
-                                                        <a class="d-flex justify-content-end">
-                                                            <i class="fas fa-download me-2"></i>
-                                                            <span>Download</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                    <x-site.show.download :files="$product->files" />
                                 </div>
                             </div>
 
-                            {{-- <div class="widget-content-inner">
-                                <div class="tab-policies">
-                                    <div class="text-btn-uppercase mb_12">Return Policies</div>
-                                    <p class="mb_12 text-secondary">At Modave, we stand behind the quality of our
-                                        products. If you're not completely satisfied with your purchase, we offer
-                                        hassle-free returns within 30 days of delivery.</p>
-                                    <div class="text-btn-uppercase mb_12">Easy Exchanges or Refunds</div>
-                                    <ul class="list-text type-disc mb_12 gap-6">
-                                        <li class="text-secondary font-2">Exchange your item for a different size,
-                                            color, or style, or receive a full refund.</li>
-                                        <li class="text-secondary font-2">All returned items must be unworn, in
-                                            their original packaging, and with tags attached.</li>
-                                    </ul>
-                                    <div class="text-btn-uppercase mb_12">Simple Process</div>
-                                    <ul class="list-text type-number">
-                                        <li class="text-secondary font-2">Initiate your return online or contact our
-                                            customer service team for assistance.</li>
-                                        <li class="text-secondary font-2">Pack your item securely and include the
-                                            original packing slip.</li>
-                                        <li class="text-secondary font-2">Ship your return back to us using our
-                                            prepaid shipping label.</li>
-                                        <li class="text-secondary font-2">Once received, your refund will be
-                                            processed promptly.</li>
-                                    </ul>
-                                    <p class="text-secondary font-2">For any questions or concerns regarding
-                                        returns, don't hesitate to reach out to our dedicated customer service team.
-                                        Your satisfaction is our priority.</p>
-                                </div>
-                            </div> --}}
+                            <div class="widget-content-inner">
+                                {{-- @dd($product->videos) --}}
+                                <x-site.show.videos :videos="$product->videos" />
+                            </div>
                         </div>
                     </div>
                 </div>

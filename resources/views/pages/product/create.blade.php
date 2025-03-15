@@ -18,8 +18,6 @@
                 class="needs-validation1" novalidate1 enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-
-
                     <div class="col-lg-8">
                         <div class="card mb-1">
                             <div class="card-body">
@@ -51,48 +49,6 @@
                             </div>
                         </div>
 
-                        {{-- <div class="card">
-                            <div class="card-header">
-                                <p class="text-muted mb-2">
-                                    <button type="button" id="newRow"
-                                        class="float-end add-row btn fw-medium btn-soft-secondary">
-                                        <i class="ri-add-fill me-1 align-bottom"></i>
-                                        Add New
-                                    </button>
-                                <h5 class="card-title mb-0">Product Attributes</h5>
-                                </p>
-                            </div>
-                            <div class="card-body">
-                                <div class="mt-3">
-                                    <div class="table-responsivew">
-                                        <table class="invoice-table table table-borderless table-nowrap mb-0">
-                                            <tbody id="newlink">
-                                                <tr id="1" class="product">
-                                                    <td class="text-start py-0 w-50">
-                                                        <div class="mb-0">
-                                                            <x-input.txt-group name="attribute[]"
-                                                                placeholder="Enter attribute" />
-                                                        </div>
-                                                    </td>
-                                                    <td class="py-0">
-                                                        <div>
-                                                            <x-input.txt-group name="value[]"
-                                                                placeholder="Enter your  attribute value" />
-                                                        </div>
-                                                    </td>
-                                                    <td class="product-removal py-0">
-                                                        <a href="javascript:void(0)" class="btn btn-danger remove-row">
-                                                            <i class="ri-delete-bin-5-line"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
-
                         <div class="card mb-1">
                             <div class="card-header">
                                 <ul class="nav nav-tabs-custom card-header-tabs border-bottom-0" role="tablist">
@@ -106,6 +62,12 @@
                                         <a class="nav-link" data-bs-toggle="tab" href="#addproduct-metadata" role="tab"
                                             aria-selected="false" tabindex="-1">
                                             Product Attachment
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link" data-bs-toggle="tab" href="#addproduct-video" role="tab"
+                                            aria-selected="false" tabindex="-1">
+                                            Product Video
                                         </a>
                                     </li>
                                 </ul>
@@ -173,7 +135,8 @@
                                                             </div>
                                                         </td>
                                                         <td class="product-removal py-0">
-                                                            <a href="javascript:void(0)" class="btn btn-danger remove-row">
+                                                            <a href="javascript:void(0)"
+                                                                class="btn btn-danger remove-row">
                                                                 <i class="ri-delete-bin-5-line"></i>
                                                             </a>
                                                         </td>
@@ -182,6 +145,44 @@
                                             </table>
                                         </div>
                                     </div>
+
+                                    <div class="tab-pane" id="addproduct-video" role="tabpanel">
+                                        <div class="table-responsivew">
+                                            <p class="text-muted">
+                                                <button type="button"
+                                                    class="float-end add-video-row btn mb-2 fw-medium btn-soft-secondary">
+                                                    <i class="ri-add-fill me-1 align-bottom"></i>
+                                                    Add New
+                                                </button>
+                                            </p>
+                                            <table class="invoice-table table table-borderless table-nowrap mb-0">
+                                                <tbody id="video-area">
+                                                    <tr id="1" class="product">
+                                                        <td class="text-start py-0 w-50">
+                                                            <div class="mb-0">
+                                                                <x-input.txt-group name="video_name[]"
+                                                                    placeholder="Enter video name"
+                                                                    class="is_video_value" />
+                                                            </div>
+                                                        </td>
+                                                        <td class="py-0">
+                                                            <div>
+                                                                <x-input.txt-group name="video_link[]"
+                                                                    placeholder="Enter video link" class="video-link" />
+                                                            </div>
+                                                        </td>
+                                                        <td class="product-removal py-0">
+                                                            <a href="javascript:void(0)"
+                                                                class="btn btn-danger remove-row">
+                                                                <i class="ri-delete-bin-5-line"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -313,6 +314,35 @@
                     i++;
                 });
 
+                $(document).on('click', '.add-video-row', function() {
+
+                    var videoRow = `
+                    <tr class="product">
+                        <td class="text-start py-0 w-50">
+                            <div class="mb-0">
+                                <x-input.txt-group id="attribute" name="video_name[]"                                             placeholder="Enter video name" />
+
+                            </div>
+                        </td>
+                        <td class="py-0">
+                            <div>
+                                <x-input.txt-group name="video_link[]"
+                                    placeholder="Enter video link" class="video-link"/>
+                            </div>
+                        </td>
+                        <td class="product-removal py-0">
+                            <a href="javascript:void(0)" class="btn btn-danger remove-row">
+                                <i class="ri-delete-bin-5-line"></i>
+                            </a>
+                        </td>
+                    </tr>`;
+
+                    $('#video-area').append(videoRow);
+
+                    i++;
+                });
+
+
                 $(document).on('click', '.remove-row', function() {
                     var rowCount = $('.invoice-table tr').length;
                     if (rowCount == 1) {
@@ -337,14 +367,29 @@
 
             });
 
+            function isValidURL(url) {
+                const pattern = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+                return pattern.test(url);
+            }
+
             function store() {
+                if ($('.is_video_value').val() != '') {
+                    $('.video-link').each(function() {
+                        const videoLink = $(this).val();
+                        try {
+                            new URL(videoLink);
+                        } catch (error) {
+                            alertNotify('Please enter valid URLs for all video links', 'error')
+                            // alertNotify(`Please enter valid URLs for video number ${j++} links`, 'error')
+                        }
+                    });
+                }
+
                 $('#new-content').html($('.ck-content').html());
                 var form = document.getElementById('product-form');
                 var url = form.getAttribute('action');
                 var method = form.getAttribute('method');
                 var payload = new FormData(form);
-
-                // payload.append('img', document.getElementById('selectImage').files[0]);
 
                 var profileImgInput = document.getElementById('selectImage');
 

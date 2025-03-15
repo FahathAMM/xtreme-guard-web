@@ -40,8 +40,6 @@ return new class extends Migration
             $table->integer('is_warrenty_available')->default(1);
             $table->integer('view_count')->default(1);
 
-
-
             $table->timestamps();
         });
 
@@ -69,6 +67,16 @@ return new class extends Migration
             $table->string('desc')->nullable();
             $table->timestamps();
         });
+
+        Schema::create('product_videos', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('product_id');
+            $table->string('file_name')->nullable();
+            $table->string('path')->nullable();
+            $table->string('link')->nullable();
+            $table->string('desc')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -80,5 +88,6 @@ return new class extends Migration
         Schema::dropIfExists('product_attributes');
         Schema::dropIfExists('product_images');
         Schema::dropIfExists('product_attachments');
+        Schema::dropIfExists('product_videos');
     }
 };

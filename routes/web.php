@@ -10,6 +10,7 @@ use App\Http\Controllers\Pages\Dashboard\DashboardController;
 use App\Http\Controllers\Pages\Administration\SettingController;
 use App\Http\Controllers\Pages\Administration\PermissionController;
 use App\Http\Controllers\Pages\Administration\MailTrackingController;
+use App\Http\Controllers\Pages\Administration\WhatsappController;
 use App\Http\Controllers\Pages\Blog\BlogController;
 use App\Http\Controllers\Pages\Category\CategoryController;
 use App\Http\Controllers\Pages\Contact\ContactController;
@@ -43,6 +44,8 @@ Route::prefix('admin')->middleware(['auth', 'logged.session'])->group(function (
     Route::resource('administration/user', UserController::class);
 
     Route::resource('administration/setting', SettingController::class);
+
+    Route::resource('administration/whatsapp', WhatsappController::class);
 
     Route::resource('category', CategoryController::class);
     Route::resource('products', ProductController::class);

@@ -37,6 +37,10 @@ class ProductRepo extends BaseRepository
         $attr =  $request->attribute;
         $attachedmentName =  $request->attachment_attribute;
 
+        $videoNames = $request->video_name;
+        $videoLinks =  $request->video_link;
+
+
         $created = $this->model->create($request->validated());
 
         if ($created) {
@@ -54,6 +58,15 @@ class ProductRepo extends BaseRepository
                     'value' => $valData,
                 ]);
             }
+
+            foreach ($videoNames as $key => $valData) {
+                $created->videos()->create([
+                    'file_name' => $videoLinks[$key],
+                    'link' => $valData,
+                    'path' => $valData,
+                ]);
+            }
+
 
             if ($request->hasFile('attachment_value')) {
                 foreach ($request->file('attachment_value') as $key => $attachment) {

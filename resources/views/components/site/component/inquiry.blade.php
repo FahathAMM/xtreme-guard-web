@@ -1,11 +1,22 @@
  <!-- modal ask_question -->
  <div class="modal modalCentered fade tf-product-modal modal-part-content" id="ask_question">
      <div class="modal-dialog modal-dialog-centered">
+
+
          <div class="modal-content">
+
              <div class="header">
                  <div class="demo-title">Ask a question</div>
                  <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
              </div>
+
+             <div class="msg-container my-3" style="display:none; font-family: system-ui; ">
+                 <div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show mb-xl-0">
+                     <i class="ri-checkbox-circle-line label-icon"></i>
+                     <strong class=""style="font-size: 13px;" id="suc-msg"></strong>
+                 </div>
+             </div>
+
              <div class="overflow-y-auto">
                  {{-- <form class="">
                      <fieldset class="">
@@ -96,30 +107,14 @@
      <script src="{{ asset('assets/js/helper.js') }}"></script>
 
      <script>
-         setTimeout(() => {
-             wrapMapLinks.forEach(link => {
-                 link.style.display = 'none';
-             });
-         }, 2 * 1000);
+         function openInquiryModal(data = null) {
+             $('#ask_question').modal('show');
+             console.log(data);
+             //  setValueByName('subject', data?.name || '');
+             setValueByName('subject', `Inquiry Message for ${data?.name || 'Product'} `);
 
-         document.addEventListener("DOMContentLoaded", function() {
-             document.querySelectorAll(".load-btn").forEach(function(btn) {
-                 btn.addEventListener("click", function() {
-                     btn.classList.add("loading");
 
-                     // Select the span containing the "Submit" text
-                     let textSpan = btn.querySelector(".text.text-button > span");
-                     if (textSpan) {
-                         textSpan.classList.add("d-none"); // Hide the text
-                     }
-
-                     // setTimeout(() => {
-                     //     btn.classList.remove("loading");
-                     //     textSpan.classList.remove("d-none"); // Hide the text
-                     // }, 3000); // 3 seconds
-                 });
-             });
-         });
+         }
 
          function eLoadingSite(btnId = 'sbtBtn') {
              let btn = document.querySelector(`#${btnId}`);
@@ -137,15 +132,6 @@
              }
          }
 
-         function openInquiryModal(data = null) {
-             $('#ask_question').modal('show');
-             console.log(data);
-
-             //  setValueByName('subject', data?.name || '');
-             setValueByName('subject', `Inquiry Message for ${data?.name || 'Product'} `);
-
-
-         }
 
          const formName = 'contact-form'
 
@@ -169,22 +155,34 @@
                  payload,
                  options,
                  (response) => {
-                     // console.log('Success:', response);
                      if (response.status) {
                          // $("#contact-form :input").not("#is_active").val("");
                          alertNotify(response.message, 'success')
                          associateErrors1([], 'contact-form');
                          eLoadingSite('btnLoader')
+
                          $('#ask_question').fadeOut(1000, function() {
                              $('#ask_question').modal('hide');
                          });
+
+                         //  $('.error-list').empty();
+                         //  setHtml('suc-msg', response.message);
+                         //  $('.msg-container').show();
+
+                         //  //  $('.msg-container').fadeOut(10 * 1000);
+
+                         //  //  $('.msg-container').fadeOut(10 * 1000, function() {
+                         //  //      $('.msg-container').hide();
+
+                         //  //  });
+                         //  $('.msg-container').fadeTo(1000, 1);
+                         //  //  $('.msg-container').slideUp(10 * 1000);
+
                      } else {
                          associateErrors1(response.errors, 'contact-form');
-
                          eLoadingSite('btnLoader')
 
-
-                         // eLoading('sbtBtn')
+                         alertNotify(response.message, 'success')
                      }
                  },
                  (error) => {
@@ -218,11 +216,11 @@
              console.log(arr[sts]);
              Toastify({
                  text: msg || '',
-                 duration: 3000,
+                 duration: 9 * 1000,
                  newWindow: true,
                  close: false,
                  gravity: "top", // `top` or `bottom`
-                 position: "right", // `left`, `center` or `right`
+                 position: "center", // `left`, `center` or `right`
                  stopOnFocus: true, // Prevents dismissing of toast on hover
                  className: arr[sts],
                  // style: {

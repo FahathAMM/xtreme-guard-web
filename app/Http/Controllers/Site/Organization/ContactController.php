@@ -38,11 +38,14 @@ class ContactController extends Controller
     public function store(StoreRequest $request)
     {
         try {
-            // return $request->all();
-
             $created =  $this->repo->createContact($request);
             if ($created) {
-                return  $this->response($this->modelName . ' created successfully', ['data' => $created], true);
+
+                return  $this->response(
+                    'Your message delivered successfully. We will get back to you shortly',
+                    ['data' => $created],
+                    true
+                );
             }
         } catch (\Throwable $th) {
             return  $this->response($th->getMessage(), null, false);

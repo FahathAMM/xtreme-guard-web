@@ -35,7 +35,7 @@ class ProductController extends Controller
 
     public function show(string $id)
     {
-        $product = Product::whereId($id)->with('gallery', 'category', 'attributes', 'files')->first();
+        $product = Product::whereId($id)->with('gallery', 'category', 'attributes', 'files', 'videos')->first();
         // return $product;
         return view('site.product.show', [
             'product' => $product,

@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Site\Home;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\Category\Category;
 use App\Models\Product\Product;
+use App\Models\Category\Category;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 
 class HomeController extends Controller
 {
@@ -25,12 +28,7 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
-
         $products = Product::get();
-
-        // return  $cat =  getCategoriesForHeader();
-
-
 
         return view('site.home.index', [
             'categories' => Category::get(),

@@ -27,7 +27,6 @@ class ProductController extends Controller
         $this->isDestroyingAllowed = true;
     }
 
-
     public function index1(Request $request)
     {
         if ($request->ajax()) {
