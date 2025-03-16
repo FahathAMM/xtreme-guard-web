@@ -1,0 +1,87 @@
+@media (min-width: 576px) {
+
+    /* sm */
+    .w-sm-100 {
+        width: 100% !important;
+    }
+}
+
+@media (min-width: 768px) {
+
+    /* md */
+    .w-md-25 {
+        width: 25% !important;
+    }
+
+    .w-md-50 {
+        width: 50% !important;
+    }
+
+    .w-md-75 {
+        width: 75% !important;
+    }
+
+    .w-md-100 {
+        width: 100% !important;
+    }
+}
+
+@media (min-width: 992px) {
+
+    /* lg */
+    .w-lg-25 {
+        width: 25% !important;
+    }
+
+    .w-lg-50 {
+        width: 50% !important;
+    }
+
+    .w-lg-75 {
+        width: 75% !important;
+    }
+
+    .w-lg-100 {
+        width: 100% !important;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    /* xl */
+    .w-xl-25 {
+        width: 25% !important;
+    }
+
+    .w-xl-50 {
+        width: 50% !important;
+    }
+
+    .w-xl-75 {
+        width: 75% !important;
+    }
+
+    .w-xl-100 {
+        width: 100% !important;
+    }
+}
+
+@media (min-width: 1400px) {
+
+    /* xxl */
+    .w-xxl-25 {
+        width: 25% !important;
+    }
+
+    .w-xxl-50 {
+        width: 50% !important;
+    }
+
+    .w-xxl-75 {
+        width: 75% !important;
+    }
+
+    .w-xxl-100 {
+        width: 100% !important;
+    }
+}

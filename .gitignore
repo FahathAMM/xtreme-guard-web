@@ -25,7 +25,11 @@ yarn-error.log
 /.idea
 /.vscode
 public/assets1
-public/site
+public/site/contact
+public/site/images
+public/site/mail
+public/site/scss
+public/site/fonts
 public/vendor
 public/index1.php
 public/logo.PNG
