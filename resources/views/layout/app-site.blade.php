@@ -19,6 +19,8 @@
 
 <body class="preload-wrapper">
 
+    <x-site.component.whatsapp-float />
+
     <div class="preload preload-container">
         <div class="preload-logo">
             <div class="spinner"></div>

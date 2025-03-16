@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Models\Category\Category;
 use App\Http\Controllers\Controller;
-use App\Repositories\BlogRepo\BlogRepo;
 use App\Http\Requests\Blog\StoreRequest;
 
 class BlogController extends Controller
@@ -18,10 +17,9 @@ class BlogController extends Controller
     protected $model;
     protected $repo;
 
-    public function __construct(Blog $model, BlogRepo $repo)
+    public function __construct(Blog $model)
     {
         $this->model = $model;
-        $this->repo = $repo;
         $this->isDestroyingAllowed = true;
     }
 
