@@ -10,6 +10,8 @@
              name="category_id" itemText="name" itemValue="id" :items="$categories->toArray()"
                 data-choices-search-true /> --}}
 
+            @dd($categories)
+
             <div class="row" id="role-card-area">
                 @foreach ($categories as $category)
                     <div class="col-xxl-3 col-md-4">
@@ -94,6 +96,7 @@
 
                 const form = $(`#${formIdName}`);
                 const submitButton = $('#submit-btn');
+                const CategoryModalLabel = $('#CategoryModalLabel');
 
                 // Helper function to set the form action and method
                 const setFormActionAndMethod = (actionUrl, method) => {
@@ -105,19 +108,22 @@
                     }
                 };
 
+
+
                 // Helper function to update button text
                 const updateSubmitButtonText = (text) => {
                     submitButton.text(text);
+                    CategoryModalLabel.text(text);
                 };
 
                 // Update the form fields
                 const updateFormFields = (data) => {
+                    console.log(data);
+
                     setValueByName('is_edit', isEdit ? 1 : 0);
                     setValueByName('name', data?.name || '');
-                    setValueByName('address', data?.address || '');
-                    setValueByName('floors', data?.floors || '');
                     setValueByName('description', data?.description || '');
-                    // updateSelectedValue('is_active', data.has_parking)
+                    updateSelectedValue('is_active', data.has_parking)
 
                 };
 

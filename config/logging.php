@@ -58,9 +58,9 @@ return [
             'ignore_exceptions' => false,
         ],
 
-        'creteShipLog' => [
+        'WhatsappForContact' => [
             'driver' => 'single',
-            'path' => storage_path('logs/create-ship.log'),
+            'path' => storage_path('logs/contact-whatsapp.log'),
             'level' => 'debug',
         ],
 

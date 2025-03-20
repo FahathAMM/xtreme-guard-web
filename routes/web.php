@@ -2,19 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Pages\Blog\BlogController;
+use App\Http\Controllers\Pages\Contact\ContactController;
 use App\Http\Controllers\Pages\Development\DevController;
+use App\Http\Controllers\Pages\Product\ProductController;
+use App\Http\Controllers\Pages\Category\CategoryController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Pages\Administration\RoleController;
 use App\Http\Controllers\Pages\Administration\UserController;
 use App\Http\Controllers\Pages\Dashboard\DashboardController;
 use App\Http\Controllers\Pages\Administration\SettingController;
+use App\Http\Controllers\Pages\Administration\WhatsappController;
 use App\Http\Controllers\Pages\Administration\PermissionController;
 use App\Http\Controllers\Pages\Administration\MailTrackingController;
-use App\Http\Controllers\Pages\Administration\WhatsappController;
-use App\Http\Controllers\Pages\Blog\BlogController;
-use App\Http\Controllers\Pages\Category\CategoryController;
-use App\Http\Controllers\Pages\Contact\ContactController;
-use App\Http\Controllers\Pages\Product\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +29,8 @@ use App\Http\Controllers\Pages\Product\ProductController;
 
 // Route::get('/', fn() =>  redirect(route('dashboard.index')));
 
+// Route::middleware(['auth', 'logged.session'])->group(function () {
 Route::prefix('admin')->middleware(['auth', 'logged.session'])->group(function () {
-    // Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

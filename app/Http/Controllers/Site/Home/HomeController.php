@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site\Home;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Product\Product;
 use App\Models\Category\Category;
@@ -28,7 +29,9 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
-        $products = Product::get();
+        $products = Product::take(9)->with('category')->get();
+
+        // return $products;
 
         return view('site.home.index', [
             'categories' => Category::get(),

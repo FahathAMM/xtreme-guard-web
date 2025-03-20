@@ -8,7 +8,7 @@
     'numberOfUsers' => '4',
     'color' => 'warning',
     'btnTarget' => 'editRoleModal',
-    'funName' => 'editRoleModal',
+    'funName' => 'CategoryModal',
     'per' => 'editRoleModal',
     'perDelete' => 'editRoleModal',
     'item' => [],

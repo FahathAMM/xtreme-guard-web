@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers\Pages\Administration;
 
-use Exception;
-use App\Models\Mail\MailLog;
 use Illuminate\Http\Request;
-use InvalidArgumentException;
-use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
-use App\Repositories\Administration\MailTrackingRepo;
 
 class WhatsappController extends Controller
 {
@@ -18,11 +13,15 @@ class WhatsappController extends Controller
 
     public function index(Request $request)
     {
-        return  $this->toSendWhatsapp('971502848071');
+        return $this->toSendWhatsapp('971502848071');
+        // return $this->toSendWhatsapp('971554501483');
     }
 
     public static function toSendWhatsapp($recipientMobile, $message = '')
     {
+        Log::channel('WhatsappForContact')
+            ->info(json_encode(['recipientMobile' => $recipientMobile, 'message' => $message], JSON_PRETTY_PRINT));
+
         if (!$recipientMobile) {
             return 'Rrecipient Mobile number not found';
         }
@@ -30,7 +29,7 @@ class WhatsappController extends Controller
         $url = 'https://wa.mytime2cloud.com/send-message';
 
         $data = [
-            'clientId' => "38_alarm_xtremeguard",
+            'clientId' => 'c1b53d88-b98f-4a0b-9417-0108acd36a57', //"web_site" . Str::uuid(),
             'recipient' =>  $recipientMobile,
             'text' => 'test',
         ];

@@ -109,13 +109,13 @@ if (!function_exists('currentUser')) {
 if (!function_exists('actionBtns')) {
     function actionBtns($id = "",  $editRouteName = '', $url = '', $deleteDisplayValue = "", $permission = [])
     {
-        // <div class="hstack gap-3 fs-15">
+        // <div class="fs-15 gap-3 hstack">
         //  <a href="javascript:void(0);" class="link-primary"><i class="ri-settings-4-line"></i></a>
         //  <a href="javascript:void(0);" class="link-danger"><i class="ri-delete-bin-5-line"></i></a>
         // </div>
 
         $btn = "";
-        $btn .= "<div class='hstack gap-3 fs-15 d-flex justify-content-center'>";
+        $btn .= "<div class='d-flex justify-content-center fs-15 gap-3 hstack'>";
         if ($permission['isEdit']) {
             //edit btn
             $btn .= '<a href="' . route($editRouteName, $id) . '"class="link-primary"  title="Edit"><i class="ri-pencil-line"></i></a>';
@@ -136,7 +136,7 @@ if (!function_exists('actionBtns')) {
         }
 
         if ($permission['isTracking'] ?? false) {
-            $btn .= '<a href="#" tracking-url="' . url($url) . '" tracking-item="' . $deleteDisplayValue . '" class="tracking link-danger" id= "' . $id . '"  title="Tracking"><i class="ri-download-cloud-2-line"></i></a>';
+            $btn .= '<a href="#" tracking-url="' . url($url) . '" tracking-item="' . $deleteDisplayValue . '" class="link-danger tracking" id= "' . $id . '"  title="Tracking"><i class="ri-download-cloud-2-line"></i></a>';
         }
 
         if ($permission['isExtra'] ?? false) {
@@ -156,7 +156,7 @@ if (!function_exists('addBtn')) {
             // Add button
             $className = 'btn btn-primary buttons-excel buttons-html5 bg-primary text-white border-primary me-1 ms-1';
             return '<a class="' . $className . '" href="' . route($routeName) . '" title="Add ' . $title . '">
-            <i class="fas fa-plus-circle fa-lg" style="font-size: 12px;"></i> </a>';
+            <i class="fa-lg fa-plus-circle fas" style="font-size: 12px;"></i> </a>';
         }
         return "";
     }
@@ -283,5 +283,12 @@ if (!function_exists('removeCountryCode')) {
     function removeCountryCode($phoneNumber)
     {
         return preg_replace('/^\+\d{1,3}/', '', $phoneNumber);
+    }
+}
+
+if (!function_exists('defualtProductDesc')) {
+    function defualtProductDesc()
+    {
+        return 'An advanced access control device designed for secure and efficient authentication, supporting various identification methods such as biometric scanning, RFID, PIN codes, and remote access management';
     }
 }

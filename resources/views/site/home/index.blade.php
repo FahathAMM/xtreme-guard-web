@@ -21,7 +21,11 @@
 
     <x-site.home.cat-banner />
 
-    <x-site.home.testimonial />
+    {{-- <x-site.home.testimonial /> --}}
+
+    <x-site.home.display-product :products="$products" />
+
+    <x-site.home.explore />
 
     {{-- @foreach ($products as $prodduct)
         <x-site.home.bestsale :products="$prodduct" />

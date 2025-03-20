@@ -33,12 +33,10 @@ class CategoryController extends Controller
 
     public function index(Request $request)
     {
-        // return Category::get();
+        $categories = Category::with('subcategories')->get();
 
         return view('pages/category/index', [
-            'categories' =>   Category::get(),
-            'users' =>   User::get(['id', 'first_name', 'img']),
-            'userWithRoles' => User::with('roles')->get(),
+            'categories' =>   $categories,
             'title' => $this->modelName,
         ]);
     }
