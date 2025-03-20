@@ -7,7 +7,6 @@
 
     'numberOfUsers' => '4',
     'color' => 'warning',
-    'btnTarget' => 'editRoleModal',
     'funName' => 'CategoryModal',
     'per' => 'editRoleModal',
     'perDelete' => 'editRoleModal',
@@ -28,7 +27,7 @@
             </div>
             <div class="flex-shrink-0 ms-2">
                 @canOrRole($per)
-                <a href="#" data-bs-toggle="modal" data-bs-target="#{{ $btnTarget }}" type="button"
+                <a href="#" type="button"
                     onclick="{{ $funName }}('{{ $categoryId }}', {{ Js::from($item) }})" class="me-2">
                     <i class="ri-pencil-line"></i>
                 </a>

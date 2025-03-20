@@ -4,7 +4,8 @@
         <div class="swiper-wrapper">
 
             @php
-                $imageFiles = [6, 5, 2, 3, 4, 1];
+                $imageFiles = [6, 5, 4];
+                // $imageFiles = [6, 5, 2, 3, 4, 1];
             @endphp
 
             @foreach ($imageFiles as $i)
@@ -23,16 +24,18 @@
                                             'fade-item fade-item-1 heading title-display',
                                             'text-white' => $isBlckBg,
                                         ])>
-                                            Summer 2024 <br> Collection
+                                            {{-- Summer 2024 <br> Collection --}}
+                                            Smart Security <br> Solutions & Systems
                                         </div>
                                         <p
                                             class="fade-item fade-item-2 {{ $isBlckBg ? 'text-white' : '' }} body-text-1">
-                                            Fresh styles just in! Elevate your look.
+                                            Advanced security with AI, automation, surveillance, and access control
+                                            systems.
                                         </p>
                                     </div>
                                     <div class="fade-item fade-item-3 box-btn-slider">
-                                        <a href="shop-default-grid.html" class="tf-btn btn-fill">
-                                            <span class="text">Explore Collection</span>
+                                        <a href="{{ url('product') }}" class="tf-btn btn-fill">
+                                            <span class="text">Explore Products</span>
                                             <i class="icon icon-arrowUpRight"></i>
                                         </a>
                                     </div>
@@ -42,16 +45,6 @@
                     </div>
                 </div>
             @endforeach
-
-
-
-
-
-
-
-
-
-
         </div>
     </div>
     <div class="wrap-pagination">
@@ -62,7 +55,7 @@
 </section>
 
 
-<section class="tf-marquee">
+{{-- <section class="tf-marquee">
     <div class="marquee-wrapper">
         <div class="initial-child-container">
             <div class="marquee-child-item">
@@ -142,9 +135,44 @@
             <div class="marquee-child-item">
                 <span class="icon icon-lightning-line"></span>
             </div>
-
-
-
         </div>
     </div>
+</section> --}}
+
+<section class="tf-marquee">
+    <div class="marquee-wrapper">
+        <div class="initial-child-container"></div>
+    </div>
 </section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const messages = [
+            "Smart threat detection and automated responses",
+            "HD cameras, motion sensors, and facial recognition",
+            "Biometric entry and remote access control",
+            "Seamless security with connected devices",
+            "Instant alerts and remote system access",
+        ];
+
+        const container = document.querySelector(".initial-child-container");
+
+        for (let i = 0; i < 2; i++) { // Adjust the number of repetitions as needed
+            messages.forEach((msg, index) => {
+                // Create text item
+                const textItem = document.createElement("div");
+                textItem.classList.add("marquee-child-item");
+                textItem.innerHTML = `<p class="text-btn-uppercase">${msg}</p>`;
+                container.appendChild(textItem);
+
+                // Create icon item
+                if (index < messages.length - 1 || i < 5) {
+                    const iconItem = document.createElement("div");
+                    iconItem.classList.add("marquee-child-item");
+                    iconItem.innerHTML = `<span class="icon icon-lightning-line"></span>`;
+                    container.appendChild(iconItem);
+                }
+            });
+        }
+    });
+</script>

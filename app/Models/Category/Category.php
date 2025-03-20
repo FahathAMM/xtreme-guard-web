@@ -3,6 +3,7 @@
 namespace App\Models\Category;
 
 use App\Helpers\Media;
+use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -26,10 +27,40 @@ class Category extends Model
         'is_active' => 'boolean',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($model) {
+            if (empty($model->slug)) {
+
+                $parentSlug = Category::find($model->parent_id)->slug ?? false;
+
+                if ($parentSlug) {
+                    $model->slug = Str::slug($parentSlug . ' ' . $model->name);
+                } else {
+                    $model->slug = Str::slug($model->name);
+                }
+            }
+        });
+    }
+
     public function subcategories()
     {
         return $this->hasMany(Category::class, 'parent_id')->with('subcategories');
     }
+
+    public function parentCategories()
+    {
+        return $this->belongsTo(Category::class, 'parent_id')->with('subcategories');
+    }
+
+    // public function setNameAttribute($value)
+    // {
+    //     $this->attributes['name'] = $value;
+    //     $this->attributes['slug'] = Str::slug($value);
+    // }
+
 
     public function category()
     {

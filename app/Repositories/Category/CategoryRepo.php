@@ -76,7 +76,20 @@ class CategoryRepo extends BaseRepository
     {
         $updated = $model->update($request->validated());
         if ($updated) {
-            return $updated;
+            if ($request->hasFile('img1')) {
+                $upload = $request->file('img1');
+                $image = Image::read($upload)->resize(450, 600);
+                $filename = Str::random() . '.' . $upload->getClientOriginalExtension();
+
+                Storage::disk('public')->put(
+                    'category/' . $filename,
+                    $image->encodeByExtension($upload->getClientOriginalExtension(), quality: 70)
+                );
+
+                $model->img = 'category/' . $filename;
+                $model->save();
+            }
+            return $created;
         }
         return false;
     }
