@@ -21,7 +21,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'slug' => 'required|string|unique:categories,slug|max:255',
+            'slug' => 'string|unique:categories,slug|max:255',
             'img' => 'nullable|image|mimes:jpg,jpeg,png,gif',
             'is_active' => 'nullable|boolean',
             'description' => 'nullable|string',
