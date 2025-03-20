@@ -33,7 +33,9 @@ class CategoryController extends Controller
 
     public function index(Request $request)
     {
-        $categories = Category::with('subcategories')->get();
+        $categories = Category::with('parentCategories')->get();
+
+        // return $categories;
 
         return view('pages/category/index', [
             'categories' =>   $categories,
