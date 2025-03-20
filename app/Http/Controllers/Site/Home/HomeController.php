@@ -33,6 +33,8 @@ class HomeController extends Controller
 
         // return $products;
 
+        // return getCategoriesForHeader();
+
         return view('site.home.index', [
             'categories' => Category::get(),
             'products' => $products,
