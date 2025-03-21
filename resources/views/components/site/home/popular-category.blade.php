@@ -9,7 +9,7 @@
         </div>
         <div class="flat-collection-circle wow fadeInUp" data-wow-delay="0.1s">
             <div dir="ltr" class="swiper tf-sw-categories" data-preview="5" data-tablet="4" data-mobile-sm="2"
-                data-mobile="2" data-space-lg="30" data-space-md="20" data-space="30" data-pagination="2"
+                data-mobile="2" data-space-lg="30" data-space-md="20" data-space="100" data-pagination="2"
                 data-pagination-md="4" data-pagination-lg="1">
                 <div class="swiper-wrapper">
 
