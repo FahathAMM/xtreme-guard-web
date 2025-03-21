@@ -23,13 +23,13 @@
 
     {{-- <x-site.home.testimonial /> --}}
 
+    <x-site.home.popular-category :categories="$categories" />
+
+
     <x-site.home.display-product :products="$products" />
 
-    <x-site.home.explore />
+    {{-- <x-site.home.explore /> --}}
 
-    {{-- @foreach ($products as $prodduct)
-        <x-site.home.bestsale :products="$prodduct" />
-    @endforeach --}}
 
     <x-site.home.iconbox />
 
