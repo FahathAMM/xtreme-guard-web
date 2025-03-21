@@ -9,12 +9,12 @@
         </div>
         <div class="flat-collection-circle wow fadeInUp" data-wow-delay="0.1s">
             <div dir="ltr" class="swiper tf-sw-categories" data-preview="5" data-tablet="4" data-mobile-sm="2"
-                data-mobile="1" data-space-lg="30" data-space-md="20" data-space="15" data-pagination="2"
+                data-mobile="2" data-space-lg="30" data-space-md="20" data-space="15" data-pagination="2"
                 data-pagination-md="4" data-pagination-lg="1">
                 <div class="swiper-wrapper">
 
                     @foreach ($categories as $item)
-                        <div class="swiper-slide" stylse="margin-right: 185px important">
+                        <div class="swiper-slide">
                             <div class="collection-circle1 hover-img">
                                 <a href="{{ url('product-by-category/' . $item->slug) }}" class="img-style">
                                     <div class="image-container">
