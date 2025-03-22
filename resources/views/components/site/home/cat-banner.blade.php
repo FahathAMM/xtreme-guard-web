@@ -15,7 +15,7 @@
                             Accessories
                         </p>
                         <h3 class="title">
-                            <a href="shop-default-grid.html" class="link text-white fw-bold font-5">
+                            <a href="#" class="link text-white fw-bold font-5">
                                 Access <br> Controller
                             </a>
                         </h3>
@@ -24,7 +24,7 @@
                         </p>
                     </div>
                     <div class="box-btn">
-                        <a href="shop-default-grid.html" class="btn-line style-white has-icon">
+                        <a href="#" class="btn-line style-white has-icon">
                             Shop Now
                             <i class="icon icon-arrowUpRight"></i>
                         </a>
@@ -43,7 +43,7 @@
                             Accessories
                         </p>
                         <h3 class="title">
-                            <a href="shop-default-grid.html" class="link text-white fw-bold font-5">
+                            <a href="#" class="link text-white fw-bold font-5">
                                 Time <br> Attendance
                             </a>
                         </h3>
@@ -52,7 +52,7 @@
                         </p>
                     </div>
                     <div class="box-btn">
-                        <a href="shop-default-grid.html" class="btn-line style-white has-icon">
+                        <a href="#" class="btn-line style-white has-icon">
                             Shop Now
                             <i class="icon icon-arrowUpRight"></i>
                         </a>
@@ -72,7 +72,7 @@
                             ALARM SYSTEM
                         </p>
                         <h1 class="title">
-                            <a href="shop-default-grid.html" class="link text-white fw-bold font-5">
+                            <a href="#" class="link text-white fw-bold font-5">
                                 Security <br> Alarm System
                             </a>
                         </h1>
@@ -84,7 +84,7 @@
                         </p>
                     </div>
                     <div class="box-btn">
-                        <a href="shop-default-grid.html" class="tf-btn btn-fill btn-white btn-md">
+                        <a href="#" class="tf-btn btn-fill btn-white btn-md">
                             <span class="text">Shop now</span>
                             <i class="icon icon-arrowUpRight"></i>
                         </a>

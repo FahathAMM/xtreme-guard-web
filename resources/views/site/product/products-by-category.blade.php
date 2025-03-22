@@ -45,7 +45,6 @@
                 </div>
             </div>
 
-
             <div class="wrapper-control-shop">
                 <div class="meta-filter-shop">
                     <div id="product-count-grid" class="count-text"></div>
@@ -55,13 +54,11 @@
                         ALL <i class="icon icon-close"></i></button>
                 </div>
 
-                <div class="tf-grid-layout wrapper-shop tf-col-6" id="gridLayout">
-
+                <div class="tf-grid-layout wrapper-shop tf-col-2 md-col-4 lg-col-5 xl-col-6" id="gridLayout">
 
                     @foreach ($products as $prodduct)
                         <x-site.component.product-card :products="$prodduct" />
                     @endforeach
-
 
                     <!-- pagination -->
                     <ul class="wg-pagination justify-content-center">
@@ -75,7 +72,6 @@
                     </ul>
                 </div>
             </div>
-
 
         </div>
     </section>

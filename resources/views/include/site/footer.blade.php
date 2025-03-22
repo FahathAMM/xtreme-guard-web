@@ -14,21 +14,14 @@
             'pinterest' => '#',
         ],
         'information' => [
-            'about_us' => 'about-us.html',
-            'our_stories' => '#',
-            'size_guide' => '#',
-            'contact_us' => 'contact.html',
-            'career' => '#',
-            'my_account' => 'my-account.html',
+            'Home' => url('/'),
+            'Product' => url('product'),
+            'Blog' => url('blog'),
+            'Contact' => url('contact'),
+            'About' => url('aboutus'),
         ],
-        'customerServices' => [
-            'shipping' => '#',
-            'return_refund' => '#',
-            'privacy_policy' => '#',
-            'terms_conditions' => 'term-of-use.html',
-            'orders_faq' => 'FAQs.html',
-            'my_wishlist' => 'wish-list.html',
-        ],
+
+        'customerServices' => getParentCategories(),
         'newsletter' => [
             'message' => 'Sign up for our newsletter and get 10% off your first purchase',
         ],
@@ -45,7 +38,7 @@
                     <div class="col-lg-4">
                         <div class="footer-infor">
                             <div class="footer-logo">
-                                <a href="index.html">
+                                <a href="{{ url('/') }}">
                                     <img src="{{ asset('site/images/logo/3.png') }}" alt="">
                                 </a>
                             </div>
@@ -99,10 +92,11 @@
                                 </div>
                                 <div class="tf-collapse-content">
                                     <ul class="footer-menu-list">
-                                        @foreach ($footerData['customerServices'] as $label => $url)
+                                        @foreach ($footerData['customerServices'] as $key => $item)
+                                            {{-- @dd($footerData['customerServices']) --}}
                                             <li class="text-caption-1">
-                                                <a href="{{ $url }}"
-                                                    class="footer-menu_item">{{ ucfirst(str_replace('_', ' ', $label)) }}</a>
+                                                <a href="{{ url('product-by-category/' . $item['slug']) }}"
+                                                    class="footer-menu_item">{{ $item['name'] }}</a>
                                             </li>
                                         @endforeach
                                     </ul>

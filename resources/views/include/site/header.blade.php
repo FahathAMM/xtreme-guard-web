@@ -16,7 +16,7 @@
                 </a>
             </div>
             <div class="col-xl-3 col-md-4 col-6">
-                <a href="index.html" class="logo-header">
+                <a href="{{ url('/') }}" class="logo-header">
                     <img src="{{ asset('site/images/logo/3.png') }}" alt="logo" class="logo">
                 </a>
             </div>
@@ -63,8 +63,6 @@
                                     @endif
                                 </a>
                             </li>
-
-
 
                             @if ($loop->first)
                                 <li

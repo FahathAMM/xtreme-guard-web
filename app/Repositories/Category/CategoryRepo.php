@@ -89,7 +89,7 @@ class CategoryRepo extends BaseRepository
                 $model->img = 'category/' . $filename;
                 $model->save();
             }
-            return $created;
+            return $updated;
         }
         return false;
     }

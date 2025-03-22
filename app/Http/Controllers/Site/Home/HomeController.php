@@ -30,10 +30,11 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $products = Product::take(9)->with('category')->get();
-        $categories = Category::get();
+        $categories = getParentCategories();
 
         // return $categories;
 
+        // return getParentCategories();
         // return getCategoriesForHeader();
 
         return view('site.home.index', [

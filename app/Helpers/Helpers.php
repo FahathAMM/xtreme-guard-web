@@ -91,6 +91,13 @@ if (!function_exists('getCategoriesForHeader')) {
     }
 }
 
+if (!function_exists('getParentCategories')) {
+    function getParentCategories()
+    {
+        return Category::whereNull('parent_id')->get();
+    }
+}
+
 if (!function_exists('currentUserID')) {
     function currentUserID()
     {
