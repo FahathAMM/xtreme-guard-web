@@ -10,11 +10,11 @@
              name="category_id" itemText="name" itemValue="id" :items="$categories->toArray()"
                 data-choices-search-true /> --}}
 
-            <div class="row" id="role-card-area">
+            <div class="row" id="category-card-area">
                 @foreach ($categories as $category)
                     <div class="col-xxl-3 col-md-4">
                         <x-card.card-category :categoryName="$category->name" :categoryId="$category->id" :item="$category" color="warning"
-                            per="administration-role-edit" perDelete="administration-role-delete" />
+                            per="administration-category-edit" perDelete="administration-category-delete" />
                     </div>
                 @endforeach
                 <div class="col-xxl-3 col-md-4">
@@ -220,7 +220,7 @@
                         if (response.status) {
                             $("#role-form :input").val("");
                             // redirectTo('{{ route('user.index') }}');
-                            // refreshContent('administration/role', 'role-card-area')
+                            refreshContent('{{ url('admin/category') }}', 'category-card-area');
                             eLoading('sbtBtn')
                             refreshContent('{{ url('administration/role') }}', 'role-card-area');
                             closeModal('addRoleModal');
@@ -257,7 +257,7 @@
                     options,
                     (response) => {
                         if (response.status) {
-                            // refreshContent('{{ url('roomease/room') }}', 'room-card-area');
+                            refreshContent('{{ url('admin/category') }}', 'category-card-area');
                             closeModal('RoomModal');
                             alertNotify(response.message, 'success')
                             eLoading('sbtBtn')
