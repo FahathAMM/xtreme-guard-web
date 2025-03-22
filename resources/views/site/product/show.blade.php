@@ -53,9 +53,15 @@
     <link rel="stylesheet" href="{{ asset('assets/css/icons5.min.css') }}">
 
     @php
+
+        // dd($product->category);
+
         $breadcrumbs = [
             ['label' => 'Product', 'url' => 'index.html'],
-            ['label' => $product->category->name, 'url' => url('product-by-category/' . $product->category->slug)],
+            [
+                'label' => $product?->category?->name ?? '',
+                'url' => url('product-by-category/' . $product?->category?->slug ?? ''),
+            ],
             ['label' => $product->name, 'url' => '#', 'is_current' => true], // Mark the current page
         ];
     @endphp
