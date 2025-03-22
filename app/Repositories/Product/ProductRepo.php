@@ -85,6 +85,60 @@ class ProductRepo extends BaseRepository
         return false;
     }
 
+    public function updateProduct($request, $model)
+    {
+        $attrValues = $request->value;
+        $attr =  $request->attribute;
+        $attachedmentName =  $request->attachment_attribute;
+
+        $videoNames = $request->video_name;
+        $videoLinks =  $request->video_link;
+
+        $updated = $model->update($request->validated());
+
+        if ($updated) {
+
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $image) {
+                    $path = $image->store('gallery', 'public');
+                    ProductImage::create(['product_id' => $model->id, 'image' => $path]);
+                }
+            }
+
+            $model->attributes()->delete();
+            foreach ($attrValues as $key => $valData) {
+                // $model->attributes()->where('key', $attr[$key])->where('value', $valData)->delete();
+                $model->attributes()->create([
+                    'key' => $attr[$key],
+                    'value' => $valData,
+                ]);
+            }
+
+            $model->videos()->delete();
+            foreach ($videoNames as $key => $valData) {
+                $model->videos()->create([
+                    'file_name' => $valData,
+                    'link' => $videoLinks[$key],
+                    'path' => $videoLinks[$key],
+                ]);
+            }
+
+            if ($request->hasFile('attachment_value')) {
+                foreach ($request->file('attachment_value') as $key => $attachment) {
+                    $path = $attachment->store('attachment', 'public');
+                    // Log::info($attachedmentName[$key]);
+                    $model->files()->create([
+                        'file_name' => $attachedmentName[$key],
+                        'desc' => $attachedmentName[$key],
+                        'path' => $path,
+                    ]);
+                }
+            }
+            return $updated;
+        }
+        return false;
+    }
+
     public function updateCategory($request, $model)
     {
         $updated = $model->update($request->validated());
