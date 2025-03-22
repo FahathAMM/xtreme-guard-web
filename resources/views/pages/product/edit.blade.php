@@ -59,8 +59,7 @@
                                                             <div class="avatar-sm bg-light rounded">
                                                                 <img data-dz-thumbnail="" class="img-fluid rounded d-block"
                                                                     id="current-img-preview" alt="Product-Image"
-                                                                    style="display: block;"
-                                                                    src="http://localhost/akil/public/storage/category/yvhpYSUGZAXqsOAW.png">
+                                                                    style="display: block;" src="{{ $img->image }}">
                                                             </div>
                                                         </div>
                                                         <div class="flex-grow-1">
