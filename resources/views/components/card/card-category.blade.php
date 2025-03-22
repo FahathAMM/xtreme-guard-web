@@ -34,7 +34,7 @@
                 @endcanOrRole
 
                 {{-- @canOrRole($perDelete) --}}
-                <a href="#" delete-url="{{ url('category') }}" delete-item="{{ $categoryName }}"
+                <a href="#" delete-url="{{ url('admin/category') }}" delete-item="{{ $categoryName }}"
                     class="delete link-danger" id="{{ $categoryId }}" title="Delete">
                     <i class="ri-delete-bin-5-line"></i>
                 </a>
