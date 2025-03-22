@@ -9,6 +9,7 @@
     'itemText' => '',
     'itemValue' => '',
     'textJoin' => '',
+    'value' => '',
 ])
 
 @php
@@ -34,4 +35,4 @@
     </ul>
 </div> --}}
 
-<textarea class="form-control mt-4" id="{{ $idName }}" rows="5" name="{{ $name }}"></textarea>
+<textarea class="form-control mt-4" id="{{ $idName }}" rows="5" name="{{ $name }}">{!! $value !!}</textarea>
