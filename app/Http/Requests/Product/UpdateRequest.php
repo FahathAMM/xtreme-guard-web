@@ -2,11 +2,8 @@
 
 namespace App\Http\Requests\Product;
 
-use Illuminate\Validation\Rule;
 use App\Traits\failedValidationWithName;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
 class UpdateRequest extends FormRequest
 {
@@ -20,22 +17,34 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'slug' => 'required|string|unique:categories,slug|max:255',
-            'img' => 'nullable|image|mimes:jpg,jpeg,png,gif',
-            'is_active' => 'nullable|boolean',
+            'name' => 'nullable|string|max:255',
             'description' => 'nullable|string',
+            'short_desc' => 'nullable|string',
+            'category_id' => 'nullable|string|max:255',
+            'status' => 'nullable|string|in:active,inactive',
+            'tags' => 'nullable',
+            'main_image' => 'nullable|string|max:255',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string',
+            'slug' => 'nullable|string|unique:products,slug|max:255',
+            'is_available' => 'nullable|boolean',
+
+            'images' => 'nullable|array',
+            'images.*' => 'nullable|image|mimes:jpg,jpeg,png',
+
+            // 'images.*' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+            // 'images' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
         ];
     }
 
-    public function messages(): array
-    {
-        return [
-            'name.required' => 'The category name is required.',
-            'slug.required' => 'The slug is required.',
-            'slug.unique' => 'The slug must be unique.',
-            'img.image' => 'The image must be a valid image file.',
-            'is_active.boolean' => 'The is_active field must be true or false.',
-        ];
-    }
+    // public function messages(): array
+    // {
+    //     return [
+    //         'name.required' => 'The product name is required.',
+    //         'slug.required' => 'The slug is required.',
+    //         'slug.unique' => 'The slug must be unique.',
+    //         'img.image' => 'The image must be a valid image file.',
+    //         'is_active.boolean' => 'The is_active field must be true or false.',
+    //     ];
+    // }
 }
