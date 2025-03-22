@@ -21,7 +21,10 @@ class ProductImage extends Model
     public function getImageAttribute($value)
     {
         // Define the default image URL
-        $defaultImage = 'https://hancockogundiyapartners.com/wp-content/uploads/2019/07/dummy-profile-pic-300x300.jpg';
+        // $defaultImage = 'https://hancockogundiyapartners.com/wp-content/uploads/2019/07/dummy-profile-pic-300x300.jpg';
+
+        $defaultImage = 'https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/video-intercom-products/homepage/Video-Intercom_Homepage_product_IP.png.thumb.1280.1280.png';
+
 
         // Check if the value is empty
         if (!$value) {
