@@ -53,11 +53,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/icons5.min.css') }}">
 
     @php
-
-        // dd($product->category);
-
         $breadcrumbs = [
-            ['label' => 'Product', 'url' => 'index.html'],
+            ['label' => 'Product', 'url' => url('product')],
             [
                 'label' => $product?->category?->name ?? '',
                 'url' => url('product-by-category/' . $product?->category?->slug ?? ''),
