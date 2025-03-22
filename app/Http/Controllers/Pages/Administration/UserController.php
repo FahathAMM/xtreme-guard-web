@@ -58,7 +58,7 @@ class UserController extends Controller
                     return actionBtns(
                         $user->id,
                         'user.edit',
-                        'administration/user',
+                        'admin/administration/user',
                         $user->username,
                         $permissions
                     );

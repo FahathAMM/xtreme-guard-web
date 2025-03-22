@@ -85,7 +85,7 @@ class ProductController extends Controller
                     return actionBtns(
                         $product->id,
                         'products.edit',
-                        'product',
+                        'admin/products',
                         $product->name,
                         $permissions
                     );
@@ -144,8 +144,20 @@ class ProductController extends Controller
         }
     }
 
-    public function destroy(string $id)
+    public function destroy(Product $product)
     {
-        //
+        try {
+            $deleted = $product->delete();
+            if ($deleted) {
+
+                logActivity($this->modelName . ' Delete', "Product ID " . $product->id, 'Delete');
+
+                return $this->response($this->modelName . ' successfully deleted.', $deleted, true);
+            } else {
+                return $this->response($this->modelName . ' cannot deleted.', null, false);
+            }
+        } catch (\Throwable $th) {
+            return $this->response($th, null, false);
+        }
     }
 }

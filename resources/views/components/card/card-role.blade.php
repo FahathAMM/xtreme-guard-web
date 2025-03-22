@@ -29,11 +29,11 @@
                     <i class="ri-pencil-line"></i>
                 </a>
                 @endcanOrRole
-
                 @if ($roleName != 'Super-Admin')
                     @canOrRole($perDelete)
-                    <a href="#" delete-url="{{ url('administration/role') }}" delete-item="{{ $roleName }}"
-                        class="delete link-danger" id="{{ $roleId }}" title="Delete">
+                    <a href="#" delete-url="{{ url('admin/administration/role') }}"
+                        delete-item="{{ $roleName }}" class="delete link-danger" id="{{ $roleId }}"
+                        title="Delete">
                         <i class="ri-delete-bin-5-line"></i>
                     </a>
                     @endcanOrRole

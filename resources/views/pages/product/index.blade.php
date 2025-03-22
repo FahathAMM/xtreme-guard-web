@@ -75,6 +75,13 @@
                     "searching": true,
                     stateSave: true,
                     "scrollY": "50vh",
+
+                    // lengthMenu: [
+                    //     [10, 25, 50, 100],
+                    //     [10, 25, 50, 100]
+                    // ], // Dropdown options
+                    pageLength: 25, // Default records per page
+                    pageLength: 25,
                     ajax: {
                         url: '{{ url('admin/products') }}',
                         data: function(d) {

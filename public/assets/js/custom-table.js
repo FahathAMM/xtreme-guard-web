@@ -74,16 +74,33 @@ $('body').on('click', '.delete', function () {
                 dataType: 'json',
                 success: function (res) {
 
-                    const dataTable = $('#datatable-crud').DataTable();
-                    dataTable.draw(false);
+                    // const dataTable = $('#datatable-crud').DataTable();
+                    // dataTable.draw(false);
+
+                    const dataTable = $('#datatable-crud').html() ? true : null;
+
+                    console.log('dataTable', dataTable);
+
+                    if (dataTable) {
+                        dataTable.draw(false);
+                    }
+
 
                     const title = res.status ? 'Deleted!' : 'Oops...';
                     const message = res.status ? (res.message || 'Your file has been deleted.') : (res.message || res.message.errorInfo[2] || 'Your file could not be deleted.');
                     const icon = res.status ? 'success' : 'error';
                     Swal.fire(createSwalConfig(title, message, icon, 'OK'));
 
+
+                    console.log(deleteUrl);
+
+
                     if (deleteUrl.includes('admin/category')) {
                         refreshContent(deleteUrl, 'category-card-area');
+                    }
+
+                    if (deleteUrl.includes('admin/administration/role')) {
+                        refreshContent(deleteUrl, 'role-card-area');
                     }
                 }
             });

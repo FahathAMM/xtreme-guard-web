@@ -17,9 +17,11 @@
                     </div>
                 @endforeach
                 <div class="col-xxl-3 col-md-4">
-                    @can('administration-role-create')
-                        <x-card.card-add-role color="success" />
-                    @endcan
+                    {{-- @can('administration-role-create') --}}
+                    @canOrRole('administration-role-create')
+                    <x-card.card-add-role color="success" />
+                    {{-- @endcan --}}
+                    @endcanOrRole
                 </div>
             </div>
 
@@ -201,9 +203,8 @@
                         if (response.status) {
                             $("#role-form :input").val("");
                             // redirectTo('{{ route('user.index') }}');
-                            // refreshContent('administration/role', 'role-card-area')
                             eLoading('sbtBtn')
-                            refreshContent('{{ url('administration/role') }}', 'role-card-area');
+                            refreshContent('{{ url('admin/administration/role') }}', 'role-card-area');
                             closeModal('addRoleModal');
                             alertNotify(response.message, 'success')
                         } else {
@@ -240,7 +241,7 @@
                     options,
                     (response) => {
                         if (response.status) {
-                            refreshContent('{{ url('administration/role') }}', 'role-card-area');
+                            refreshContent('{{ url('admin/administration/role') }}', 'role-card-area');
                             closeModal('editRoleModal');
                             alertNotify(response.message, 'success')
                             eLoading('sbtBtn')
