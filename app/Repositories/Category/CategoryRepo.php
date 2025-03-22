@@ -40,8 +40,6 @@ class CategoryRepo extends BaseRepository
             // if ($request->hasFile('img1')) {
             //     $this->model->imageUpload('/category', $created, $request->file('img1'), 'img');
             // }
-
-
             if ($request->hasFile('img1')) {
                 // $upload = $request->file('img1');
                 // $image = Image::read($upload)
@@ -51,7 +49,6 @@ class CategoryRepo extends BaseRepository
                 //     Str::random() . '.' . $upload->getClientOriginalExtension(),
                 //     $image->encodeByExtension($upload->getClientOriginalExtension(), quality: 70)
                 // );
-
 
                 $upload = $request->file('img1');
                 // $image = Image::read($upload)->resize(300, 400);
