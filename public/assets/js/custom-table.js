@@ -82,8 +82,8 @@ $('body').on('click', '.delete', function () {
                     const icon = res.status ? 'success' : 'error';
                     Swal.fire(createSwalConfig(title, message, icon, 'OK'));
 
-                    if (deleteUrl.includes('administration/role')) {
-                        refreshContent(deleteUrl, 'role-card-area');
+                    if (deleteUrl.includes('admin/category')) {
+                        refreshContent(deleteUrl, 'category-card-area');
                     }
                 }
             });
