@@ -50,9 +50,10 @@ class CategoryRepo extends BaseRepository
                 //     $image->encodeByExtension($upload->getClientOriginalExtension(), quality: 70)
                 // );
 
+
                 $upload = $request->file('img1');
                 // $image = Image::read($upload)->resize(300, 400);
-                $image = Image::read($upload)->resize(876, 584);
+                $image = Image::read($upload)->resize(450, 600);
                 $filename = Str::random() . '.' . $upload->getClientOriginalExtension();
 
                 Storage::disk('public')->put(
@@ -75,7 +76,7 @@ class CategoryRepo extends BaseRepository
         if ($updated) {
             if ($request->hasFile('img1')) {
                 $upload = $request->file('img1');
-                $image = Image::read($upload)->resize(876, 584);
+                $image = Image::read($upload)->resize(450, 600);
                 $filename = Str::random() . '.' . $upload->getClientOriginalExtension();
 
                 Storage::disk('public')->put(
