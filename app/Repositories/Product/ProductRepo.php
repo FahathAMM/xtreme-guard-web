@@ -105,22 +105,26 @@ class ProductRepo extends BaseRepository
                 }
             }
 
-            $model->attributes()->delete();
-            foreach ($attrValues as $key => $valData) {
-                // $model->attributes()->where('key', $attr[$key])->where('value', $valData)->delete();
-                $model->attributes()->create([
-                    'key' => $attr[$key],
-                    'value' => $valData,
-                ]);
+            if ($request->has('video_name')) {
+                $model->attributes()->delete();
+                foreach ($attrValues as $key => $valData) {
+                    // $model->attributes()->where('key', $attr[$key])->where('value', $valData)->delete();
+                    $model->attributes()->create([
+                        'key' => $attr[$key],
+                        'value' => $valData,
+                    ]);
+                }
             }
 
-            $model->videos()->delete();
-            foreach ($videoNames as $key => $valData) {
-                $model->videos()->create([
-                    'file_name' => $valData,
-                    'link' => $videoLinks[$key],
-                    'path' => $videoLinks[$key],
-                ]);
+            if ($request->has('video_name')) {
+                $model->videos()->delete();
+                foreach ($videoNames as $key => $valData) {
+                    $model->videos()->create([
+                        'file_name' => $valData,
+                        'link' => $videoLinks[$key],
+                        'path' => $videoLinks[$key],
+                    ]);
+                }
             }
 
             if ($request->hasFile('attachment_value')) {
