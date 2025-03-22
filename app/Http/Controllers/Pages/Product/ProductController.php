@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Pages\Product;
 
 use App\Models\User;
-use App\Models\Product\ProductImage;
 use Illuminate\Http\Request;
 use App\Models\Product\Product;
+use Yajra\DataTables\DataTables;
 use App\Models\Category\Category;
 use App\Http\Controllers\Controller;
+use App\Models\Product\ProductImage;
 use App\Repositories\Product\ProductRepo;
 use App\Http\Requests\Product\StoreRequest;
-use Yajra\DataTables\DataTables;
+use App\Http\Requests\Product\UpdateRequest;
 
 class ProductController extends Controller
 {
@@ -61,7 +62,6 @@ class ProductController extends Controller
         ]);
     }
 
-
     public function index(Request $request)
     {
         // return $this->model->query()->get();
@@ -84,7 +84,7 @@ class ProductController extends Controller
                 ->addColumn('action', function ($product) use ($permissions) {
                     return actionBtns(
                         $product->id,
-                        'product.edit',
+                        'products.edit',
                         'product',
                         $product->name,
                         $permissions
@@ -101,20 +101,25 @@ class ProductController extends Controller
 
     public function create()
     {
-        // return Category::get(['id', 'name']);
         return view('pages.product.create', [
             'categories' => Category::get(['id', 'name', 'slug']),
             'title' =>   $this->modelName,
         ]);
     }
 
-    // public function store(Request $request)
+    public function edit(Product $product)
+    {
+        // return $product->load('images', 'attributes', 'videos', 'files');
+        return view('pages.product.edit', [
+            'categories' => Category::get(['id', 'name', 'slug']),
+            'title' =>   $this->modelName,
+            'product' =>   $product->load('images', 'attributes', 'videos', 'files'),
+        ]);
+    }
+
     public function store(StoreRequest $request)
     {
         try {
-
-            // return $request->all();
-
             $created =  $this->repo->createProduct($request);
             if ($created) {
                 return  $this->response($this->modelName . ' created successfully', ['data' => $created], true);
@@ -124,19 +129,19 @@ class ProductController extends Controller
         }
     }
 
-    public function show(string $id)
+    public function update(UpdateRequest $request, Product $product)
     {
-        //
-    }
+        try {
+            return   $updated = $this->repo->updateProduct($request, $product);
 
-    public function edit(string $id)
-    {
-        //
-    }
-
-    public function update(Request $request, string $id)
-    {
-        //
+            if ($updated) {
+                logActivity($this->modelName . ' Update',  $this->modelName . " ID " . $product->id, 'Update');
+                return  $this->response($this->modelName . ' updated successfully', ['data' => $product], true);
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+            return  $this->response($th->getMessage(), null, false);
+        }
     }
 
     public function destroy(string $id)
