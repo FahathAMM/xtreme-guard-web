@@ -56,7 +56,7 @@ class StoreRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'The category name is required.',
+            'name.required' => 'The product name is required.',
             'slug.required' => 'The slug is required.',
             'slug.unique' => 'The slug must be unique.',
             'img.image' => 'The image must be a valid image file.',
