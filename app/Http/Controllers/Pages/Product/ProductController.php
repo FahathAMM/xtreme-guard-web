@@ -121,8 +121,8 @@ class ProductController extends Controller
     {
         try {
 
-            ini_set('upload_max_filesize', '1024M');
-            ini_set('post_max_size', '1024M');
+            // ini_set('upload_max_filesize', '1024M');
+            // ini_set('post_max_size', '1024M');
 
             set_time_limit(300); // Increase execution time if needed
 
@@ -139,8 +139,8 @@ class ProductController extends Controller
     {
         try {
 
-            ini_set('upload_max_filesize', '1024M');
-            ini_set('post_max_size', '1024M');
+            // ini_set('upload_max_filesize', '1024M');
+            // ini_set('post_max_size', '1024M');
 
 
             $updated = $this->repo->updateProduct($request, $product);
