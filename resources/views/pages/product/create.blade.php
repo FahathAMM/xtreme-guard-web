@@ -206,10 +206,12 @@
                                         ]" data-choices-search-false value="1" />
                                 </div>
                                 <div>
-                                    <x-input.select-group label="Condition" name="condition" itemText="name"
+                                    <x-input.select-group label="File Category" name="file_category" itemText="name"
                                         itemValue="value" :items="[
-                                            ['name' => 'New', 'value' => 'good'],
-                                            ['name' => 'Used', 'value' => 'average'],
+                                            ['name' => 'Software', 'value' => 'software'],
+                                            ['name' => 'Data Sheet', 'value' => 'data-sheet'],
+                                            ['name' => 'Quick Start Guide', 'value' => 'quick-start-guide'],
+                                            ['name' => 'Installation Guide', 'value' => 'installation-guide'],
                                         ]" data-choices-search-false />
                                 </div>
                             </div>
