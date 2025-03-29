@@ -131,6 +131,7 @@ class ProductRepo extends BaseRepository
                 foreach ($request->file('attachment_value') as $key => $attachment) {
                     $path = $attachment->store('attachment', 'public');
                     // Log::info($attachedmentName[$key]);
+                    Log::info($path);
                     $model->files()->create([
                         'file_name' => $attachedmentName[$key],
                         'desc' => $attachedmentName[$key],
