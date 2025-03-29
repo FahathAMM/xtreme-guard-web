@@ -263,11 +263,14 @@
                                         value="{{ $product->status ?? '' }}" />
                                 </div>
                                 <div>
-                                    <x-input.select-group label="Condition" name="condition" itemText="name"
+                                    <x-input.select-group label="File Category" name="file_category" itemText="name"
                                         itemValue="value" :items="[
-                                            ['name' => 'New', 'value' => 'good'],
-                                            ['name' => 'Used', 'value' => 'average'],
-                                        ]" data-choices-search-false />
+                                            ['name' => 'Software', 'value' => 'software'],
+                                            ['name' => 'Data Sheet', 'value' => 'data-sheet'],
+                                            ['name' => 'Quick Start Guide', 'value' => 'quick-start-guide'],
+                                            ['name' => 'Installation Guide', 'value' => 'installation-guide'],
+                                        ]" data-choices-search-false
+                                        value="{{ $product->file_category }}" />
                                 </div>
                             </div>
                         </div>
