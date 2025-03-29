@@ -117,7 +117,7 @@
                     serverSide: true,
                     stateSave: true,
                     ajax: {
-                        url: "{{ url('administration/permission') }}",
+                        url: "{{ url('admin/administration/permission') }}",
                         type: "GET",
                         data: function(d) {
                             d.permissionBy = permissionBy;
@@ -219,7 +219,7 @@
                 sLoading('sbtBtn')
                 let roleId = getValue('edit-role-id');
                 var form = document.getElementById('permission-edit-form');
-                var url = '{{ url('administration/permission') }}/' + roleId;
+                var url = '{{ url('admin/administration/permission') }}/' + roleId;
                 var method = 'PUT';
 
                 const options = {
