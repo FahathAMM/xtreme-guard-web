@@ -188,7 +188,8 @@
                         </div>
 
                         <div class="text-end mb-3">
-                            <button type="button" onclick="store()" class="btn btn-success w-sm">Submit</button>
+                            <button type="button" onclick="store()" id="sbtBtn"
+                                class="btn btn-success w-sm">Submit</button>
                         </div>
                     </div>
 
@@ -375,6 +376,7 @@
             }
 
             function store() {
+                sLoading('sbtBtn')
                 if ($('.is_video_value').val() != '') {
                     $('.video-link').each(function() {
                         const videoLink = $(this).val();
@@ -417,14 +419,17 @@
                             alertNotify(response.message, 'success')
                             // $("#product-form :input").val("");
                             associateErrors([], 'product-form');
+                            eLoading('sbtBtn')
                         } else {
                             associateErrors(response.errors, 'product-form');
+                            eLoading('sbtBtn')
 
                             // showErrorMsg(response);
                             console.log(response.errors['images']);
                         }
                     },
                     (error) => {
+                        eLoading('sbtBtn')
                         console.error('Error:', error);
                     }
                 );
