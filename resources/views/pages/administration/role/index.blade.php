@@ -223,7 +223,7 @@
                 let roleId = getValue('edit-role-id');
                 var form = document.getElementById('role-edit-form');
                 // var url = '{{ url('role') }}/' + roleId + '/edit';
-                var url = '{{ url('administration/role') }}/' + roleId;
+                var url = '{{ url('admin/administration/role') }}/' + roleId;
                 var method = form.getAttribute('method');
                 var payload = new FormData(form);
 
