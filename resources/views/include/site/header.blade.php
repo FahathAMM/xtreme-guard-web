@@ -1,7 +1,7 @@
 @php
     $menuItems = [
         ['name' => 'Home', 'url' => url('/'), 'pattern' => '/'],
-        ['name' => 'Blog', 'url' => url('blog'), 'pattern' => 'blog*'],
+        ['name' => 'Download', 'url' => url('download'), 'pattern' => 'download*'],
         ['name' => 'Contact', 'url' => url('contact'), 'pattern' => 'contact'],
         ['name' => 'About', 'url' => url('aboutus'), 'pattern' => 'aboutus'],
     ];
