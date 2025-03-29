@@ -120,12 +120,6 @@ class ProductController extends Controller
     public function store(StoreRequest $request)
     {
         try {
-
-            // ini_set('upload_max_filesize', '1024M');
-            // ini_set('post_max_size', '1024M');
-
-            set_time_limit(300); // Increase execution time if needed
-
             $created =  $this->repo->createProduct($request);
             if ($created) {
                 return  $this->response($this->modelName . ' created successfully', ['data' => $created], true);
@@ -138,11 +132,6 @@ class ProductController extends Controller
     public function update(UpdateRequest $request, Product $product)
     {
         try {
-
-            // ini_set('upload_max_filesize', '1024M');
-            // ini_set('post_max_size', '1024M');
-
-
             $updated = $this->repo->updateProduct($request, $product);
 
             if ($updated) {
