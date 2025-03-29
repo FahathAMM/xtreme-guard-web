@@ -47,7 +47,7 @@ class StoreRequest extends FormRequest
             'is_available' => 'nullable|boolean',
 
             'images' => 'required|array',
-            'images.*' => 'required|image|mimes:jpg,jpeg,png',
+            'images.*' => 'required|image|mimes:jpg,jpeg,png|max:102400',
             // 'images.*' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
 
             // 'images' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
