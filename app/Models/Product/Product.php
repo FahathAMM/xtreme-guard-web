@@ -37,6 +37,7 @@ class Product extends Model
         'weight',
         'dimensions',
         'condition',
+        'file_category',
         'is_available',
         'sale_price',
 
