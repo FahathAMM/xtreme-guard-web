@@ -222,10 +222,7 @@ class UserController extends Controller
         }
     }
 
-    public function show(string $id)
-    {
-        //
-    }
+    public function show(string $id) {}
 
     public function edit(User $user)
     {
