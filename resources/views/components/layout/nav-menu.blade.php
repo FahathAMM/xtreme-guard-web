@@ -38,12 +38,14 @@
       <!-- LOGO -->
       <div class="navbar-brand-box">
           <!-- Dark Logo-->
-          <a href="index.html" class="logo logo-dark">
+          <a href="{{ url('/') }}" target="_blank" class="logo logo-dark">
               <span class="logo-sm">
-                  <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22" />
+                  {{-- http://143.244.130.129/site/images/logo/3.png --}}
+                  <img src="{{ asset('site/images/logo/1.png') }}" alt="" height="22" />
+                  {{-- <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22" /> --}}
               </span>
               <span class="logo-lg">
-                  <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="17" />
+                  <img src="{{ asset('site/images/logo/1.png') }}" alt="" height="50" />
               </span>
           </a>
           <!-- Light Logo-->
