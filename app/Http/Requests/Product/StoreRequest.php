@@ -43,6 +43,7 @@ class StoreRequest extends FormRequest
             'weight' => 'nullable|numeric|min:0',
             'dimensions' => 'nullable|string|max:255',
             'condition' => 'nullable|string|max:255',
+            'file_category' => 'nullable|string|max:255',
             'is_available' => 'nullable|boolean',
 
             'images' => 'required|array',
