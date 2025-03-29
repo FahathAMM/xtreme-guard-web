@@ -30,7 +30,7 @@ class UpdateRequest extends FormRequest
             'is_available' => 'nullable|boolean',
             'file_category' => 'nullable|string|max:255',
             'images' => 'nullable|array',
-            'images.*' => 'nullable|image|mimes:jpg,jpeg,png|max:102400',
+            'images.*' => 'nullable|image|mimes:jpg,jpeg,png',
 
             // 'images.*' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
             // 'images' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
