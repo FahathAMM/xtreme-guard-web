@@ -28,7 +28,7 @@ class UpdateRequest extends FormRequest
             'meta_description' => 'nullable|string',
             'slug' => 'nullable|string|unique:products,slug|max:255',
             'is_available' => 'nullable|boolean',
-
+            'file_category' => 'nullable|string|max:255',
             'images' => 'nullable|array',
             'images.*' => 'nullable|image|mimes:jpg,jpeg,png',
 
