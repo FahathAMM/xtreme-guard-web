@@ -78,7 +78,6 @@ $('body').on('click', '.delete', function () {
                     // dataTable.draw(false);
 
                     const dataTable = $('#datatable-crud').html() ? true : null;
-
                     console.log('dataTable', dataTable);
 
                     if (dataTable) {
