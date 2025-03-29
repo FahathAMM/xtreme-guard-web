@@ -36,6 +36,7 @@ return new class extends Migration
             $table->decimal('weight', 8, 2)->nullable();
             $table->string('dimensions')->nullable();
             $table->string('condition')->nullable();
+            $table->string('file_category')->nullable();
             $table->integer('is_available')->default(1);
             $table->integer('is_warrenty_available')->default(1);
             $table->integer('view_count')->default(1);
