@@ -37,6 +37,10 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
 
+
+        phpinfo();
+        return;
+
         // return  auth()->user()->hasRole('Super-Admin');
 
 
