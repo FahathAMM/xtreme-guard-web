@@ -132,7 +132,7 @@ class ProductController extends Controller
     public function update(UpdateRequest $request, Product $product)
     {
         try {
-            return   $updated = $this->repo->updateProduct($request, $product);
+            $updated = $this->repo->updateProduct($request, $product);
 
             if ($updated) {
                 logActivity($this->modelName . ' Update',  $this->modelName . " ID " . $product->id, 'Update');
