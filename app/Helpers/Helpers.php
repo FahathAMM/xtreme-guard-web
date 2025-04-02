@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Setting\Setting;
 use App\Models\Category\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -297,5 +298,12 @@ if (!function_exists('defualtProductDesc')) {
     function defualtProductDesc()
     {
         return 'An advanced access control device designed for secure and efficient authentication, supporting various identification methods such as biometric scanning, RFID, PIN codes, and remote access management';
+    }
+}
+
+if (!function_exists('getWhatsappNumber')) {
+    function getWhatsappNumber()
+    {
+        // return Setting::where('key', $key)->whereIsActive(1)->value('value');
     }
 }
