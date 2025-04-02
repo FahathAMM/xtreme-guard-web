@@ -1,4 +1,5 @@
 @extends('layout.app-site')
+@section('title', 'Product')
 
 @section('content')
     <style>
