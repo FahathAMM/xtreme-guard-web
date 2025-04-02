@@ -1,5 +1,6 @@
 @php
-    $phoneNumber = '94752388923'; // Set your WhatsApp number
+    $phoneNumber = '971529048025'; // Set your WhatsApp number
+    // $phoneNumber = '94752388923'; // Set your WhatsApp number
     $defaultMessage = 'Hello! I need assistance with your services'; // Dynamic message
     $encodedMessage = urlencode($defaultMessage);
 @endphp
