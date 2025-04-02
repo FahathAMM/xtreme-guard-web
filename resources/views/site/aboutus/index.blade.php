@@ -1,4 +1,5 @@
 @extends('layout.app-site')
+@section('title', 'About Us')
 
 @section('content')
     @php
@@ -271,7 +272,8 @@
                 <div
                     class="sw-pagination-latest sw-dots type-circle justify-content-center swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal swiper-pagination-lock">
                     <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button"
-                        aria-label="Go to slide 1" aria-current="true"></span></div>
+                        aria-label="Go to slide 1" aria-current="true"></span>
+                </div>
                 <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
             </div>
         </div>
