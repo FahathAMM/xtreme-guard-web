@@ -1,4 +1,5 @@
 @extends('layout.app-site')
+@section('title', $title)
 
 @section('content')
     <x-site.home.cat-banner />
