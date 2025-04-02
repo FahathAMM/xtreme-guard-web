@@ -1,4 +1,5 @@
 @extends('layout.app-site')
+@section('title', 'Contact')
 
 @section('content')
     @php
@@ -16,8 +17,8 @@
 
     <style>
         /* .wrap-map a {
-                                    display: none
-                                } */
+                                        display: none
+                                    } */
     </style>
 
     <!-- map -->
