@@ -1,5 +1,5 @@
 @extends('layout.app-site')
-
+@section('title', 'Download')
 @section('content')
     @php
         $contactInfo = [
