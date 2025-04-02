@@ -8,8 +8,7 @@
     <meta content="Mirnah Technology Systems" name="description" />
     <meta content="Mirnah" name="author" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title') | Akil</title>
-    {{-- <title>{{ config('app.name', 'OMS') }}</title> --}}
+    <title>@yield('title') | Xtremeguard</title>
     <link rel="shortcut icon" href="{{ asset('/assets/images/favicon.ico') }}" />
 
     @include('include.site.head')
