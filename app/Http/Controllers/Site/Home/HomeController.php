@@ -40,6 +40,7 @@ class HomeController extends Controller
         return view('site.home.index', [
             'categories' => $categories,
             'products' => $products,
+            'title' => $this->modelName,
         ]);
     }
 }
