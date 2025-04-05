@@ -139,7 +139,7 @@
     </div>
 </section> --}}
 
-<section class="tf-marquee">
+<section class="tf-marquee d-none d-sm-none d-md-block d-lg-block">
     <div class="marquee-wrapper">
         <div class="initial-child-container"></div>
     </div>
@@ -182,7 +182,13 @@
         /* sm */
 
         .tf-slideshow .wrap-slider {
-            height: 150px;
+            height: auto !important;
+        }
+
+        .wrap-slider img {
+            width: 100%;
+            height: 240px;
+            object-fit: fill !important;
         }
     }
 </style>
