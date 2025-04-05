@@ -12,6 +12,7 @@ use App\Models\Product\ProductImage;
 use App\Repositories\Product\ProductRepo;
 use App\Http\Requests\Product\StoreRequest;
 use App\Http\Requests\Product\UpdateRequest;
+use App\Models\Product\ProductAttachment;
 
 class ProductController extends Controller
 {
@@ -153,6 +154,46 @@ class ProductController extends Controller
                 logActivity($this->modelName . ' Delete', "Product ID " . $product->id, 'Delete');
 
                 return $this->response($this->modelName . ' successfully deleted.', $deleted, true);
+            } else {
+                return $this->response($this->modelName . ' cannot deleted.', null, false);
+            }
+        } catch (\Throwable $th) {
+            return $this->response($th, null, false);
+        }
+    }
+
+    public function deleteProductImg($id)
+    {
+        try {
+
+            $deleted = ProductImage::find($id)->delete();
+
+            if ($deleted) {
+
+                logActivity($this->modelName . ' Delete', "Product Img ID " . $id, 'Delete');
+
+                return redirect()->back()->with('success', $this->modelName . ' image successfully deleted.');
+
+                // return $this->response($this->modelName . ' successfully deleted.', $deleted, true);
+            } else {
+                return $this->response($this->modelName . ' cannot deleted.', null, false);
+            }
+        } catch (\Throwable $th) {
+            return $this->response($th, null, false);
+        }
+    }
+
+    public function deleteProductFile($id)
+    {
+        try {
+
+            $deleted = ProductAttachment::find($id)->delete();
+
+            if ($deleted) {
+
+                logActivity($this->modelName . ' Delete', " Product File ID " . $id, 'Delete');
+
+                return redirect()->back()->with('success', $this->modelName . ' file successfully deleted.');
             } else {
                 return $this->response($this->modelName . ' cannot deleted.', null, false);
             }
