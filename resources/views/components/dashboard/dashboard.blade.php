@@ -10,191 +10,12 @@
 
         <div class="row">
 
-
-            <div class="col-xxl-2 col-md-3">
-                <div class="card card-height-100">
-                    <div class="card-header border-0 align-items-center d-flex">
-                        <h4 class="card-title mb-0 flex-grow-1 pb-0">Order Summary</h4>
-                    </div>
-                    <div class="card-body pt-0">
-                        <div id="order_summary_chart"
-                            data-colors='["--vz-primary", "--vz-info", "--vz-warning", "--vz-success"]'
-                            class="apex-charts" dir="ltr">
-                        </div>
-
-                        @php
-                            $chartData = (array) $data;
-                            $orderSummary = [
-                                [
-                                    'name' => 'Total Order',
-                                    'symbol' => 'TO',
-                                    'amount' => $data->total_count,
-                                    'value' => $data->total_count,
-                                    'icon' => 'btc.svg',
-                                    'text_class' => 'text-successs',
-                                ],
-                                [
-                                    'name' => 'Confirmed Orders',
-                                    'symbol' => 'ETH',
-                                    'amount' => $data->confirmed_count,
-                                    'value' => $data->confirmed_count,
-                                    'icon' => 'eth.svg',
-                                    'text_class' => 'text-danger',
-                                ],
-                                [
-                                    'name' => 'Shipment Created',
-                                    'symbol' => 'ETH',
-                                    'amount' => $data->created_shipment_count,
-                                    'value' => $data->created_shipment_count,
-                                    'icon' => 'eth.svg',
-                                    'text_class' => 'text-primary',
-                                ],
-
-                                [
-                                    'name' => 'Delivery Orders',
-                                    'symbol' => 'LTC',
-                                    'amount' => $data->delivered_count,
-                                    'value' => $data->delivered_count,
-                                    'icon' => 'ltc.svg',
-                                    'text_class' => 'text-success',
-                                ],
-                                [
-                                    'name' => 'Cancelled Orders',
-                                    'symbol' => 'DASH',
-                                    'amount' => 0,
-                                    'value' => 0,
-                                    'icon' => 'dash.svg',
-                                    'text_class' => 'text-success',
-                                ],
-                                [
-                                    'name' => 'Return Orders',
-                                    'symbol' => 'DASH',
-                                    'amount' => $data->return_count,
-                                    'value' => $data->return_count,
-                                    'icon' => 'dash.svg',
-                                    'text_class' => 'text-success',
-                                ],
-                            ];
-                        @endphp
-                        <ul class="list-group list-group-flush border-dashed mb-0 mt-0 pt-0">
-                            @foreach ($orderSummary as $item)
-                                <li class="list-group-item px-0">
-                                    <div class="d-flex">
-                                        {{-- <div class="flex-shrink-0 avatar-xs">
-                                            <span class="avatar-title bg-light p-1 rounded-circle">
-                                                <img src="{{ URL::asset('assets/images/svg/crypto-icons/' . $item['icon']) }}"
-                                                    class="img-fluid" alt="{{ $item['name'] }}">
-                                            </span>
-                                        </div> --}}
-                                        <div class="flex-grow-1 ms-2">
-                                            <h6 class="mb-1">
-                                                @if ($loop->first)
-                                                    {{ $item['name'] }}
-                                                @else
-                                                    <i
-                                                        class="mdi mdi-circle fs-10 align-middle {{ $item['text_class'] }} me-1">
-                                                    </i>
-                                                    {{ $item['name'] }}
-                                                @endif
-                                            </h6>
-
-                                        </div>
-                                        <div class="flex-shrink-0 text-end">
-                                            <h6 class="mb-1">
-                                                {{ $item['amount'] }}</h6>
-                                        </div>
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>
-
-                        <hr class="border-primary">
-
-                        <div class="text-center border border-muted pt-2 pb-4 px-1 rounded-3">
-                            <i class="fas fa-globe-africa text-danger fs-20"></i>
-                            <h6>Track Your Shipment</h6>
-                            <x-input.txt-group name="order_id" placeholder="Enter Your Order No" required
-                                class="form-control-sm" type="number" />
-                            <button type="button" onclick="store()" id="sbtBtn" class="btn btn-danger btn-sm w-100">
-                                Click to Track
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xxl-10 col-md-9 order-xxl-0s order-firsts">
+            <div class="col-xxl-12 col-md-9 order-xxl-0s order-firsts">
                 <div class="d-flex flex-column h-100">
                     <div class="row">
                         <div class="col">
                             <div class="h-100">
                                 <div class="row">
-
-                                    @php
-                                        $data = [
-                                            [
-                                                'title' => 'Total Orders',
-                                                'value' => $data->total_count,
-                                                'percentage' => '+100 %',
-                                                'icon' => 'bx-dollar-circle',
-                                                'bgClass' => 'bg-success-subtle',
-                                                'link-text' => 'View Total Orders',
-                                                'link-url' => url('order/order'),
-                                                'trend' => 'success',
-                                            ],
-                                            [
-                                                'title' => 'Confirmed Orders',
-                                                'value' => $data->confirmed_count,
-                                                'percentage' => '+100 %',
-                                                'icon' => 'bx-shopping-bag',
-                                                'bgClass' => 'bg-info-subtle',
-                                                'link-text' => 'View Total Confirmed',
-                                                'link-url' => url('order/confirmed-order'),
-                                                'trend' => 'success',
-                                            ],
-                                            [
-                                                'title' => 'Shipment Created',
-                                                'value' => $data->created_shipment_count,
-                                                'percentage' => '+29.08 %',
-                                                'icon' => 'bx-user-circle',
-                                                'bgClass' => 'bg-warning-subtle',
-                                                'link-text' => 'View Total Confirmed',
-                                                'link-url' => url('shipment/tracking'),
-                                                'trend' => 'success',
-                                            ],
-                                            [
-                                                'title' => 'Delivered Orders',
-                                                'value' => $data->delivered_count,
-                                                'percentage' => '+29.08 %',
-                                                'icon' => 'bx-user-circle',
-                                                'bgClass' => 'bg-warning-subtle',
-                                                'link-text' => 'View Total Delivered',
-                                                'link-url' => url('order/delivered-order'),
-                                                'trend' => 'success',
-                                            ],
-                                            [
-                                                'title' => 'Cancelled Orders',
-                                                'value' => '0',
-                                                'percentage' => '+0.00 %',
-                                                'icon' => 'bx-wallet',
-                                                'bgClass' => 'bg-primary-subtle',
-                                                'link-text' => 'View Total Cancelled',
-                                                'link-url' => '#',
-                                                'trend' => 'muted',
-                                            ],
-                                            [
-                                                'title' => 'Return Orders',
-                                                'value' => $data->return_count,
-                                                'percentage' => '+0.00 %',
-                                                'icon' => 'bx-wallet',
-                                                'bgClass' => 'bg-primary-subtle',
-                                                'link-text' => 'View Total Return',
-                                                'link-url' => url('order/pickup-order'),
-                                                'trend' => 'muted',
-                                            ],
-                                        ];
-                                    @endphp
 
                                     <div class="col-xxl-9 col-xl-9 col-lg-12 col-md-12 col-12">
                                         <div class="row">
@@ -206,15 +27,15 @@
                                                                 <div class="flex-grow-1 overflow-hidden">
                                                                     <p
                                                                         class="text-uppercase fw-medium text-muted text-truncate mb-0 fs-11">
-                                                                        {{ $item['title'] }}
+                                                                        {{ $item->title }}
                                                                     </p>
                                                                 </div>
                                                                 <div class="flex-shrink-0">
                                                                     <h5
-                                                                        class="{{ $item['trend'] === 'danger' ? 'text-danger' : 'text-success' }} fs-14 mb-0">
+                                                                        class="{{ $item->trend === 'danger' ? 'text-danger' : 'text-success' }} fs-14 mb-0">
                                                                         <i
-                                                                            class="{{ $item['trend'] === 'danger' ? 'ri-arrow-right-down-line' : 'ri-arrow-right-up-line' }} fs-13 align-middle"></i>
-                                                                        {{ $item['percentage'] }}
+                                                                            class="{{ $item->trend === 'danger' ? 'ri-arrow-right-down-line' : 'ri-arrow-right-up-line' }} fs-13 align-middle"></i>
+                                                                        {{ $item->percentage }}
                                                                     </h5>
                                                                 </div>
                                                             </div>
@@ -223,23 +44,23 @@
                                                                 <div>
                                                                     <h4 class="fs-22 fw-semibold ff-secondary mb-4">
                                                                         <span class="counter-value"
-                                                                            data-target="{{ $item['value'] }}">
+                                                                            data-target="{{ $item->value }}">
                                                                             {{ 0 }}
                                                                         </span>
                                                                     </h4>
-                                                                    @if ($item['link-url'] ?? false)
-                                                                        <a href="{{ $item['link-url'] }}"
+                                                                    @if ($item->linkText ?? false)
+                                                                        <a href="{{ $item->link == '#' ? '#' : url('admin/' . $item->link) }}"
                                                                             class="text-decoration-underline1">
-                                                                            {{ $item['link-text'] }}
+                                                                            {{ $item->linkText }}
                                                                         </a>
                                                                     @endif
 
                                                                 </div>
                                                                 <div class="avatar-sm flex-shrink-0">
                                                                     <span
-                                                                        class="avatar-title {{ $item['bgClass'] }} rounded fs-3">
+                                                                        class="avatar-title {{ $item->bgClass }} rounded fs-3">
                                                                         <i
-                                                                            class="bx {{ $item['icon'] }} text-{{ $item['trend'] }}"></i>
+                                                                            class="fa {{ $item->icon }} text-{{ $item->trend }}"></i>
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -523,7 +344,7 @@
         }
 
 
-        orderSummaryChart();
+        // orderSummaryChart();
 
         function getChartColorsArray(e) {
             if (null !== document.getElementById(e)) {
@@ -540,10 +361,7 @@
 
         function orderSummaryChart() {
             let arrValue = [
-                // {{ $chartData['total_count'] }},
-                {{ $chartData['confirmed_count'] }},
-                {{ $chartData['created_shipment_count'] }},
-                {{ $chartData['delivered_count'] }},
+                12, 34, 5
                 0
             ]
             var options = {
