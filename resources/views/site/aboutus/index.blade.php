@@ -13,6 +13,32 @@
             ['day' => 'Mon - Sat', 'time' => '9:30am - 9:30pm'],
             ['day' => 'Sunday', 'time' => '9:00am - 5:00pm'],
         ];
+
+        $tabs = [
+            [
+                'title' => 'Introduction',
+                'content' => 'Akil Security and Alarm System L.L.C. is an independent privately owned company for all
+                    your security solutions with international branches in UAE, KSA, Oman and India. <br>  <br>
+                    Our team of highly trained and skilled professionals has a deep understanding of the latest
+                    security technologies and trends, enabling us to offer tailor-made solutions that meet the
+                    unique needs of our clients. We provide a wide range of security services, including
+                    surveillance systems,access control, fire alarms, intrusion detection, and more.
+                    ',
+            ],
+            [
+                'title' => 'Our Mission',
+                'content' => 'To generate value from safeguarding, from prevention to response.',
+            ],
+            [
+                'title' => 'Our Vision',
+                'content' => 'Together innovatingsecurity to make a safer world possible',
+            ],
+            [
+                'title' => 'Our Goals',
+                'content' =>
+                    'Increase customer satisfaction <br> Enhance technological capabilities <br> Enhance operational efficiency',
+            ],
+        ];
     @endphp
 
     <div class="page-title" style="background-image: url(images/section/page-title.jpg);">
@@ -48,64 +74,47 @@
                 <div class="col-md-6">
                     <div class="about-us-features wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
                         <img class=" ls-is-cached lazyloaded" data-src="images/banner/about-us.jpg"
+                            src="{{ asset('site/images/about/shop.jpeg') }}" alt="image-team">
+
+                        {{-- <img class=" ls-is-cached lazyloaded" data-src="images/banner/about-us.jpg"
                             src="https://lh3.googleusercontent.com/p/AF1QipN9ZHjtuTEsZnBhUlRwBsAEdNMa_A6CpDI_hTaY=s1360-w1360-h1020"
-                            alt="image-team">
+                            alt="image-team"> --}}
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="about-us-content">
                         <h3 class="title wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Akil Security
                             & Alarm System Dubai LLC</h3>
+
+
                         <div class="widget-tabs style-3">
+                            {{-- Tab Titles --}}
                             <ul class="widget-menu-tab wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                                <li class="item-title active">
-                                    <span class="inner text-button">Introduction</span>
-                                </li>
-                                <li class="item-title">
-                                    <span class="inner text-button">Our Vision</span>
-                                </li>
-                                <li class="item-title">
-                                    <span class="inner text-button">What Sets Us Apart</span>
-                                </li>
-                                <li class="item-title">
-                                    <span class="inner text-button">Our Commitment</span>
-                                </li>
+                                @foreach ($tabs as $index => $tab)
+                                    <li class="item-title {{ $index === 0 ? 'active' : '' }}">
+                                        <span class="inner text-button">{{ $tab['title'] }}</span>
+                                    </li>
+                                @endforeach
                             </ul>
+
+                            {{-- Tab Contents --}}
                             <div class="widget-content-tab wow fadeInUp"
                                 style="visibility: visible; animation-name: fadeInUp;">
-                                <div class="widget-content-inner active">
-                                    <p>Welcome to Modave Store, your premier destination for fashion-forward clothing and
-                                        accessories. We pride ourselves on offering a curated selection of rare and
-                                        beautiful items sourced both locally and globally. Our mission is to bring you the
-                                        latest trends and timeless styles, ensuring every piece reflects quality and
-                                        elegance. Discover the perfect addition to your wardrobe at Modave Store.</p>
-                                </div>
-                                <div class="widget-content-inner">
-                                    <p>Welcome to Modave Store, your premier destination for fashion-forward clothing and
-                                        accessories. We pride ourselves on offering a curated selection of rare and
-                                        beautiful items sourced both locally and globally. Our mission is to bring you the
-                                        latest trends and timeless styles, ensuring every piece reflects quality and
-                                        elegance. Discover the perfect addition to your wardrobe at Modave Store.</p>
-                                </div>
-                                <div class="widget-content-inner">
-                                    <p>Welcome to Modave Store, your premier destination for fashion-forward clothing and
-                                        accessories. We pride ourselves on offering a curated selection of rare and
-                                        beautiful items sourced both locally and globally. Our mission is to bring you the
-                                        latest trends and timeless styles, ensuring every piece reflects quality and
-                                        elegance. Discover the perfect addition to your wardrobe at Modave Store.</p>
-                                </div>
-                                <div class="widget-content-inner">
-                                    <p>Welcome to Modave Store, your premier destination for fashion-forward clothing and
-                                        accessories. We pride ourselves on offering a curated selection of rare and
-                                        beautiful items sourced both locally and globally. Our mission is to bring you the
-                                        latest trends and timeless styles, ensuring every piece reflects quality and
-                                        elegance. Discover the perfect addition to your wardrobe at Modave Store.</p>
-                                </div>
+                                @foreach ($tabs as $index => $tab)
+                                    <div class="widget-content-inner {{ $index === 0 ? 'active' : '' }}">
+                                        <p>{!! $tab['content'] !!}</p>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
-                        <a href="#" class="tf-btn btn-fill wow fadeInUp"
-                            style="visibility: visible; animation-name: fadeInUp;"><span class="text text-button">Read
-                                More</span></a>
+
+
+                        <a href="{{ asset('site/doc/profile.pdf') }}" target="blank" class="tf-btn btn-fill wow fadeInUp"
+                            style="visibility: visible; animation-name: fadeInUp;">
+                            <span class="text text-button">
+                                View Profile
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -175,7 +184,7 @@
         </div>
     </section>
 
-    <section class="flat-spacing">
+    {{-- <section class="flat-spacing">
         <div class="container">
             <div class="heading-section text-center wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                 <h3 class="heading">Meet Our Teams</h3>
@@ -277,7 +286,7 @@
                 <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     @push('scripts')
         <script src="{{ asset('assets/js/ajax.js') }}"></script>
