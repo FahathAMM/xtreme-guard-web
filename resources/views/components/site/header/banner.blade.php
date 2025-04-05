@@ -16,7 +16,7 @@
                 <div class="swiper-slide">
                     <div class="wrap-slider">
                         <img src="{{ asset("site/images/slider/a$i.png") }}" alt="fashion-slideshow">
-                        <div class="box-content">
+                        <div class="box-content d-none d-sm-none  d-md-block d-lg-block">
                             <div class="container">
                                 <div class="content-slider">
                                     <div class="box-title-slider">
@@ -176,3 +176,13 @@
         }
     });
 </script>
+
+<style>
+    @media (max-width: 576px) {
+        /* sm */
+
+        .tf-slideshow .wrap-slider {
+            height: 150px;
+        }
+    }
+</style>
