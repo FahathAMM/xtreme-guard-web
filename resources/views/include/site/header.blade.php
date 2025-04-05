@@ -17,7 +17,8 @@
             </div>
             <div class="col-xl-3 col-md-4 col-6">
                 <a href="{{ url('/') }}" class="logo-header">
-                    <img src="{{ asset('site/images/logo/3.png') }}" alt="logo" class="logo">
+                    {{-- <img src="{{ asset('site/images/logo/3.png') }}" alt="logo" class="logo"> --}}
+                    <img src="{{ asset('site/images/logo/4.png') }}" alt="logo" class="logo">
                 </a>
             </div>
             <div class="col-xl-6 d-none d-xl-block">
@@ -256,5 +257,9 @@
     .top-header-menu .form-search input {
         padding-right: 40px !important;
         padding-left: 14px !important;
+    }
+
+    .header-default .wrapper-header {
+        min-height: 50px !important;
     }
 </style>

@@ -15,6 +15,7 @@ use App\Http\Controllers\Pages\Administration\SettingController;
 use App\Http\Controllers\Pages\Administration\WhatsappController;
 use App\Http\Controllers\Pages\Administration\PermissionController;
 use App\Http\Controllers\Pages\Administration\MailTrackingController;
+use App\Http\Controllers\Pages\Solution\SolutionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,8 @@ Route::prefix('admin')->middleware(['auth', 'logged.session'])->group(function (
     Route::resource('administration/whatsapp', WhatsappController::class);
 
     Route::resource('category', CategoryController::class);
+
+    Route::resource('solution', SolutionController::class);
 
     Route::resource('products', ProductController::class);
     Route::get('product/delete-img/{id}', [ProductController::class, 'deleteProductImg']);

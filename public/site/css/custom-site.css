@@ -1,6 +1,15 @@
 /* Extra Small devices (phones) */
 @media (max-width: 575.98px) {
     /* Your styles for extra small devices go here */
+
+    .canvas-mb .mb-canvas-content {
+        min-width: 220px !important;
+    }
+
+    .canvas-mb {
+        width: 100% !important;
+        max-width: 220px !important;
+    }
 }
 
 /* Small devices (tablets) */
@@ -40,9 +49,27 @@
     .w-sm-100 {
         width: 100% !important;
     }
+
+    .canvas-mb .mb-canvas-content {
+        min-width: 220px !important;
+    }
+
+    .canvas-mb {
+        width: 100% !important;
+        max-width: 220px !important;
+    }
 }
 
 @media (min-width: 768px) {
+
+    .canvas-mb .mb-canvas-content {
+        min-width: 220px !important;
+    }
+
+    .canvas-mb {
+        width: 100% !important;
+        max-width: 220px !important;
+    }
 
     /* md */
     .w-md-25 {

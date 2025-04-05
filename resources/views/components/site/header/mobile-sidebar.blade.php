@@ -119,3 +119,28 @@
         </div> --}}
     </div>
 </div>
+
+<style>
+    .offcanvas {
+        background: #34444C;
+        color: #fff;
+    }
+
+    .offcanvas ul li a span {
+        color: #fff !important;
+    }
+
+    .text-need {
+        color: #fff !important;
+    }
+
+    .sub-nav-link {
+        color: #fff !important;
+
+    }
+
+    .nav-ul-mb .btn-open-sub:after,
+    .nav-ul-mb .btn-open-sub::before {
+        background-color: #fff !important;
+    }
+</style>
