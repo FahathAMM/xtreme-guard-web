@@ -248,7 +248,7 @@
                             <div class="card-body">
                                 <p class="text-muted mb-2">Add short description for product</p>
                                 <textarea class="form-control" name="short_desc" placeholder="Must enter minimum of a 100 characters"
-                                    rows="3"></textarea>
+                                    rows="10"></textarea>
                             </div>
                         </div>
                     </div>
