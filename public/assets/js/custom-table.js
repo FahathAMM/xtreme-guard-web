@@ -77,7 +77,7 @@ $('body').on('click', '.delete', function () {
                     // const dataTable = $('#datatable-crud').DataTable();
                     // dataTable.draw(false);
 
-                    const dataTable = $('#datatable-crud').html() ? true : null;
+                    const dataTable = $('#datatable-crud').html() ? $('#datatable-crud').DataTable() : null;
                     console.log('dataTable', dataTable);
 
                     if (dataTable) {
