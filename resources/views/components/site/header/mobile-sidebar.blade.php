@@ -3,12 +3,11 @@
 
     $menuItems = [
         ['name' => 'Home', 'url' => url('/'), 'pattern' => '/'],
-        ['name' => 'Blog', 'url' => url('blog'), 'pattern' => 'blog*'],
+        ['name' => 'Download', 'url' => url('download'), 'pattern' => 'download*'],
         ['name' => 'Contact Us', 'url' => url('contact'), 'pattern' => 'contact'],
         ['name' => 'About Us', 'url' => url('aboutus'), 'pattern' => 'aboutus'],
     ];
 @endphp
-
 
 <div class="offcanvas offcanvas-start canvas-mb" id="mobileMenu">
     <span class="icon-close icon-close-popup" data-bs-dismiss="offcanvas" aria-label="Close"></span>
@@ -64,7 +63,8 @@
                                                             <ul class="sub-nav-menu sub-menu-level-2">
                                                                 @foreach ($category->subcategories as $subcategory)
                                                                     <li>
-                                                                        <a href="#" class="sub-nav-link">
+                                                                        <a href="{{ url('product-by-category/' . $subcategory->slug) }}"
+                                                                            class="sub-nav-link">
                                                                             {{ $subcategory->name }}
                                                                         </a>
                                                                     </li>
