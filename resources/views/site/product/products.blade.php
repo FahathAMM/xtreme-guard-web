@@ -1,5 +1,5 @@
 @extends('layout.app-site')
-
+@section('title', 'Product')
 @section('content')
     <x-site.component.page-title title="Search" :breadcrumbs="[['label' => 'Product', 'url' => route('product.index')], ['label' => 'Search']]" />
 
