@@ -68,8 +68,10 @@
                                                             </div>
                                                         </div>
                                                         <div class="flex-shrink-0 ms-3">
-                                                            <button type="button" id="removeImg"
-                                                                class="btn btn-sm btn-danger">Delete</button>
+                                                            <a href="{{ url('admin/product/delete-img/' . $img->id) }}"
+                                                                id="removeImg" class="btn btn-sm btn-danger">
+                                                                Delete
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -179,7 +181,7 @@
                                                             </td>
 
                                                             <td class="remove-cart text-end">
-                                                                <a href="" download=""
+                                                                <a href="{{ url('admin/product/delete-file/' . $file->id) }}"
                                                                     class="d-flex justify-content-end  link-danger link-offset-2 text-decoration-underline link-underline-opacity-25 link-underline-opacity-100-hover">
                                                                     <i class="fas fa-trash me-2"></i>
                                                                     <span>Remove</span>
@@ -187,7 +189,6 @@
                                                             </td>
                                                         </tr>
                                                     @endforeach
-
 
                                                 </tbody>
                                             </table>
@@ -307,7 +308,7 @@
                             <div class="card-body">
                                 <p class="text-muted mb-2">Add short description for product</p>
                                 <textarea class="form-control" name="short_desc" placeholder="Must enter minimum of a 100 characters"
-                                    rows="3">{{ $product->short_desc ?? '' }}</textarea>
+                                    rows="10">{{ $product->short_desc ?? '' }}</textarea>
                             </div>
                         </div>
                     </div>
