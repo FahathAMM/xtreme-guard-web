@@ -46,6 +46,106 @@ class DashboardController extends Controller
 
         logActivity('Dashboard', 'Dashboard', 'View');
 
+
+        //     $countData = DB::table('products')->selectRaw('
+        //     count(*) as total_count
+        //    -- count(case when is_shipped = 1 and is_delivered = 0 then 1 end) as confirmed_count,
+        //    -- count(case when is_shipped = 1 and is_delivered = 0 then 1 end) as created_shipment_count,
+        //    -- count(case when is_delivered = 1 then 1 end) as delivered_count,
+        //    -- count(case when is_pickuped = 1 then 1 end) as return_count
+        // ')->first();
+
+        // 'title' => 'Total Orders',
+        // 'value' => 'data->total_count',
+        // 'percentage' => '+100 %',
+        // 'icon' => 'bx-dollar-circle',
+        // 'bgClass' => 'bg-success-subtle',
+        // 'link-text' => 'View Total Orders',
+        // 'link-url' => url('order/order'),
+        // 'trend' => 'success',
+
+        $countData = DB::table('products')
+            ->selectRaw("
+            'Total Products' as title,
+            COUNT(*) as value,
+            'fas fa-users' as icon,
+            'View Total Products' as `linkText`,
+            'products' as `link`,
+            '+100' as percentage,
+            'bg-success-subtle' as bgClass,
+            'success' as trend
+        ")
+            ->unionAll(
+                DB::table('categories')
+                    ->selectRaw("
+                    'Total Categories' as title,
+                    COUNT(*) as value,
+                    'fas fa-th-large' as icon,
+                    'View Categories' as `linkText`,
+                    'category' as `link`,
+                    '+100' as percentage,
+                    'bg-success-subtle' as bgClass,
+                    'success' as trend
+                ")
+            )
+            ->unionAll(
+                DB::table('product_attachments')
+                    ->selectRaw("
+                    'Total Files' as title,
+                    COUNT(*) as value,
+                    'fas fa-users' as icon,
+                    'View Total Files' as `linkText`,
+                    '#' as `link`,
+                    '+100' as percentage,
+                    'bg-success-subtle' as bgClass,
+                    'success' as trend
+                ")
+            )
+            ->unionAll(
+                DB::table('users')
+                    ->selectRaw("
+                    'Total Users' as title,
+                    COUNT(*) as value,
+                    'fas fa-users' as icon,
+                    'View Total Files' as `linkText`,
+                    '#' as `link`,
+                    '+100' as percentage,
+                    'bg-success-subtle' as bgClass,
+                    'success' as trend
+                ")
+            )
+            ->unionAll(
+                DB::table('users')
+                    ->selectRaw("
+                    'Total Users' as title,
+                    COUNT(*) as value,
+                    'fas fa-users' as icon,
+                    'View Total Files' as `linkText`,
+                    '#' as `link`,
+                    '+100' as percentage,
+                    'bg-success-subtle' as bgClass,
+                    'success' as trend
+                ")
+            )
+            ->unionAll(
+                DB::table('users')
+                    ->selectRaw("
+                    'Total Users' as title,
+                    COUNT(*) as value,
+                    'fas fa-users' as icon,
+                    'View Total Files' as `linkText`,
+                    '#' as `link`,
+                    '+100' as percentage,
+                    'bg-success-subtle' as bgClass,
+                    'success' as trend
+                ")
+            )
+            ->get();
+
+
+
+        // return $countData;
+
         // return $model = $model->whereDate('created_at', now())->get();
         return view('pages/dashboard/index', [
             'title' => $this->modelName,
