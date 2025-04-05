@@ -278,7 +278,6 @@
                             </div>
 
                             <div class="widget-content-inner">
-                                {{-- @dd($product->videos) --}}
                                 <x-site.show.videos :videos="$product->videos" />
                             </div>
                         </div>
