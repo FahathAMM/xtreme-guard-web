@@ -1,3 +1,39 @@
+/* Extra Small devices (phones) */
+@media (max-width: 575.98px) {
+    /* Your styles for extra small devices go here */
+}
+
+/* Small devices (tablets) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    /* Your styles for small devices go here */
+}
+
+/* Medium devices (laptops) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    /* Your styles for medium devices go here */
+
+    /* .tf-slideshow .wrap-slider {
+        height: 360px !important;
+    } */
+}
+
+/* Large devices (desktops) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    /* Your styles for large devices go here */
+}
+
+/* X-Large devices (large desktops) */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+    /* Your styles for X-Large devices go here */
+}
+
+/* XX-Large devices (extra large desktops) */
+@media (min-width: 1400px) {
+    /* Your styles for XX-Large devices go here */
+}
+
+
+
 @media (min-width: 576px) {
 
     /* sm */
@@ -24,6 +60,8 @@
     .w-md-100 {
         width: 100% !important;
     }
+
+
 }
 
 @media (min-width: 992px) {
