@@ -148,8 +148,8 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         try {
-            // $deleted = $product->delete();
-            $deleted = true;
+            $deleted = $product->delete();
+            // $deleted = true;
             if ($deleted) {
 
                 logActivity($this->modelName . ' Delete', "Product ID " . $product->id, 'Delete');
