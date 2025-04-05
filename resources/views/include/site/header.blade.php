@@ -110,7 +110,7 @@
                                                                                 <ul class="list-categories-inner">
                                                                                     @foreach ($subcategory->subcategories as $subcategory)
                                                                                         <li class="sub-categories2">
-                                                                                            <a href=" {{ url('product-by-category/' . $subcategory->slug) }}"
+                                                                                            <a href="{{ url('product-by-category/' . $subcategory->slug) }}"
                                                                                                 class="categories-item">
                                                                                                 <span
                                                                                                     class="inner-left">
