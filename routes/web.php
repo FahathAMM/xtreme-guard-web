@@ -48,9 +48,15 @@ Route::prefix('admin')->middleware(['auth', 'logged.session'])->group(function (
     Route::resource('administration/whatsapp', WhatsappController::class);
 
     Route::resource('category', CategoryController::class);
+
     Route::resource('products', ProductController::class);
+    Route::get('product/delete-img/{id}', [ProductController::class, 'deleteProductImg']);
+    Route::get('product/delete-file/{id}', [ProductController::class, 'deleteProductFile']);
+
     Route::resource('contacts', ContactController::class);
+
     Route::resource('blogs', BlogController::class);
+
 
     Route::resource('administration/mail-tracking', MailTrackingController::class);
     Route::get('administration/mail-preview/{path}/{orderId}', [MailTrackingController::class, 'preview']);
