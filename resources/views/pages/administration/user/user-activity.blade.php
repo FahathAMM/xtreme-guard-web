@@ -103,7 +103,7 @@
                     scrollY: "50vh",
                     pageLength: 100,
                     ajax: {
-                        url: '{{ url('administration/user-activity') }}',
+                        url: '{{ url('admin/administration/user-activity') }}',
                         data: function(d) {
                             d.role = $('#choices-roles').val() || '-1';
                         }
