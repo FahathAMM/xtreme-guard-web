@@ -34,6 +34,13 @@
                                                         id="{{ $setting->key }}" placeholder="enter the value"
                                                         value="{{ $setting->value }}" class="form-control form-control-sm"
                                                         autocomplete="off">
+                                                @elseif ($setting->type == 'color')
+                                                    <input type="color" name="{{ $setting->key }}"
+                                                        id="{{ $setting->key }}" placeholder="enter the value"
+                                                        value="{{ $setting->value }}" class="form-control form-control-sm"
+                                                        autocomplete="off">
+                                                    <small style="cursor:pointer; color:blue;"
+                                                        onclick="changeDefColr('474B4F', this)">Default</small>
                                                 @elseif ($setting->type == 'select')
                                                     @php
                                                         $items = explode(',', $setting->type_value);
@@ -177,6 +184,13 @@
 
     @push('scripts')
         <script>
+            function changeDefColr(defaultColor, element) {
+                const colorInput = element.previousElementSibling;
+                if (colorInput && colorInput.type === "color") {
+                    colorInput.value = '#' + defaultColor;
+                }
+            }
+
             // Function to refresh the table
             function refreshTable() {
                 fetch("{{ url('administration/setting') }}")

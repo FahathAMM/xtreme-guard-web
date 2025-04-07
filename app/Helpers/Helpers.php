@@ -325,3 +325,10 @@ if (!function_exists('getWhatsappNumber')) {
         // return Setting::where('key', $key)->whereIsActive(1)->value('value');
     }
 }
+
+if (!function_exists('getSetting')) {
+    function getSetting($key)
+    {
+        return Setting::where('key', $key)->whereIsActive(1)->value('value');
+    }
+}

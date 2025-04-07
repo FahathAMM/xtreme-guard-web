@@ -8,9 +8,11 @@
 
     // getSolutionForHeader();
 
+    $headerColor = getSetting('header_color');
+
 @endphp
 
-<header id="header" class="header-default">
+<header id="header" class="header-default" style="background: {{ $headerColor ?? '#474B4F' }} !important;">
     <div class="container">
         <div class="row wrapper-header align-items-center">
             <div class="col-md-4 col-3 d-xl-none">
@@ -176,7 +178,7 @@
                         <fieldset class="text w-100">
                             <input type="text" placeholder="Search Products" class="style-line-bottom" name="q"
                                 tabindex="0" value="" aria-required="true" required=""
-                                style="background:#474b4f;color: white;">
+                                style="background:{{ $headerColor }};color: white;">
                         </fieldset>
                         <button class="" type="submit">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -234,9 +236,9 @@
 
 
 <style>
-    header {
+    /* header {
         background: #474B4F !important;
-    }
+    } */
 
     #header .box-nav-ul .menu-item.active .item-link,
     #header .box-nav-ul .menu-item:hover .item-link {
@@ -248,7 +250,7 @@
     }
 
     .tf-list-categories .list-categories-inner {
-        background-color: #474b4f !important;
+        background-color: {{ $headerColor }} !important;
     }
 
     .tf-list-categories .categories-item:hover .icon {
