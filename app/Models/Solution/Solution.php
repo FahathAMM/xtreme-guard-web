@@ -1,22 +1,53 @@
 <?php
 
-namespace App\Models\Product;
+namespace App\Models\Solution;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Helpers\Media;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Solution extends Model
 {
-    use HasFactory;
+    use HasFactory, Media;
 
     protected $fillable = [
         'title',
         'slug',
-        'main_img',
+        'solution_type',
+        'banner_img',
+        'img_width',
+        'img_height',
         'gallery',
+        'tags',
+        'file',
         'content',
-        'is_published'
+        'desc',
+        'is_published',
     ];
 
-    // Optionally, you can add custom methods or relationships
+    protected $casts = [
+        'tags' => 'array',
+        'file' => 'array',
+        'is_published' => 'boolean',
+    ];
+
+
+    public function getBannerImgAttribute($value)
+    {
+        // Define the default image URL
+        $defaultImage = 'https://xtremeguard.org/site/images/home/game13.png';
+
+        // Check if the value is empty
+        if (!$value) {
+            return $defaultImage;
+        }
+
+        // Check if the file exists in storage
+        if (Storage::exists('public/' . $value)) {
+            return asset('storage/' . $value);
+        } else {
+            return $defaultImage;
+        }
+    }
 }
