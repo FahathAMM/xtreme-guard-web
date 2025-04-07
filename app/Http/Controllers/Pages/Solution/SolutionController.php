@@ -9,10 +9,11 @@ use Yajra\DataTables\DataTables;
 use App\Models\Category\Category;
 use App\Http\Controllers\Controller;
 use App\Models\Product\ProductImage;
-use App\Repositories\Product\ProductRepo;
-use App\Http\Requests\Product\StoreRequest;
-use App\Http\Requests\Product\UpdateRequest;
+use App\Http\Requests\Solution\StoreRequest;
+use App\Http\Requests\Solution\UpdateRequest;
 use App\Models\Product\ProductAttachment;
+use App\Models\Solution\Solution;
+use App\Repositories\Solution\SolutionRepo;
 
 class SolutionController extends Controller
 {
@@ -22,50 +23,15 @@ class SolutionController extends Controller
     protected $model;
     protected $repo;
 
-    public function __construct(Product $model, ProductRepo $repo)
+    public function __construct(Solution $model, SolutionRepo $repo)
     {
         $this->model = $model;
         $this->repo = $repo;
         $this->isDestroyingAllowed = true;
     }
 
-    public function index1(Request $request)
-    {
-        if ($request->ajax()) {
-
-            $permissions = [
-                'isDelete' => true,
-                'isEdit' => true,
-                'isView' => true,
-                'isPrint' => false
-            ];
-
-            $user = $this->model->query();
-            // return $this->model->query()->get();
-            logActivity('User Master', 'User Master', 'View');
-
-            return Datatables::of($user)->addIndexColumn()
-                ->addColumn('action', function ($user) use ($permissions) {
-                    return actionBtns(
-                        $user->id,
-                        'user.edit',
-                        'administration/user',
-                        $user->username,
-                        $permissions
-                    );
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-
-        return view('pages.product.index', [
-            'title' =>   $this->modelName,
-        ]);
-    }
-
     public function index(Request $request)
     {
-        // return $this->model->query()->get();
 
         if ($request->ajax()) {
 
@@ -76,18 +42,18 @@ class SolutionController extends Controller
                 'isPrint' => false
             ];
 
-            $product = $this->model->query();
+            $solution = $this->model->query();
             // return $this->model->query()->get();
 
             logActivity('User Master', 'User Master', 'View');
 
-            return Datatables::of($product)->addIndexColumn()
-                ->addColumn('action', function ($product) use ($permissions) {
+            return Datatables::of($solution)->addIndexColumn()
+                ->addColumn('action', function ($solution) use ($permissions) {
                     return actionBtns(
-                        $product->id,
-                        'products.edit',
-                        'admin/products',
-                        $product->name,
+                        $solution->id,
+                        'solution.edit',
+                        'admin/solution',
+                        $solution->name,
                         $permissions
                     );
                 })
@@ -95,33 +61,37 @@ class SolutionController extends Controller
                 ->make(true);
         }
 
-        return view('pages.product.index', [
+        return view('pages.solution.index', [
             'title' =>   $this->modelName,
         ]);
     }
 
     public function create()
     {
-        return view('pages.product.create', [
-            'categories' => Category::get(['id', 'name', 'slug']),
+        $solutionTypes = getSolutionForHeader();
+
+        return view('pages.solution.create', [
             'title' =>   $this->modelName,
+            'solutionTypes' =>   $solutionTypes,
         ]);
     }
 
-    public function edit(Product $product)
+    public function edit(Solution $solution)
     {
-        // return $product->load('images', 'attributes', 'videos', 'files');
-        return view('pages.product.edit', [
-            'categories' => Category::get(['id', 'name', 'slug']),
+        $solutionTypes = getSolutionForHeader();
+
+        return view('pages.solution.edit', [
             'title' =>   $this->modelName,
-            'product' =>   $product->load('images', 'attributes', 'videos', 'files'),
+            'solution' =>   $solution,
+            'solutionTypes' =>   $solutionTypes,
         ]);
     }
 
     public function store(StoreRequest $request)
     {
         try {
-            $created =  $this->repo->createProduct($request);
+            // return $request->all();
+            $created =  $this->repo->createSolution($request);
             if ($created) {
                 return  $this->response($this->modelName . ' created successfully', ['data' => $created], true);
             }
@@ -130,14 +100,14 @@ class SolutionController extends Controller
         }
     }
 
-    public function update(UpdateRequest $request, Product $product)
+    public function update(UpdateRequest $request, Solution $solution)
     {
         try {
-            $updated = $this->repo->updateProduct($request, $product);
+            $updated = $this->repo->updateSolution($request, $solution);
 
             if ($updated) {
-                logActivity($this->modelName . ' Update',  $this->modelName . " ID " . $product->id, 'Update');
-                return  $this->response($this->modelName . ' updated successfully', ['data' => $product], true);
+                logActivity($this->modelName . ' Update',  $this->modelName . " ID " . $solution->id, 'Update');
+                return  $this->response($this->modelName . ' updated successfully', ['data' => $solution], true);
             }
         } catch (\Throwable $th) {
             throw $th;
@@ -163,9 +133,11 @@ class SolutionController extends Controller
         }
     }
 
-    public function deleteProductImg($id)
+    public function deleteSolutionImg($id)
     {
         try {
+
+            return $id;
 
             $deleted = ProductImage::find($id)->delete();
 
@@ -182,6 +154,20 @@ class SolutionController extends Controller
         } catch (\Throwable $th) {
             return $this->response($th, null, false);
         }
+    }
+
+
+    public function deleteSolutionFile($id, $key)
+    {
+        $model = Solution::find($id);
+        $data = $model->file;
+
+        unset($data['a']);
+
+        $model->file = $data;
+        $model->save();
+
+        return redirect()->back()->with('success', $this->modelName . ' file successfully deleted.');
     }
 
     public function deleteProductFile($id)
