@@ -85,6 +85,24 @@ if (!function_exists('can')) {
     }
 }
 
+if (!function_exists('getSolutionForHeader')) {
+    function getSolutionForHeader()
+    {
+        $solutionTypes = [
+            ['id' => 'time-management', 'name' => 'Time Management'],
+            ['id' => 'people-counting-solution', 'name' => 'People Counting Solution'],
+            ['id' => 'access-control-management', 'name' => 'Access Control Management'],
+            ['id' => 'cloud-based-time-attendance-solution', 'name' => 'Cloud-based Time Attendance Solution'],
+            ['id' => 'visitor-management-system', 'name' => 'Visitor Management System'],
+            ['id' => 'elevator-control', 'name' => 'Elevator Control'],
+            ['id' => 'parking-management', 'name' => 'Parking Management'],
+            ['id' => 'hotel-management', 'name' => 'Hotel Management'],
+        ];
+
+        return $solutionTypes;
+    }
+}
+
 if (!function_exists('getCategoriesForHeader')) {
     function getCategoriesForHeader()
     {
