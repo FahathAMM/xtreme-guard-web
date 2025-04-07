@@ -56,7 +56,7 @@
                     "searching": true,
                     pageLength: 100,
                     ajax: {
-                        url: '{{ url('administration/logged-user-tracking') }}',
+                        url: '{{ url('admin/administration/logged-user-tracking') }}',
                     },
 
                     columns: [{
