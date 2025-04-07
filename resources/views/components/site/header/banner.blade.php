@@ -182,13 +182,7 @@
         /* sm */
 
         .tf-slideshow .wrap-slider {
-            height: auto !important;
-        }
-
-        .wrap-slider img {
-            width: 100%;
-            height: 240px;
-            object-fit: fill !important;
+            height: 150px;
         }
     }
 </style>
