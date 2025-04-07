@@ -35,4 +35,4 @@
     </ul>
 </div> --}}
 
-<textarea class="form-control mt-4" id="{{ $idName }}" rows="5" name="{{ $name }}">{!! $value !!}</textarea>
+<textarea class="form-control mt-4" id="{{ $idName }}" name="{{ $name }}">{!! $value !!}</textarea>
