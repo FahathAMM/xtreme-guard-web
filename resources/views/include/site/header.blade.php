@@ -5,6 +5,9 @@
         ['name' => 'Contact', 'url' => url('contact'), 'pattern' => 'contact'],
         ['name' => 'About', 'url' => url('aboutus'), 'pattern' => 'aboutus'],
     ];
+
+    // getSolutionForHeader();
+
 @endphp
 
 <header id="header" class="header-default">
@@ -38,17 +41,15 @@
                                         </a>
                                         <div class="list-categories-inner">
                                             <ul>
-                                                @foreach (getCategoriesForHeader() as $category)
-                                                    @if (!in_array($category->id, $subCategoryIds))
-                                                        <li class="sub-categories2">
-                                                            <a href="{{ url('product-by-category/' . $category->slug) }}"
-                                                                class="categories-item">
-                                                                <span class="inner-left">
-                                                                    {{ $category->name }}
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                    @endif
+                                                @foreach (getSolutionForHeader() as $solution)
+                                                    <li class="sub-categories2">
+                                                        <a href="{{ url('solution-by-type/' . $solution['id']) }}"
+                                                            class="categories-item">
+                                                            <span class="inner-left">
+                                                                {{ $solution['name'] }}
+                                                            </span>
+                                                        </a>
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                         </div>
