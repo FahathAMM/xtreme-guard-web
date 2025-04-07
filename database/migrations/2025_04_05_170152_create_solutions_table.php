@@ -15,10 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('slug')->nullable();
-            $table->string('main_img')->nullable();
+            $table->string('solution_type')->nullable();
+            $table->string('banner_img')->nullable();
+            $table->string('img_width')->nullable();
+            $table->string('img_height')->nullable();
             $table->string('gallery')->nullable();
-            $table->string('gallery')->nullable();
+            $table->json('tags')->nullable();
+            $table->json('file')->nullable();
             $table->text('content')->nullable();
+            $table->text('desc')->nullable();
             $table->boolean('is_published')->default(1);
             $table->timestamps();
         });
