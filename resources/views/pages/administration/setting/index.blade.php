@@ -191,6 +191,7 @@
                 }
             }
 
+
             // Function to refresh the table
             function refreshTable() {
                 fetch("{{ url('administration/setting') }}")
