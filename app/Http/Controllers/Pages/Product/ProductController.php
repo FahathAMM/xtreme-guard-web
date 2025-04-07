@@ -166,7 +166,6 @@ class ProductController extends Controller
     public function deleteProductImg($id)
     {
         try {
-
             $deleted = ProductImage::find($id)->delete();
 
             if ($deleted) {
