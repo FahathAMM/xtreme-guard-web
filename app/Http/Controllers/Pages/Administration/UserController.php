@@ -95,7 +95,7 @@ class UserController extends Controller
                     return actionBtns(
                         $userLogs->id,
                         'user.edit',
-                        'user',
+                        'admin/user',
                         '',
                         $permissions
                     );
@@ -178,7 +178,7 @@ class UserController extends Controller
                     return actionBtns(
                         $loggedUserModel->id,
                         'user.edit',
-                        'user',
+                        'admin/user',
                         '',
                         $permissions
                     );
