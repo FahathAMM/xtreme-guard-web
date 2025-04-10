@@ -1,6 +1,6 @@
 <section class="tf-slideshow slider-style2 slider-effect-fade">
     <div dir="ltr" class="swiper tf-sw-slideshow" data-preview="1" data-tablet="1" data-mobile="1" data-centered="false"
-        data-space="0" data-space-mb="0" data-loop="true" data-auto-play="false">
+        data-space="0" data-space-mb="0" data-loop="true" data-auto-play="true">
         <div class="swiper-wrapper">
 
             @php
