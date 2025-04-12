@@ -4,10 +4,13 @@
 @section('content')
 
     @php
-        $lable = str_replace('-', ' ', request()->route('type'));
+        $lable = ucwords(str_replace('-', ' ', request()->route('type')));
+
+        $categoryName = $lable == 'Software' ? 'Software' : 'Solution';
+
     @endphp
 
-    <x-site.component.page-title title="Solution" :breadcrumbs="[['label' => 'Solution', 'url' => '#'], ['label' => $lable]]" />
+    <x-site.component.page-title title="Solution" :breadcrumbs="[['label' => $categoryName, 'url' => '#'], ['label' => $lable]]" />
 
     <div class="main-content-page">
         <div class="container">
