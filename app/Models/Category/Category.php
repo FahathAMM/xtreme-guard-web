@@ -43,6 +43,20 @@ class Category extends Model
                 }
             }
         });
+
+        // For update only (before updating in the database)
+        static::updating(function ($model) {
+            // You can check if name or parent_id changed to regenerate slug
+            if ($model->isDirty(['name', 'parent_id'])) {
+                $parentSlug = Category::find($model->parent_id)->slug ?? false;
+
+                if ($parentSlug) {
+                    $model->slug = Str::slug($parentSlug . ' ' . $model->name);
+                } else {
+                    $model->slug = Str::slug($model->name);
+                }
+            }
+        });
     }
 
     public function subcategories()
