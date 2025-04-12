@@ -3,6 +3,7 @@
 
     $menuItems = [
         ['name' => 'Home', 'url' => url('/'), 'pattern' => '/'],
+        ['name' => 'Software', 'url' => url('solution-by-type/' . 'software'), 'pattern' => 'software'],
         ['name' => 'Download', 'url' => url('download'), 'pattern' => 'download*'],
         ['name' => 'Contact Us', 'url' => url('contact'), 'pattern' => 'contact'],
         ['name' => 'About Us', 'url' => url('aboutus'), 'pattern' => 'aboutus'],
@@ -32,6 +33,37 @@
                 </form>
                 <ul class="nav-ul-mb" id="wrapper-menu-navigation">
                     @foreach ($menuItems as $key => $item)
+
+                        @if ($loop->index == 1)
+                            <li class="nav-mb-item">
+                                <a href="#dropdown-menu-four" class="mb-menu-link collapsed" data-bs-toggle="collapse"
+                                    aria-expanded="false" aria-controls="dropdown-menu-four">
+                                    <span>Solutions</span>
+                                    <span class="btn-open-sub"></span>
+                                </a>
+                                <div id="dropdown-menu-four" class="collapse" style="">
+                                    <ul class="sub-nav-menu">
+
+                                        @foreach (getSolutionForHeader() as $solution)
+                                            <li><a href="{{ url('solution-by-type/' . $solution['id']) }}"
+                                                    class="sub-nav-link">
+                                                    {{ $solution['name'] }}
+                                                </a>
+                                            </li>
+                                        @endforeach
+
+                                        {{--
+                                        <li><a href="blog-default.html" class="sub-nav-link">Blog Default</a></li>
+                                        <li><a href="blog-list.html" class="sub-nav-link">Blog List</a></li>
+                                        <li><a href="blog-grid.html" class="sub-nav-link">Blog Grid</a></li>
+                                        <li><a href="blog-detail.html" class="sub-nav-link">Blog Detail 1</a></li>
+                                        <li><a href="blog-detail-02.html" class="sub-nav-link">Blog Detail 2</a></li> --}}
+                                    </ul>
+                                </div>
+
+                            </li>
+                        @endif
+
                         <li class="nav-mb-item active">
                             <a href="{{ $item['url'] }}" class="  mb-menu-link" aria-controls="dropdown-menu-one">
                                 <span>{{ $item['name'] }}</span>
