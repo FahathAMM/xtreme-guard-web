@@ -14,8 +14,7 @@
 ])
 
 @php
-    $totalUsers = count($item?->users ?? []);
-    $moreUsers = $totalUsers > 4 ? $totalUsers - 4 : 0;
+    // dd($item?->parentCategories?->name);
 @endphp
 <div class="card  my-1 profile-project-card shadow-none profile-project-{{ $color ?? '' }}">
     <div class="card-body p-4">
@@ -23,7 +22,7 @@
             <div class="flex-grow-1 text-muted overflow-hidden">
                 <h5 class="fs-14 text-truncate"><a href="#" class="text-body">{{ $categoryName ?? '' }}</a>
                 </h5>
-                <p class="text-muted text-truncate mb-0">Total {{ $totalUsers ?? '' }} user(s) </p>
+                <p class="text-muted text-truncate mb-0">{{ $item?->parentCategories?->name ?? 'Parent' }} </p>
             </div>
             <div class="flex-shrink-0 ms-2">
                 @canOrRole($per)
@@ -42,19 +41,17 @@
             </div>
         </div>
 
-        <div class="d-flex mt-2">
+        {{-- <div class="d-flex mt-2">
             <div class="flex-grow-1">
                 <div class="d-flex align-items-center gap-2 justify-content-end">
                     <div>
-                        {{-- <h5 class="fs-12 text-muted mb-0">
-                            Members :</h5> --}}
+
                     </div>
                     <div class="avatar-group text-end">
                         @foreach ([1, 2, 4] as $key => $user)
                             <div class="avatar-group-item">
                                 <div class="avatar-xs" title="{{ $user['first_name'] ?? '' }}">
-                                    {{-- <img src="{{ $user['img'] ?? '' }}" alt=""
-                                        class="rounded-circle header-profile-user" /> --}}
+
                                 </div>
                             </div>
                         @endforeach
@@ -68,7 +65,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
     <!-- end card body -->
 </div>
