@@ -70,6 +70,12 @@ class SolutionController extends Controller
     {
         $solutionTypes = getSolutionForHeader();
 
+        $additional = [
+            ["id" => "software", "name" => "Software"]
+        ];
+
+        $solutionTypes = [...$solutionTypes, ...$additional];
+
         return view('pages.solution.create', [
             'title' =>   $this->modelName,
             'solutionTypes' =>   $solutionTypes,
@@ -79,6 +85,12 @@ class SolutionController extends Controller
     public function edit(Solution $solution)
     {
         $solutionTypes = getSolutionForHeader();
+
+        $additional = [
+            ["id" => "software", "name" => "Software"]
+        ];
+
+        $solutionTypes = [...$solutionTypes, ...$additional];
 
         return view('pages.solution.edit', [
             'title' =>   $this->modelName,
@@ -96,7 +108,7 @@ class SolutionController extends Controller
                 return  $this->response($this->modelName . ' created successfully', ['data' => $created], true);
             }
         } catch (\Throwable $th) {
-            return  $this->response($th->getMessage(), null, false);
+            return $this->response($th->getMessage(), null, false);
         }
     }
 
