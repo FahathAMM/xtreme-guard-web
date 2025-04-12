@@ -52,7 +52,8 @@
         /* Set the required size */
         height: 220px;
         /* Same as width to make it a perfect square */
-        border-radius: 50%;
+        /* border-radius: 50%; */
+        border-radius: 5%;
         /* Makes the container circular */
         overflow: hidden;
         /* Ensures the image does not overflow */
