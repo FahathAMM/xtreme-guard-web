@@ -1,7 +1,11 @@
 @php
     $menuItems = [
         ['name' => 'Home', 'url' => url('/'), 'pattern' => '/'],
-        ['name' => 'Software', 'url' => url('solution-by-type/' . 'software'), 'pattern' => 'software'],
+        [
+            'name' => 'Software',
+            'url' => url('solution-by-type/' . 'software'),
+            'pattern' => 'solution-by-type/software',
+        ],
         ['name' => 'Download', 'url' => url('download'), 'pattern' => 'download*'],
         ['name' => 'Contact', 'url' => url('contact'), 'pattern' => 'contact'],
         ['name' => 'About', 'url' => url('aboutus'), 'pattern' => 'aboutus'],
@@ -36,7 +40,8 @@
                     <ul class="box-nav-ul d-flex align-items-center justify-content-center">
                         @foreach ($menuItems as $key => $item)
                             @if ($loop->index == 1)
-                                <li class="menu-item mx-3 {{ request()->is('solution*') ? 'active' : '' }}">
+                                <li
+                                    class="menu-item mx-3 {{ request()->is($item['pattern']) != 'solution-by-type/software' && request()->is('solution*') ? 'active' : '' }}">
                                     <div class="tf-list-categories">
                                         <a href="#" class="item-link">
                                             Solutions
@@ -60,7 +65,8 @@
                                 </li>
                             @endif
 
-                            <li class="menu-item mx-3 {{ request()->is($item['pattern']) ? 'active' : '' }}">
+                            <li class="menu-item mx-3 {{ request()->is($item['pattern']) ? 'active' : '' }}"
+                                {{ request()->is($item['pattern']) . $item['pattern'] }}>
                                 <a href="{{ $item['url'] }}" class="item-link">
                                     {{ $item['name'] }}
                                     @if (!empty($item['sub']))
@@ -97,7 +103,6 @@
                                                             @if ($category->subcategories->count())
                                                                 <ul class="list-categories-inner">
                                                                     @foreach ($category->subcategories as $subcategory)
-                                                                        {{-- @dd($subcategory->subcategories->count()) --}}
                                                                         <li class="sub-categories2">
                                                                             <a href="
                                                                 {{ url('product-by-category/' . $subcategory->slug) }}"
@@ -139,34 +144,7 @@
                                     </div>
                                 </li>
                             @endif
-
                         @endforeach
-
-                        {{-- <li
-                            class="menu-item mx-3 {{ request()->is('product-by-category*') || request()->is('product*') ? 'active' : '' }}">
-                            <div class="tf-list-categories">
-                                <a href="#" class="item-link">
-                                    Solutions
-                                    <i class="icon icon-arrow-down"></i>
-                                </a>
-                                <div class="list-categories-inner">
-                                    <ul>
-                                        @foreach (getCategoriesForHeader() as $category)
-                                            @if (!in_array($category->id, $subCategoryIds))
-                                                <li class="sub-categories2">
-                                                    <a href="{{ url('product-by-category/' . $category->slug) }}"
-                                                        class="categories-item">
-                                                        <span class="inner-left">
-                                                            {{ $category->name }}
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                            @endif
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </li> --}}
                     </ul>
                 </nav>
             </div>
