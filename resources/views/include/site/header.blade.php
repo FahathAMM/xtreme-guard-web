@@ -242,10 +242,8 @@
         position: absolute;
         top: 0;
         left: 100%;
-        background-color: white;
         z-index: 999;
         padding: 0.5rem;
-        border: 1px solid #ddd;
     }
 
     .sub-categories3:hover>.child-category {
