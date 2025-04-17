@@ -106,7 +106,7 @@ class ProductRepo extends BaseRepository
             }
 
             $model->attributes()->delete();
-            if ($request->has('video_name')) {
+            if ($request->has('attribute')) {
                 foreach ($attrValues as $key => $valData) {
                     // $model->attributes()->where('key', $attr[$key])->where('value', $valData)->delete();
                     $model->attributes()->create([
