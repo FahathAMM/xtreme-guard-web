@@ -101,9 +101,9 @@
 
                                                             {{-- first child  --}}
                                                             @if ($category->subcategories->count())
-                                                                <ul class="list-categories-inner">
+                                                                <ul class="list-categories-inner ">
                                                                     @foreach ($category->subcategories as $subcategory)
-                                                                        <li class="sub-categories2">
+                                                                        <li class="sub-categories3">
                                                                             <a href="
                                                                 {{ url('product-by-category/' . $subcategory->slug) }}"
                                                                                 class="categories-item">
@@ -117,21 +117,21 @@
 
                                                                             {{-- third child --}}
                                                                             @if ($subcategory->subcategories->count())
-                                                                                <ul class="list-categories-inner">
-                                                                                    @foreach ($subcategory->subcategories as $subcategory)
-                                                                                        <li class="sub-categories2">
-                                                                                            <a href="{{ url('product-by-category/' . $subcategory->slug) }}"
+                                                                                <ul
+                                                                                    class="list-categories-inner child-category">
+                                                                                    @foreach ($subcategory->subcategories as $subcategory1)
+                                                                                        <li class="sub-categories3">
+                                                                                            <a href="{{ url('product-by-category/' . $subcategory1->slug) }}"
                                                                                                 class="categories-item">
                                                                                                 <span
                                                                                                     class="inner-left">
-                                                                                                    {{ $subcategory->name }}
+                                                                                                    {{ $subcategory1->name }}
                                                                                                 </span>
                                                                                             </a>
                                                                                         </li>
                                                                                     @endforeach
                                                                                 </ul>
                                                                             @endif
-
                                                                         </li>
                                                                     @endforeach
                                                                 </ul>
@@ -214,10 +214,44 @@
 <!-- /mobile menu -->
 
 
+@push('scripts')
+    <script>
+        // $('document').ready(function() {
+
+
+
+        // });
+
+        function viewChild(param) {
+            console.log(param);
+        }
+    </script>
+@endpush
+
 <style>
     /* header {
         background: #474B4F !important;
     } */
+
+    .sub-categories3 {
+        position: relative;
+    }
+
+    .child-category {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        background-color: white;
+        z-index: 999;
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+    }
+
+    .sub-categories3:hover>.child-category {
+        display: block;
+    }
+
 
     #header .box-nav-ul .menu-item.active .item-link,
     #header .box-nav-ul .menu-item:hover .item-link {
