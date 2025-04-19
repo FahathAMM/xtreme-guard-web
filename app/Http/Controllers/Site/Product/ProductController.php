@@ -23,14 +23,52 @@ class ProductController extends Controller
 
     public function productByCategory(Request $request, $category)
     {
-        $products = Product::whereHas('category', function ($query) use ($category) {
-            $query->where('slug', $category);
-        })->get();
+        $categoryModel = Category::where('slug', $category)->first();
+
+
+        // return $categoryModel;
+
+
+        if (!$categoryModel->parent_id) {
+            // If it's a parent category, get products from its subcategories
+            // $subCategoryIds = $categoryModel->clone()->where('parent_id', $categoryModel->id)->pluck('id');
+
+            $subCategoryIds = $this->extractAllIds($categoryModel->clone()->with('subcategories')
+                ->where('parent_id', $categoryModel->id)->get());
+            $products =   Product::whereIn('category_id', $subCategoryIds)->get();
+        } else {
+
+            $products = Product::whereHas('category', function ($query) use ($category) {
+                $query->where('slug', $category);
+            })->get();
+        }
+
+
+        // return [
+        //     $subCategoryIds,
+        //     $categoryModel,
+        //     $categoryModel->clone()->with('subcategories')->where('parent_id', $categoryModel->id)->get(),
+        // ];
 
         return view('site.product.products-by-category', [
             'products' => $products,
-            'category' => Category::where('slug', $category)->first(),
+            'category' => $categoryModel,
         ]);
+    }
+
+    public  function extractAllIds($categories)
+    {
+        $ids = [];
+
+        foreach ($categories as $category) {
+            $ids[] = $category['id'];
+
+            if (!empty($category['subcategories'])) {
+                $ids = array_merge($ids, $this->extractAllIds($category['subcategories']));
+            }
+        }
+
+        return $ids;
     }
 
     public function show(string $id)
