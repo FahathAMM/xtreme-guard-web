@@ -7,7 +7,7 @@
     'size' => '',
 ])
 
-<div class="dropzone">
+<div {{ $attributes->merge(['class' => 'dropzone']) }}>
     <div class="file-input-container dz-message needsclick text-center">
         <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
         <h5 class="">{{ $label }}</h5>
