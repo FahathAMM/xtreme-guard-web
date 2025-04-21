@@ -5,6 +5,7 @@ use App\Models\Category\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 if (!function_exists('getBrowser')) {
 
@@ -330,5 +331,35 @@ if (!function_exists('getSetting')) {
     function getSetting($key)
     {
         return Setting::where('key', $key)->whereIsActive(1)->value('value');
+    }
+}
+
+// public function getBannerImgAttribute($value)
+// {
+//     // Define the default image URL
+//     $defaultImage = 'https://xtremeguard.org/site/images/home/game13.png';
+
+//     // Check if the value is empty
+//     if (!$value) {
+//         return $defaultImage;
+//     }
+
+//     // Check if the file exists in storage
+//     if (Storage::exists('public/' . $value)) {
+//         return asset('storage/' . $value);
+//     } else {
+//         return $defaultImage;
+//     }
+// }
+
+if (!function_exists('getImgUrl')) {
+    function getImgUrl($path)
+    {
+        $defaultImage = 'https://xtremeguard.org/site/images/home/game13.png';
+        if (Storage::exists('public/' . $path)) {
+            return asset('storage/' . $path);
+        } else {
+            return $defaultImage;
+        }
     }
 }
