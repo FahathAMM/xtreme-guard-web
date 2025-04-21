@@ -22,8 +22,8 @@
                             <div class="wg-blog style-1 hover-image">
                                 <div class="image border rounded">
 
-                                    <img class="lazyload" data-src="{{ $sol->banner_img[0] }}" src="{{ $sol->banner_img[0] }}"
-                                        alt="">
+                                    <img class="lazyload" data-src="{{ getImgUrl($sol->banner_img[0]) }}"
+                                        src="{{ getImgUrl($sol->banner_img[0]) }}" alt="">
 
                                     {{-- <img class="lazyload" data-src="{{ asset('site/images/blog/blog-grid-1.jpg') }}"
                                         src="{{ asset('site/images/blog/blog-grid-1.jpg') }}" alt=""> --}}
