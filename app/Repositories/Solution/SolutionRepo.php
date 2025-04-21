@@ -30,6 +30,30 @@ class SolutionRepo extends BaseRepository
 
     public function createSolution($request)
     {
+        $data = $request->validated();
+
+        $data['tags'] = explode(',', $request->tags);
+
+        $created = $this->model->create($data);
+
+        if ($created) {
+            $path_arr = [];
+            $data['tags'] = explode(',', $request->tags);
+            if ($request->hasFile('banner_img')) {
+                foreach ($request->file('banner_img') as $image) {
+                    $path_arr[] = $image->store('solution', 'public');
+                }
+
+                $created->banner_img = $path_arr;
+                $created->save();
+            }
+            return $created;
+        }
+        return false;
+    }
+
+    public function createSolutionOld($request)
+    {
         $attrValues = $request->value;
         $attr =  $request->attribute;
         $attachedmentName =  $request->attachment_attribute;
@@ -46,31 +70,49 @@ class SolutionRepo extends BaseRepository
                 $this->model->imageUpload('/solution', $created, $request->file('banner_img'), 'banner_img');
             }
 
-            // foreach ($attrValues as $key => $valData) {
-            //     $created->attributes()->create([
-            //         'key' => $attr[$key],
-            //         'value' => $valData,
-            //     ]);
-            // }
-
-            // if ($request->hasFile('attachment_value')) {
-            //     foreach ($request->file('attachment_value') as $key => $attachment) {
-            //         $path = $attachment->store('attachment', 'public');
-            //         Log::info($path);
-            //         $created->files()->create([
-            //             'file_name' => $attachedmentName[$key],
-            //             'desc' => $attachedmentName[$key],
-            //             'path' => $path,
-            //         ]);
-            //     }
-            // }
-
             return $created;
         }
         return false;
     }
 
     public function updateSolution($request, $model)
+    {
+        $data = $request->validated();
+
+        // Convert tags string to array if needed
+        $data['tags'] = explode(',', $request->tags);
+
+        // Add attachments JSON to the data
+
+        $updated = $model->update($data);
+
+        if ($updated) {
+            $path_arr = [];
+            $data['tags'] = explode(',', $request->tags);
+            if ($request->hasFile('banner_img')) {
+                foreach ($request->file('banner_img') as $image) {
+                    $path_arr[] = $image->store('solution', 'public');
+                }
+
+                $model->banner_img = $path_arr;
+                $model->save();
+            }
+            return $model;
+        }
+
+        if ($updated) {
+            // Handle banner image
+            if ($request->hasFile('banner_img')) {
+                $this->model->imageUpload('/solution', $model, $request->file('banner_img'), 'banner_img');
+            }
+
+            return $updated;
+        }
+
+        return false;
+    }
+
+    public function updateSolutionoLD($request, $model)
     {
         $attributes = $request->attachment_attribute;
         $values = $request->attachment_value;
@@ -114,6 +156,7 @@ class SolutionRepo extends BaseRepository
 
         return false;
     }
+
 
 
     // public function updateSolution($request, $model)
