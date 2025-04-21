@@ -32,7 +32,6 @@ class SolutionController extends Controller
 
     public function index(Request $request)
     {
-
         if ($request->ajax()) {
 
             $permissions = [
@@ -92,6 +91,8 @@ class SolutionController extends Controller
 
         $solutionTypes = [...$solutionTypes, ...$additional];
 
+        // return  $solution;
+
         return view('pages.solution.edit', [
             'title' =>   $this->modelName,
             'solution' =>   $solution,
@@ -102,7 +103,6 @@ class SolutionController extends Controller
     public function store(StoreRequest $request)
     {
         try {
-            // return $request->all();
             $created =  $this->repo->createSolution($request);
             if ($created) {
                 return  $this->response($this->modelName . ' created successfully', ['data' => $created], true);
@@ -145,28 +145,28 @@ class SolutionController extends Controller
         }
     }
 
-    public function deleteSolutionImg($id)
-    {
-        try {
+    // public function deleteSolutionImg($id)
+    // {
+    //     try {
 
-            return $id;
+    //         return $id;
 
-            $deleted = ProductImage::find($id)->delete();
+    //         $deleted = ProductImage::find($id)->delete();
 
-            if ($deleted) {
+    //         if ($deleted) {
 
-                logActivity($this->modelName . ' Delete', "Product Img ID " . $id, 'Delete');
+    //             logActivity($this->modelName . ' Delete', "Product Img ID " . $id, 'Delete');
 
-                return redirect()->back()->with('success', $this->modelName . ' image successfully deleted.');
+    //             return redirect()->back()->with('success', $this->modelName . ' image successfully deleted.');
 
-                // return $this->response($this->modelName . ' successfully deleted.', $deleted, true);
-            } else {
-                return $this->response($this->modelName . ' cannot deleted.', null, false);
-            }
-        } catch (\Throwable $th) {
-            return $this->response($th, null, false);
-        }
-    }
+    //             // return $this->response($this->modelName . ' successfully deleted.', $deleted, true);
+    //         } else {
+    //             return $this->response($this->modelName . ' cannot deleted.', null, false);
+    //         }
+    //     } catch (\Throwable $th) {
+    //         return $this->response($th, null, false);
+    //     }
+    // }
 
 
     public function deleteSolutionFile($id, $key)
@@ -180,6 +180,22 @@ class SolutionController extends Controller
         $model->save();
 
         return redirect()->back()->with('success', $this->modelName . ' file successfully deleted.');
+    }
+
+    public function deleteSolutionImg($path, $img, $solution)
+    {
+        $model = Solution::find($solution);
+        $data = $model->banner_img;
+
+        $value = "solution/$img";
+
+        $key = array_search($value, $data);
+        unset($data[$key]);
+
+        $model->banner_img = $data;
+        $model->save();
+
+        return redirect()->back()->with('success', $this->modelName . ' image successfully deleted.');
     }
 
     public function deleteProductFile($id)
