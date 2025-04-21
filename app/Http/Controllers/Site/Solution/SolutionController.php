@@ -41,14 +41,16 @@ class SolutionController extends Controller
 
         $next = Solution::where('id', '>', $solution->id)->orderBy('id', 'asc')->first();
 
-        $related = Solution::where('solution_type', $solution->solution_type)->where('id', '!=', $solution->id)->latest()->limit(5)
-            ->get();
+        $related = Solution::where('solution_type', $solution->solution_type)->where('id', '!=', $solution->id)->latest()
+            ->limit(5)->get();
 
         // return  [
         //     'solution' => $solution,
         //     'previous' => $previous,
         //     'next' => $next,
         // ];
+
+        // return $related;
 
         return view('site.solution.show', [
             'solution' => $solution,
