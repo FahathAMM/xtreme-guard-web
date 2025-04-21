@@ -29,25 +29,26 @@ class Solution extends Model
     protected $casts = [
         'tags' => 'array',
         'file' => 'array',
+        'banner_img' => 'array',
         'is_published' => 'boolean',
     ];
 
 
-    public function getBannerImgAttribute($value)
-    {
-        // Define the default image URL
-        $defaultImage = 'https://xtremeguard.org/site/images/home/game13.png';
+    // public function getBannerImgAttribute($value)
+    // {
+    //     // Define the default image URL
+    //     $defaultImage = 'https://xtremeguard.org/site/images/home/game13.png';
 
-        // Check if the value is empty
-        if (!$value) {
-            return $defaultImage;
-        }
+    //     // Check if the value is empty
+    //     if (!$value) {
+    //         return $defaultImage;
+    //     }
 
-        // Check if the file exists in storage
-        if (Storage::exists('public/' . $value)) {
-            return asset('storage/' . $value);
-        } else {
-            return $defaultImage;
-        }
-    }
+    //     // Check if the file exists in storage
+    //     if (Storage::exists('public/' . $value)) {
+    //         return asset('storage/' . $value);
+    //     } else {
+    //         return $defaultImage;
+    //     }
+    // }
 }
