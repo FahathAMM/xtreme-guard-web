@@ -29,28 +29,32 @@
                                         </div>
                                     </div>
 
-                                    <div>
+                                    {{-- <div>
                                         <x-input.ckeditor id="new-content" name="content" />
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                             </div>
                         </div>
 
                         <div class="card mb-1">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">Banner Image</h5>
+                            <div class="card-header align-items-center d-flex">
+                                <h5 class="card-title mb-0 flex-grow-1">Banner Image</h5>
+                                <button type="button" class="float-end add-more-img btn mb-2 fw-medium btn-soft-secondary">
+                                    <i class="ri-add-fill me-1 align-bottom"></i>
+                                    Add New
+                                </button>
                             </div>
                             <div class="card-body">
                                 <div class="mt-3">
-                                    {{-- <x-input.img-multiple name="images" /> --}}
-                                    <x-input.img name="banner_img" />
+                                    <x-input.img-multiple name="banner_img" />
+                                    {{-- <x-input.img name="banner_img" /> --}}
                                     <div class="invalid-feedbackd" id="img-valid"></div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="card mb-1">
+                        {{-- <div class="card mb-1">
                             <div class="card-header">
                                 <ul class="nav nav-tabs-custom card-header-tabs border-bottom-0" role="tablist">
                                     <li class="nav-item" role="presentation">
@@ -130,7 +134,8 @@
                                                             </div>
                                                         </td>
                                                         <td class="product-removal py-0">
-                                                            <a href="javascript:void(0)" class="btn btn-danger remove-row">
+                                                            <a href="javascript:void(0)"
+                                                                class="btn btn-danger remove-row">
                                                                 <i class="ri-delete-bin-5-line"></i>
                                                             </a>
                                                         </td>
@@ -141,7 +146,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="text-end mb-3">
                             <button type="button" onclick="store()" id="sbtBtn"
@@ -173,8 +178,7 @@
                                 <div class="hstack gap-3 align-items-start">
                                     <div class="flex-grow-1">
                                         <input class="form-control" name="tags" data-choices
-                                            data-choices-multiple-remove="true" placeholder="Enter tags"
-                                            type="text" />
+                                            data-choices-multiple-remove="true" placeholder="Enter tags" type="text" />
                                     </div>
                                 </div>
                             </div>
@@ -230,17 +234,22 @@
                     i++;
                 });
 
-                $(document).on('click', '.add-attachment-row', function() {
+
+                $(document).on('click', '.add-more-img', function() {
+                    console.log('ff');
+
                     var newRow = `
                     <tr class="product">
                         <td class="text-start py-0 w-50">
                             <div class="mb-0">
-                                <x-input.txt-group id="attribute" name="attachment_attribute[]" placeholder="Enter attribute" />
+                                <x-input.txt-group id="attribute" name="attribute[]"                                             placeholder="Enter attribute" />
+
                             </div>
                         </td>
                         <td class="py-0">
                             <div>
-                                <input type="file" class="form-control" name="attachment_value[]">
+                                <x-input.txt-group name="value[]"
+                                    placeholder="Enter your attribute value" />
                             </div>
                         </td>
                         <td class="product-removal py-0">
@@ -250,35 +259,7 @@
                         </td>
                     </tr>`;
 
-                    $('#attached-area').append(newRow);
-
-                    i++;
-                });
-
-                $(document).on('click', '.add-video-row', function() {
-
-                    var videoRow = `
-                    <tr class="product">
-                        <td class="text-start py-0 w-50">
-                            <div class="mb-0">
-                                <x-input.txt-group id="attribute" name="video_name[]"                                             placeholder="Enter video name" />
-
-                            </div>
-                        </td>
-                        <td class="py-0">
-                            <div>
-                                <x-input.txt-group name="video_link[]"
-                                    placeholder="Enter video link" class="video-link"/>
-                            </div>
-                        </td>
-                        <td class="product-removal py-0">
-                            <a href="javascript:void(0)" class="btn btn-danger remove-row">
-                                <i class="ri-delete-bin-5-line"></i>
-                            </a>
-                        </td>
-                    </tr>`;
-
-                    $('#video-area').append(videoRow);
+                    $('#newlink').append(newRow);
 
                     i++;
                 });
