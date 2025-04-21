@@ -36,9 +36,25 @@ class StoreRequest extends FormRequest
             'gallery' => 'nullable|string|max:255',
             'tags' => 'nullable',
             'file' => 'nullable|array',
-            'content' => 'required|string',
+            'content' => 'nullable|string',
             'desc' => 'nullable|string',
             'is_published' => 'boolean',
+
+
+            //old
+            // 'title' => 'required|string|max:255',
+            // 'slug' => 'nullable|string|max:255',
+            // 'solution_type' => 'required|string|max:255',
+            // // 'slug' => 'nullable|string|max:255|unique:solutions,slug,' . $this->id,
+            // // 'banner_img' => 'nullable|string|max:255',
+            // 'img_width' => 'nullable|string|max:10',
+            // 'img_height' => 'nullable|string|max:10',
+            // 'gallery' => 'nullable|string|max:255',
+            // 'tags' => 'nullable',
+            // 'file' => 'nullable|array',
+            // 'content' => 'required|string',
+            // 'desc' => 'nullable|string',
+            // 'is_published' => 'boolean',
         ];
     }
 
