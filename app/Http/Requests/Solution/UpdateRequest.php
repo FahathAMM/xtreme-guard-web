@@ -30,7 +30,7 @@ class UpdateRequest extends FormRequest
             'gallery' => 'nullable|string|max:255',
             'tags' => 'nullable',
             'file' => 'nullable|array',
-            'content' => 'required|string',
+            'content' => 'nullable|string',
             'desc' => 'nullable|string',
             'is_published' => 'boolean',
         ];
