@@ -46,9 +46,9 @@
                                     {{-- <x-input.img name="banner_img" /> --}}
                                     <div class="invalid-feedbackd" id="img-valid"></div>
                                 </div>
-                                @if (!empty($solution->banner_img))
+                                @if (!empty($solution->contents))
                                     <ul class="list-unstyled mb-0 mt-4" id="current-preview">
-                                        @foreach ($solution->banner_img as $img)
+                                        @foreach ($solution->contents as $content)
                                             <li class="mt-2" id="current-preview-list">
                                                 <div class="border rounded">
                                                     <div class="d-flex p-2">
@@ -57,14 +57,21 @@
                                                                 <img data-dz-thumbnail="" class="img-fluid rounded d-block"
                                                                     id="current-img-preview" alt="Product-Image"
                                                                     style="width: 125px;height: 50px;object-fit: contain;"
-                                                                    src="{{ getImgUrl($img) }}">
+                                                                    src="{{ asset('storage/' . $content->content) }}">
                                                             </div>
                                                         </div>
                                                         <div class="flex-grow-1">
-                                                            <div class="pt-1"></div>
+                                                            <div class="pt-1">
+                                                                <h5 class="fs-14 mb-1">
+                                                                    <input type="text" name=""
+                                                                        value="{{ $content->cont_orderby }}"
+                                                                        class="form-control w-25"
+                                                                        onkeyup="changeOrder(this,{{ $content->id }})">
+                                                                </h5>
+                                                            </div>
                                                         </div>
                                                         <div class="flex-shrink-0 ms-3">
-                                                            <a href="{{ url('admin/solution/delete-img/' . $img . '/' . $solution->id) }}"
+                                                            <a href="{{ url('admin/solution/delete-img/' . $content->id) }}"
                                                                 id="removeImg" class="btn btn-sm btn-danger">
                                                                 Delete
                                                             </a>
@@ -137,6 +144,26 @@
 
         <script>
             $('document').ready(function() {});
+
+            function changeOrder(e, id) {
+                var value = e.value;
+
+                if (value == '') {
+                    alertNotify('Please enter order number', 'error')
+                    return;
+                }
+
+                let url = "{{ url('admin/solution/change-order') }}/" + id + "/" + value;
+
+                let res = ajaxRequest(url, [], 'GET');
+                console.log(res);
+
+                if (res.status) {
+                    alertNotify(res.msg, 'success')
+                } else {
+                    alertNotify(res.msg, 'error')
+                }
+            }
 
             function store() {
                 sLoading('sbtBtn')
