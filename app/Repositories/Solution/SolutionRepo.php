@@ -5,6 +5,7 @@ namespace App\Repositories\Solution;
 use Illuminate\Support\Facades\Log;
 use App\Models\Product\ProductImage;
 use App\Models\Solution\Solution;
+use App\Models\Solution\SolutionsContent;
 use App\Repositories\BaseRepository;
 
 class SolutionRepo extends BaseRepository
@@ -39,14 +40,15 @@ class SolutionRepo extends BaseRepository
         if ($created) {
             $path_arr = [];
             $data['tags'] = explode(',', $request->tags);
-            if ($request->hasFile('banner_img')) {
-                foreach ($request->file('banner_img') as $image) {
-                    $path_arr[] = $image->store('solution', 'public');
-                }
 
-                $created->banner_img = $path_arr;
-                $created->save();
+            if ($request->hasFile('banner_img')) {
+
+                foreach ($request->file('banner_img') as $key => $image) {
+                    $path = $image->store('solution', 'public');
+                    SolutionsContent::create(['solution_id' => $created->id, 'content' => $path, 'cont_orderby' => ++$key]);
+                }
             }
+
             return $created;
         }
         return false;
@@ -88,14 +90,12 @@ class SolutionRepo extends BaseRepository
 
         if ($updated) {
             $path_arr = [];
-            $data['tags'] = explode(',', $request->tags);
-            if ($request->hasFile('banner_img')) {
-                foreach ($request->file('banner_img') as $image) {
-                    $path_arr[] = $image->store('solution', 'public');
-                }
 
-                $model->banner_img = $path_arr;
-                $model->save();
+            if ($request->hasFile('banner_img')) {
+                foreach ($request->file('banner_img') as $key => $image) {
+                    $path = $image->store('solution', 'public');
+                    SolutionsContent::create(['solution_id' => $model->id, 'content' => $path, 'cont_orderby' => ++$key]);
+                }
             }
             return $model;
         }
