@@ -58,15 +58,15 @@ class ProductRepo extends BaseRepository
                     'value' => $valData,
                 ]);
             }
-
-            foreach ($videoNames as $key => $valData) {
-                $created->videos()->create([
-                    'file_name' => $videoLinks[$key],
-                    'link' => $valData,
-                    'path' => $valData,
-                ]);
+            if ($request->hasFile('video_name')) {
+                foreach ($videoNames as $key => $valData) {
+                    $created->videos()->create([
+                        'file_name' => $videoLinks[$key],
+                        'link' => $valData,
+                        'path' => $valData,
+                    ]);
+                }
             }
-
 
             if ($request->hasFile('attachment_value')) {
                 foreach ($request->file('attachment_value') as $key => $attachment) {
