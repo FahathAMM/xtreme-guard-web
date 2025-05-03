@@ -5,9 +5,7 @@
 
     @php
         $lable = ucwords(str_replace('-', ' ', request()->route('type')));
-
         $categoryName = $lable == 'Software' ? 'Software' : 'Solution';
-
     @endphp
 
     <x-site.component.page-title title="Solution" :breadcrumbs="[['label' => $categoryName, 'url' => '#'], ['label' => $lable]]" />
@@ -17,17 +15,20 @@
             <div class="row">
                 <div class="col-12">
                     <div class="tf-grid-layout md-col-4">
-
                         @foreach ($solutions as $sol)
+                            @php
+                                if (isset($sol) && !empty($sol->contents[0])) {
+                                    $thumpImg = asset('storage/' . $sol->contents[0]->content) ?? '';
+                                } else {
+                                    $thumpImg = null;
+                                }
+                                // $thumpImg = asset('storage/' . $sol->contents[0]->content) ?? '';
+                            @endphp
+
                             <div class="wg-blog style-1 hover-image">
                                 <div class="image border rounded">
-
-                                    <img class="lazyload" data-src="{{ getImgUrl($sol->banner_img[0]) }}"
-                                        src="{{ getImgUrl($sol->banner_img[0]) }}" alt="">
-
-                                    {{-- <img class="lazyload" data-src="{{ asset('site/images/blog/blog-grid-1.jpg') }}"
-                                        src="{{ asset('site/images/blog/blog-grid-1.jpg') }}" alt=""> --}}
-
+                                    <img class="lazyload" data-src="{{ $thumpImg }}" src="{{ $thumpImg }}"
+                                        alt="">
                                 </div>
                                 <div class="content">
                                     <div class="meta">
@@ -36,7 +37,6 @@
                                                 <i class="icon-calendar"></i>
                                             </div>
                                             <p class="text-caption-1">
-                                                {{-- February 28, 2024   --}}
                                                 {{ date('d M Y', strtotime($sol->created_at)) }}
                                             </p>
                                         </div>
@@ -66,8 +66,7 @@
                             </div>
                         @endforeach
 
-
-                        <ul class="wg-pagination justify-content-center">
+                        {{-- <ul class="wg-pagination justify-content-center">
                             <li><a href="#" class="pagination-item text-button">1</a></li>
                             <li class="active">
                                 <div class="pagination-item text-button">2</div>
@@ -75,7 +74,7 @@
                             <li><a href="#" class="pagination-item text-button">3</a></li>
                             <li><a href="#" class="pagination-item text-button"><i class="icon-arrRight"></i></a>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
 
                 </div>
