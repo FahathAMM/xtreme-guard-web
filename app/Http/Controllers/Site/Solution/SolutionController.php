@@ -35,7 +35,7 @@ class SolutionController extends Controller
 
     public function show(string $id)
     {
-        $solution = Solution::findOrFail($id);
+        $solution = Solution::with('contents')->findOrFail($id);
 
         $previous = Solution::where('id', '<', $solution->id)->orderBy('id', 'desc')->first();
 
@@ -50,6 +50,7 @@ class SolutionController extends Controller
         //     'next' => $next,
         // ];
 
+        // return $solution;
         // return $related;
 
         return view('site.solution.show', [
