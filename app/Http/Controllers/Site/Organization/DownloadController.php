@@ -13,7 +13,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class DownloadController extends Controller
 {
 
-    protected $modelName = 'download';
+    protected $modelName = 'Download';
     protected $routeName = 'download.index';
     protected $isDestroyingAllowed;
     protected $model;
