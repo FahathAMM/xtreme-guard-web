@@ -7,7 +7,7 @@
     <section class="flat-spacing">
         <div class="container">
 
-            <div class="tf-shop-control">
+            {{-- <div class="tf-shop-control">
                 <div class="tf-control-filter">
                     <a href="#filterShop" data-bs-toggle="offcanvas" aria-controls="filterShop" class="tf-btn-filter"><span
                             class="icon icon-filter"></span><span class="text">Filters</span></a>
@@ -54,25 +54,25 @@
                     <button id="remove-all" class="remove-all-filters text-btn-uppercase" style="display: none;">REMOVE
                         ALL <i class="icon icon-close"></i></button>
                 </div>
+--}}
+            <div class="tf-grid-layout wrapper-shop tf-col-2 md-col-4 lg-col-5 xl-col-6" id="gridLayout">
 
-                <div class="tf-grid-layout wrapper-shop tf-col-2 md-col-4 lg-col-5 xl-col-6" id="gridLayout">
+                @foreach ($products as $prodduct)
+                    <x-site.component.product-card :products="$prodduct" />
+                @endforeach
 
-                    @foreach ($products as $prodduct)
-                        <x-site.component.product-card :products="$prodduct" />
-                    @endforeach
-
-                    <!-- pagination -->
-                    <ul class="wg-pagination justify-content-center">
-                        <li><a href="#" class="pagination-item text-button">1</a></li>
-                        <li class="active">
-                            <div class="pagination-item text-button">2</div>
-                        </li>
-                        <li><a href="#" class="pagination-item text-button">3</a></li>
-                        <li><a href="#" class="pagination-item text-button"><i class="icon-arrRight"></i></a>
-                        </li>
-                    </ul>
-                </div>
+                <!-- pagination -->
+                {{-- <ul class="wg-pagination justify-content-center">
+                    <li><a href="#" class="pagination-item text-button">1</a></li>
+                    <li class="active">
+                        <div class="pagination-item text-button">2</div>
+                    </li>
+                    <li><a href="#" class="pagination-item text-button">3</a></li>
+                    <li><a href="#" class="pagination-item text-button"><i class="icon-arrRight"></i></a>
+                    </li>
+                </ul> --}}
             </div>
+        </div>
 
         </div>
     </section>
