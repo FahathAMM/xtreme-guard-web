@@ -27,6 +27,19 @@ return new class extends Migration
             $table->boolean('is_published')->default(1);
             $table->timestamps();
         });
+
+
+        Schema::create('solutions_contents', function (Blueprint $table) {
+            $table->id();
+            $table->string('solution_id');
+            $table->string('content')->nullable();
+            $table->string('img_width')->nullable();
+            $table->string('img_height')->nullable();
+            $table->integer('cont_orderby')->nullable();
+            $table->text('desc')->nullable();
+            $table->boolean('is_published')->default(1);
+            $table->timestamps();
+        });
     }
 
     /**
