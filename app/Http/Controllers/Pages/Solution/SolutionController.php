@@ -7,13 +7,14 @@ use Illuminate\Http\Request;
 use App\Models\Product\Product;
 use Yajra\DataTables\DataTables;
 use App\Models\Category\Category;
+use App\Models\Solution\Solution;
 use App\Http\Controllers\Controller;
 use App\Models\Product\ProductImage;
+use App\Models\Product\ProductAttachment;
+use App\Models\Solution\SolutionsContent;
+use App\Repositories\Solution\SolutionRepo;
 use App\Http\Requests\Solution\StoreRequest;
 use App\Http\Requests\Solution\UpdateRequest;
-use App\Models\Product\ProductAttachment;
-use App\Models\Solution\Solution;
-use App\Repositories\Solution\SolutionRepo;
 
 class SolutionController extends Controller
 {
@@ -91,7 +92,9 @@ class SolutionController extends Controller
 
         $solutionTypes = [...$solutionTypes, ...$additional];
 
-        // return  $solution;
+        $solution = $solution->load('contents');
+
+        // return $solution;
 
         return view('pages.solution.edit', [
             'title' =>   $this->modelName,
@@ -145,28 +148,22 @@ class SolutionController extends Controller
         }
     }
 
-    // public function deleteSolutionImg($id)
-    // {
-    //     try {
+    public function changeOrderById($id, $value)
+    {
+        // return [
+        //     'id' => $id,
+        //     'value' => $value
+        // ];
 
-    //         return $id;
+        $updated = SolutionsContent::where('id', $id)->update(['cont_orderby' => $value]);
 
-    //         $deleted = ProductImage::find($id)->delete();
-
-    //         if ($deleted) {
-
-    //             logActivity($this->modelName . ' Delete', "Product Img ID " . $id, 'Delete');
-
-    //             return redirect()->back()->with('success', $this->modelName . ' image successfully deleted.');
-
-    //             // return $this->response($this->modelName . ' successfully deleted.', $deleted, true);
-    //         } else {
-    //             return $this->response($this->modelName . ' cannot deleted.', null, false);
-    //         }
-    //     } catch (\Throwable $th) {
-    //         return $this->response($th, null, false);
-    //     }
-    // }
+        if ($updated) {
+            logActivity('Content Update', " Content ID " . $id, 'Update');
+            return response()->json(['data' => $id, 'status' => true, 'msg' => 'Order changed successfully']);
+        } else {
+            return $this->response(['data' => $id, 'status' => false, 'msg' => 'cannot change'], null, false);
+        }
+    }
 
 
     public function deleteSolutionFile($id, $key)
@@ -182,7 +179,15 @@ class SolutionController extends Controller
         return redirect()->back()->with('success', $this->modelName . ' file successfully deleted.');
     }
 
-    public function deleteSolutionImg($path, $img, $solution)
+    public function deleteSolutionImg($id)
+    {
+        $deleted = SolutionsContent::where('id', $id)->delete();
+
+        return redirect()->back()->with('success', $this->modelName . ' image successfully deleted.');
+    }
+
+
+    public function deleteSolutionImgOld($path, $img, $solution)
     {
         $model = Solution::find($solution);
         $data = $model->banner_img;
