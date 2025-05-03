@@ -116,8 +116,8 @@ class ProductRepo extends BaseRepository
                 }
             }
 
+            $model->videos()->delete();
             if ($request->has('video_name')) {
-                $model->videos()->delete();
                 foreach ($videoNames as $key => $valData) {
                     $model->videos()->create([
                         'file_name' => $valData,
