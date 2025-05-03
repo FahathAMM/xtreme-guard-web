@@ -436,7 +436,10 @@
             }
 
             function store() {
-                sLoading('sbtBtn')
+                // sLoading('sbtBtn')
+
+                let isValid = true;
+
                 if ($('.is_video_value').val() != '') {
                     $('.video-link').each(function() {
                         const videoLink = $(this).val();
@@ -445,9 +448,18 @@
                         } catch (error) {
                             alertNotify('Please enter valid URLs for all video links', 'error')
                             // alertNotify(`Please enter valid URLs for video number ${j++} links`, 'error')
+                            console.log('1');
+                            isValid = false;
                         }
                     });
                 }
+                if (!isValid) {
+                    console.log('not valid');
+                    return;
+                }
+
+                console.log('valid');
+
 
                 $('#new-content').html($('.ck-content').html());
                 var form = document.getElementById('product-form');
