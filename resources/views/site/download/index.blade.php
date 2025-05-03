@@ -2,25 +2,7 @@
 @section('title', 'Download')
 @section('content')
     @php
-        $contactInfo = [
-            ['title' => 'Phone', 'value' => '+971 52 482 0440'],
-            ['title' => 'Email', 'value' => 'sales@akilsecurity.com'],
-            ['title' => 'Address', 'value' => '26 Al Nahdha St - Bur dubai - Al Fahidi - Dubai'],
-        ];
 
-        $openTime = [
-            ['day' => 'Mon - Sat', 'time' => '9:30am - 9:30pm'],
-            ['day' => 'Sunday', 'time' => '9:00am - 5:00pm'],
-        ];
-
-        $categories = [
-            'headphone' => 'Headphone',
-            'mouse' => 'Mouse',
-            'keyboard' => 'Keyboard',
-            'mousepad' => 'Mousepad',
-            'cable' => 'Cables',
-            'networking' => 'Networking',
-        ];
         $first = true;
     @endphp
 
