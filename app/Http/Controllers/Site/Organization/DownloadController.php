@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Site\Organization;
 
+use Illuminate\Http\Request;
 use App\Models\Contact\Contact;
-use App\Http\Controllers\Controller;
 use App\Models\Product\Product;
+use App\Http\Controllers\Controller;
 use App\Models\Product\ProductAttachment;
 use App\Repositories\Contact\ContactRepo;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class DownloadController extends Controller
 {
@@ -24,13 +26,28 @@ class DownloadController extends Controller
         $this->isDestroyingAllowed = true;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $attachments = Product::with('files')->get(['id', 'name', 'file_category'])->groupBy('file_category');
+        // $attachments = Product::with('files')->get(['id', 'name', 'file_category'])->groupBy('file_category');
 
-        // $attachment = ProductAttachment::get();
+        $attachments = Product::search($request)->with('files')->get(['id', 'name', 'file_category'])->groupBy('file_category');
 
-        // return $attachments;
+        // $attachments = Product::search($request)
+        //     ->with('files')
+        //     ->get(['id', 'name', 'file_category'])
+        //     ->groupBy('file_category');
+
+        // $page = request()->get('page', 1);
+        // $perPage = 10;
+        // $paginated = new LengthAwarePaginator(
+        //     $attachments->forPage($page, $perPage),
+        //     $attachments->count(),
+        //     $perPage,
+        //     $page,
+        //     ['path' => request()->url(), 'query' => request()->query()]
+        // );
+
+        // return $paginated;
 
         return view('site.download.index', [
             'modelName' => $this->modelName,
