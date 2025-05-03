@@ -6,6 +6,7 @@ use App\Helpers\Media;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Solution extends Model
 {
@@ -33,6 +34,10 @@ class Solution extends Model
         'is_published' => 'boolean',
     ];
 
+    public function contents()
+    {
+        return $this->hasMany(SolutionsContent::class)->orderBy('cont_orderby');
+    }
 
     // public function getBannerImgAttribute($value)
     // {
