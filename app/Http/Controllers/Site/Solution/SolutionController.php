@@ -24,7 +24,7 @@ class SolutionController extends Controller
 
     public function solutionByType(Request $request, $type)
     {
-        $solutions = Solution::where('solution_type', $type)->get();
+        $solutions = Solution::with('contents')->where('solution_type', $type)->get();
 
         // return $solutions;
 
