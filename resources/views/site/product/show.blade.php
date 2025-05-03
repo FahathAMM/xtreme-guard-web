@@ -273,7 +273,7 @@
 
                             <div class="widget-content-inner d-flex justify-content-center">
                                 <div class="w-100 w-sm-100 w-md-75 w-lg-100 w-xl-50 w-xxl-50">
-                                    <x-site.show.download :files="$product->files" />
+                                    <x-site.show.download :product="$product" />
                                 </div>
                             </div>
 
