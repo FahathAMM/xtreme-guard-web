@@ -7,9 +7,9 @@
         $lable = str_replace('-', ' ', $solution->solution_type);
     @endphp
 
-    <div>
+    {{-- <div>
         <img src="{{ asset('storage/solution_banner/sb4.png') }}" alt="">
-    </div>
+    </div> --}}
 
     <section class="flat-spacing pt-3">
         <div class="mx-3">
