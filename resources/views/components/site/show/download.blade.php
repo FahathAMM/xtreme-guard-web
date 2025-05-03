@@ -1,7 +1,12 @@
 @props([
-    'files' => 'files',
+    'product' => 'product',
 ])
 
+@php
+    $files = $product->files;
+    $productName = $product->name;
+
+@endphp
 <div>
     <table class="tf-table-page-cart">
         <tbody>
@@ -17,7 +22,7 @@
                             <small style=" font-size: 10px; ">Last updated:</small>
                             {{ date('d M Y', strtotime($file->created_at)) }}
                         </span>
-                        <a href="{{ asset('storage/' . $file->path, []) }}" download="{{ $file->file_name }}"
+                        <a href="{{ asset('storage/' . $file->path, []) }}" download="{{ $productName }}"
                             class="d-flex justify-content-end  link-danger link-offset-2 text-decoration-underline link-underline-opacity-25 link-underline-opacity-100-hover">
                             <i class="fas fa-download me-2"></i>
                             <span>Download</span>
