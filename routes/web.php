@@ -53,7 +53,9 @@ Route::prefix('admin')->middleware(['auth', 'logged.session'])->group(function (
     Route::resource('solution', SolutionController::class);
     Route::get('solution/delete-img/{id}', [SolutionController::class, 'deleteSolutionImg']);
     Route::get('solution/delete-file/{id}/{key}', [SolutionController::class, 'deleteSolutionFile']);
-    Route::get('solution/delete-img/{path}/{img}/{solution}', [SolutionController::class, 'deleteSolutionImg']);
+    // Route::get('solution/delete-img/{path}/{img}/{solution}', [SolutionController::class, 'deleteSolutionImg']);
+    Route::get('solution/delete-img/{id}', [SolutionController::class, 'deleteSolutionImg']);
+    Route::get('solution/change-order/{id}/{value}', [SolutionController::class, 'changeOrderById']);
 
 
     Route::resource('products', ProductController::class);
