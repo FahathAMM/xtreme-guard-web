@@ -69,14 +69,12 @@
                         <div class="tab-pane {{ $loop->first ? 'active show' : '' }}" id="{{ $key }}"
                             role="tabpanel">
 
-
                             <div class="widget-content-inner d-flex justify-content-start active">
                                 <div class="w-100">
                                     <div class="w-100 ">
                                         <div>
                                             <table class="tf-table-page-cart">
                                                 <tbody>
-
                                                     @foreach ($products as $product)
                                                         {{-- <pre>
                                                         {{ $product['files'] }}
