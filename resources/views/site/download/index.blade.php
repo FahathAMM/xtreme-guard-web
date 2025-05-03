@@ -31,17 +31,43 @@
     <link rel="stylesheet" href="{{ asset('assets/css/icons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/icons5.min.css') }}">
 
-    <section class="flat-spacing">
+    <section class="flat-spacing page-search-inner pb-0 pt-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6">
+                    <form action="{{ url('download') }}" method="GET" class="form-search">
+                        <fieldset class="text">
+                            <input type="text" placeholder="Search product name..." class="" name="q"
+                                tabindex="0" value="{{ request('q') }}" aria-required="true">
+                        </fieldset>
+                        <button class="" type="submit">
+                            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+                                    stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M21.35 21.0004L17 16.6504" stroke="#181818" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                </path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="flat-spacing pt-4">
         <div class="container">
             <div class="heading-section-4 wow fadeInUp">
                 <div class="heading-left">
                     {{-- <h3 class="heading font-5 fw-bold">Best Sellers</h3> --}}
                     <ul class="tab-product style-2 justify-content-sm-center mb-0" role="tablist">
-
                         @foreach ($attachments as $key => $name)
                             <li class="nav-tab-item" role="presentation">
-                                <a href="#{{ $key }}" class="{{ $first ? 'active' : '' }}"
-                                    data-bs-toggle="tab">{{ $key }}</a>
+                                <a href="#{{ $key }}" class="{{ $first ? 'active' : '' }}" data-bs-toggle="tab">
+                                    {{ $key }}
+                                </a>
                             </li>
                             @php $first = false; @endphp
 
