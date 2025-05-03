@@ -24,12 +24,14 @@
                                 }
                                 // $thumpImg = asset('storage/' . $sol->contents[0]->content) ?? '';
                             @endphp
-
                             <div class="wg-blog style-1 hover-image">
-                                <div class="image border rounded">
-                                    <img class="lazyload" data-src="{{ $thumpImg }}" src="{{ $thumpImg }}"
-                                        alt="">
-                                </div>
+                                <a href="{{ url('solution-by-type-show/' . $sol->id) }}">
+                                    <div class="image border rounded">
+                                        <img class="lazyload" data-src="{{ $thumpImg }}" src="{{ $thumpImg }}"
+                                            alt="">
+                                    </div>
+                                </a>
+
                                 <div class="content">
                                     <div class="meta">
                                         <div class="meta-item gap-8">
@@ -60,6 +62,7 @@
                                         </h6>
                                     </div>
                                 </div>
+
                             </div>
                         @endforeach
 

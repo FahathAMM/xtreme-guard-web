@@ -65,6 +65,8 @@ return new class extends Migration
             $table->foreignId('product_id');
             $table->string('file_name')->nullable();
             $table->string('path')->nullable();
+            $table->string('extension')->nullable();
+            $table->string('size')->nullable();
             $table->string('desc')->nullable();
             $table->timestamps();
         });

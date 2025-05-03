@@ -363,3 +363,48 @@ if (!function_exists('getImgUrl')) {
         }
     }
 }
+
+if (!function_exists('formatFileSize')) {
+    function formatFileSize($bytes, $precision = 2)
+    {
+        $units = ['B', 'KB', 'MB', 'GB', 'TB'];
+
+        $bytes = max($bytes, 0);
+        $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
+        $pow = min($pow, count($units) - 1);
+
+        $bytes /= pow(1024, $pow);
+
+        return round($bytes, $precision) . ' ' . $units[$pow];
+    }
+}
+
+
+
+if (!function_exists('getFileIcon')) {
+    function getFileIcon($filename)
+    {
+        $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+        $icons = [
+            'pdf' => 'https://cdn-icons-png.flaticon.com/512/337/337946.png',
+            'doc' => 'https://cdn-icons-png.flaticon.com/512/337/337932.png',
+            'docx' => 'https://cdn-icons-png.flaticon.com/512/337/337932.png',
+            'xls' => 'https://cdn-icons-png.flaticon.com/512/337/337947.png',
+            'xlsx' => 'https://cdn-icons-png.flaticon.com/512/337/337947.png',
+            'ppt' => 'https://cdn-icons-png.flaticon.com/512/337/337935.png',
+            'pptx' => 'https://cdn-icons-png.flaticon.com/512/337/337935.png',
+            'jpg' => 'https://cdn-icons-png.flaticon.com/512/337/337940.png',
+            'jpeg' => 'https://cdn-icons-png.flaticon.com/512/337/337940.png',
+            'png' => 'https://cdn-icons-png.flaticon.com/512/337/337940.png',
+            'gif' => 'https://cdn-icons-png.flaticon.com/512/337/337940.png',
+            'zip' => 'https://cdn-icons-png.flaticon.com/512/888/888879.png',
+            'rar' => 'https://cdn-icons-png.flaticon.com/512/888/888879.png',
+            'exe' => 'https://cdn-icons-png.flaticon.com/512/4228/4228896.png',
+            'txt' => 'https://cdn-icons-png.flaticon.com/512/136/136538.png',
+        ];
+
+        // Default icon if extension not matched
+        return $icons[$extension] ?? 'https://cdn-icons-png.flaticon.com/512/833/833524.png';
+    }
+}

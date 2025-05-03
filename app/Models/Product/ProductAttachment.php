@@ -16,6 +16,8 @@ class ProductAttachment extends Model
         'file_name',
         'desc',
         'path',
+        'extension',
+        'size',
     ];
 
     /**

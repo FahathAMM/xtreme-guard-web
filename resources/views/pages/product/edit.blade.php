@@ -436,7 +436,7 @@
             }
 
             function store() {
-                // sLoading('sbtBtn')
+                sLoading('sbtBtn')
 
                 let isValid = true;
 

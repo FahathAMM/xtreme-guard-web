@@ -9,10 +9,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Product\ProductAttachment;
 use App\Repositories\Contact\ContactRepo;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Storage;
 
 class DownloadController extends Controller
 {
-
     protected $modelName = 'Download';
     protected $routeName = 'download.index';
     protected $isDestroyingAllowed;
@@ -26,11 +26,20 @@ class DownloadController extends Controller
         $this->isDestroyingAllowed = true;
     }
 
+
+    public function downloadFile(ProductAttachment $file)
+    {
+        $path = $file->path;
+        return Storage::download("public/$path");
+    }
+
     public function index(Request $request)
     {
         // $attachments = Product::with('files')->get(['id', 'name', 'file_category'])->groupBy('file_category');
 
-        $attachments = Product::search($request)->with('files')->get(['id', 'name', 'file_category'])->groupBy('file_category');
+        $attachments = Product::search($request)->with('files')
+            ->orderBy('created_at', 'desc')
+            ->get(['id', 'name', 'file_category'])->groupBy('file_category');
 
         // $attachments = Product::search($request)
         //     ->with('files')
@@ -47,7 +56,7 @@ class DownloadController extends Controller
         //     ['path' => request()->url(), 'query' => request()->query()]
         // );
 
-        // return $paginated;
+        // return $attachments;
 
         return view('site.download.index', [
             'modelName' => $this->modelName,

@@ -70,15 +70,35 @@ class ProductRepo extends BaseRepository
 
             if ($request->hasFile('attachment_value')) {
                 foreach ($request->file('attachment_value') as $key => $attachment) {
-                    $path = $attachment->store('attachment', 'public');
+                    $originalExtension = $attachment->getClientOriginalExtension();
+                    $fileSize = $attachment->getSize(); // in bytes
+                    $filename = time() . '_' . $key . '.' . $originalExtension;
+
+                    $path = $attachment->storeAs('attachment', $filename, 'public');
+
                     Log::info($path);
+
                     $created->files()->create([
                         'file_name' => $attachedmentName[$key],
-                        'desc' => $attachedmentName[$key],
+                        'desc' => $attachedmentName[$key] ?? $filename,
                         'path' => $path,
+                        'extension' => $originalExtension,
+                        'size' => $fileSize,
                     ]);
                 }
             }
+
+            // if ($request->hasFile('attachment_value')) {
+            //     foreach ($request->file('attachment_value') as $key => $attachment) {
+            //         $path = $attachment->store('attachment', 'public');
+            //         Log::info($path);
+            //         $created->files()->create([
+            //             'file_name' => $attachedmentName[$key],
+            //             'desc' => $attachedmentName[$key],
+            //             'path' => $path,
+            //         ]);
+            //     }
+            // }
 
             return $created;
         }
@@ -127,18 +147,39 @@ class ProductRepo extends BaseRepository
                 }
             }
 
+            // if ($request->hasFile('attachment_value')) {
+            //     foreach ($request->file('attachment_value') as $key => $attachment) {
+            //         $path = $attachment->store('attachment', 'public');
+            //         Log::info($path);
+            //         $model->files()->create([
+            //             'file_name' => $attachedmentName[$key],
+            //             'desc' => $attachedmentName[$key],
+            //             'path' => $path,
+            //         ]);
+            //     }
+            // }
+
             if ($request->hasFile('attachment_value')) {
                 foreach ($request->file('attachment_value') as $key => $attachment) {
-                    $path = $attachment->store('attachment', 'public');
-                    // Log::info($attachedmentName[$key]);
+                    $originalExtension = $attachment->getClientOriginalExtension();
+                    $fileSize = $attachment->getSize(); // in bytes
+                    $filename = time() . '_' . $key . '.' . $originalExtension;
+
+                    $path = $attachment->storeAs('attachment', $filename, 'public');
+
                     Log::info($path);
+
                     $model->files()->create([
                         'file_name' => $attachedmentName[$key],
-                        'desc' => $attachedmentName[$key],
+                        'desc' => $attachedmentName[$key] ?? $filename,
                         'path' => $path,
+                        'extension' => $originalExtension,
+                        'size' => $fileSize,
                     ]);
                 }
             }
+
+
             return $updated;
         }
         return false;
