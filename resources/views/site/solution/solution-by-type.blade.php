@@ -58,9 +58,6 @@
                                                 {{ $sol->title }}
                                             </a>
                                         </h6>
-                                        {{-- <div class="body-text">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed vulputate massa.
-                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
