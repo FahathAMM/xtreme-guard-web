@@ -39,7 +39,6 @@ class DownloadController extends Controller
         // $attachments = Product::with('files')->get(['id', 'name', 'file_category'])->groupBy('file_category');
 
         $attachments = Product::search($request)->with('files')
-            ->orderBy('created_at', 'desc')
             ->get(['id', 'name', 'file_category'])->groupBy('file_category');
 
         // $attachments = Product::search($request)
