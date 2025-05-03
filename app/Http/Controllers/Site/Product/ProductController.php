@@ -25,10 +25,6 @@ class ProductController extends Controller
     {
         $categoryModel = Category::where('slug', $category)->first();
 
-
-        // return $categoryModel;
-
-
         if (!$categoryModel->parent_id) {
             // If it's a parent category, get products from its subcategories
             // $subCategoryIds = $categoryModel->clone()->where('parent_id', $categoryModel->id)->pluck('id');
@@ -37,12 +33,10 @@ class ProductController extends Controller
                 ->where('parent_id', $categoryModel->id)->get());
             $products =   Product::whereIn('category_id', $subCategoryIds)->get();
         } else {
-
             $products = Product::whereHas('category', function ($query) use ($category) {
                 $query->where('slug', $category);
             })->get();
         }
-
 
         // return [
         //     $subCategoryIds,
