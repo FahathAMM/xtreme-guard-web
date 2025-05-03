@@ -172,8 +172,7 @@
                                                                 {{-- <span class="fs-12">
                                                                     {{ date('d M y', strtotime($file->created_at)) }}
                                                                 </span> --}}
-                                                                <a href="{{ asset('storage/' . $file->path, []) }}"
-                                                                    download="{{ $product->name ?? '' }}"
+                                                                <a href="{{ url('download-file/' . $file->id) }}"
                                                                     class="d-flex justify-content-end  link-danger link-offset-2 text-decoration-underline link-underline-opacity-25 link-underline-opacity-100-hover">
                                                                     <i class="fas fa-download me-2"></i>
                                                                     <span>Download</span>

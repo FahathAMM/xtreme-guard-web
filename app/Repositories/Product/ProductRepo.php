@@ -72,7 +72,8 @@ class ProductRepo extends BaseRepository
                 foreach ($request->file('attachment_value') as $key => $attachment) {
                     $originalExtension = $attachment->getClientOriginalExtension();
                     $fileSize = $attachment->getSize(); // in bytes
-                    $filename = time() . '_' . $key . '.' . $originalExtension;
+                    // $filename = time() . '_' . $key . '.' . $originalExtension;
+                    $filename = $created->name . '.' . $originalExtension;
 
                     $path = $attachment->storeAs('attachment', $filename, 'public');
 
@@ -163,7 +164,8 @@ class ProductRepo extends BaseRepository
                 foreach ($request->file('attachment_value') as $key => $attachment) {
                     $originalExtension = $attachment->getClientOriginalExtension();
                     $fileSize = $attachment->getSize(); // in bytes
-                    $filename = time() . '_' . $key . '.' . $originalExtension;
+                    // $filename = time() . '_' . $key . '.' . $originalExtension;
+                    $filename = $model->name . '.' . $originalExtension;
 
                     $path = $attachment->storeAs('attachment', $filename, 'public');
 

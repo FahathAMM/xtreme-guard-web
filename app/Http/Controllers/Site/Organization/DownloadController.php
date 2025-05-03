@@ -29,6 +29,7 @@ class DownloadController extends Controller
 
     public function downloadFile(ProductAttachment $file)
     {
+        // return $file;
         $path = $file->path;
         return Storage::download("public/$path");
     }
