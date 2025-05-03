@@ -82,7 +82,7 @@ class Product extends Model
 
     public function files()
     {
-        return $this->hasMany(ProductAttachment::class);
+        return $this->hasMany(ProductAttachment::class)->orderBy('created_at', 'desc');
     }
 
     public function products()
