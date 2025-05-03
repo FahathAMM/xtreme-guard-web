@@ -17,7 +17,7 @@
                             <small style=" font-size: 10px; ">Last updated:</small>
                             {{ date('d M Y', strtotime($file->created_at)) }}
                         </span>
-                        <a href="{{ asset('storage/' . $file->path, []) }}" download
+                        <a href="{{ asset('storage/' . $file->path, []) }}" download="{{ $file->file_name }}"
                             class="d-flex justify-content-end  link-danger link-offset-2 text-decoration-underline link-underline-opacity-25 link-underline-opacity-100-hover">
                             <i class="fas fa-download me-2"></i>
                             <span>Download</span>
