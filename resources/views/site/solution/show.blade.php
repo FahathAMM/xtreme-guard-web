@@ -16,13 +16,12 @@
             <div class="row">
                 <div class="col-lg-12 mb-lg-30">
                     <div class="blog-detail-wrap page-single-2">
-                        <div class="inner">
-
-                            @if (!empty($solution->banner_img))
-                                @foreach ($solution->banner_img as $img)
+                        <div class="inner1">
+                            @if (!empty($solution->contents))
+                                @foreach ($solution->contents as $content)
                                     <div class="image pt-1">
-                                        <img class="lazyload rounded" data-src="{{ getImgUrl($img) }}"
-                                            src="{{ getImgUrl($img) }}" alt="">
+                                        <img class="lazyload rounded" data-src="{{ asset('storage/' . $content->content) }}"
+                                            src="{{ asset('storage/' . $content->content) }}" alt="">
                                     </div>
                                 @endforeach
                             @endif
@@ -71,15 +70,13 @@
                                     @endif
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                {{-- <div class="col-lg-4">
                     <div class="sidebar maxw-360">
                         <div class="sidebar-item sidebar-relatest-post">
-                            {{-- <h5 class="sidebar-heading">Relatest Post</h5> --}}
+                            <h5 class="sidebar-heading">Relatest Post</h5>
                             <div>
                                 @foreach ($related as $item)
                                     <div class="relatest-post-item style-row hover-image">
@@ -110,7 +107,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
