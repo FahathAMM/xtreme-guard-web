@@ -37,9 +37,9 @@ class SolutionController extends Controller
 
             $permissions = [
                 'isDelete' => true,
-                'isEdit' => true,
-                'isView' => false,
-                'isPrint' => false
+                'isEdit'   => true,
+                'isView'   => false,
+                'isPrint'  => false
             ];
 
             $solution = $this->model->query();
@@ -150,21 +150,15 @@ class SolutionController extends Controller
 
     public function changeOrderById($id, $value)
     {
-        // return [
-        //     'id' => $id,
-        //     'value' => $value
-        // ];
-
         $updated = SolutionsContent::where('id', $id)->update(['cont_orderby' => $value]);
 
         if ($updated) {
-            logActivity('Content Update', " Content ID " . $id, 'Update');
+            logActivity('Content Order Update', " Content Order ID " . $id, 'Update');
             return response()->json(['data' => $id, 'status' => true, 'msg' => 'Order changed successfully']);
         } else {
             return $this->response(['data' => $id, 'status' => false, 'msg' => 'cannot change'], null, false);
         }
     }
-
 
     public function deleteSolutionFile($id, $key)
     {
