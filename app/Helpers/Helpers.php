@@ -328,7 +328,6 @@ if (!function_exists('getSetting')) {
     }
 }
 
-//     // Check if the value is empty
 //     if (!$value) {
 //         return $defaultImage;
 //     }
