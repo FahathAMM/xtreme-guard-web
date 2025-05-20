@@ -328,7 +328,6 @@ if (!function_exists('getSetting')) {
     }
 }
 
-//     if (Storage::exists('public/' . $value)) {
 //         return asset('storage/' . $value);
 //     } else {
 //         return $defaultImage;
