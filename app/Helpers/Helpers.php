@@ -328,8 +328,6 @@ if (!function_exists('getSetting')) {
     }
 }
 
-//     $defaultImage = 'https://xtremeguard.org/site/images/home/game13.png';
-
 //     // Check if the value is empty
 //     if (!$value) {
 //         return $defaultImage;
