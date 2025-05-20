@@ -299,7 +299,6 @@ if (!function_exists('getYouTubeVideoId')) {
     }
 }
 
-
 if (!function_exists('hasCountryCode')) {
     function hasCountryCode($phoneNumber)
     {
@@ -378,8 +377,6 @@ if (!function_exists('formatFileSize')) {
         return round($bytes, $precision) . ' ' . $units[$pow];
     }
 }
-
-
 
 if (!function_exists('getFileIcon')) {
     function getFileIcon($filename)
