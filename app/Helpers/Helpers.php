@@ -328,7 +328,6 @@ if (!function_exists('getSetting')) {
     }
 }
 
-//     } else {
 //         return $defaultImage;
 //     }
 // }
