@@ -328,7 +328,6 @@ if (!function_exists('getSetting')) {
     }
 }
 
-//         return $defaultImage;
 //     }
 
 //     // Check if the file exists in storage
