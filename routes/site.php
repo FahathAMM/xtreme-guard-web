@@ -20,9 +20,7 @@ Route::resource('aboutus', AboutUsController::class);
 Route::resource('download', DownloadController::class);
 Route::resource('solutions', SolutionController::class);
 
-
 Route::get('download-file/{file}', [DownloadController::class, 'downloadFile']);
-
 
 Route::get('product-by-category/{category}', [ProductController::class, 'productByCategory']);
 
