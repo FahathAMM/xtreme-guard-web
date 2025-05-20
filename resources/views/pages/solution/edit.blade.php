@@ -181,7 +181,6 @@
                 }
 
                 const options = {
-                    // contentType: 'application/json',
                     contentType: 'multipart/form-data',
                     method: 'POST',
                     headers: {
