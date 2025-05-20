@@ -328,7 +328,6 @@ if (!function_exists('getSetting')) {
     }
 }
 
-//     }
 // }
 
 if (!function_exists('getImgUrl')) {
