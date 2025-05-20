@@ -328,7 +328,6 @@ if (!function_exists('getSetting')) {
     }
 }
 
-//     // Check if the file exists in storage
 //     if (Storage::exists('public/' . $value)) {
 //         return asset('storage/' . $value);
 //     } else {
