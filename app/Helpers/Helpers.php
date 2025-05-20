@@ -136,11 +136,6 @@ if (!function_exists('currentUser')) {
 if (!function_exists('actionBtns')) {
     function actionBtns($id = "",  $editRouteName = '', $url = '', $deleteDisplayValue = "", $permission = [])
     {
-        // <div class="fs-15 gap-3 hstack">
-        //  <a href="javascript:void(0);" class="link-primary"><i class="ri-settings-4-line"></i></a>
-        //  <a href="javascript:void(0);" class="link-danger"><i class="ri-delete-bin-5-line"></i></a>
-        // </div>
-
         $btn = "";
         $btn .= "<div class='d-flex justify-content-center fs-15 gap-3 hstack'>";
         if ($permission['isEdit']) {
