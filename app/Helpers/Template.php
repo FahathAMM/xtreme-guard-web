@@ -42,7 +42,6 @@ if (!function_exists('logAction')) {
     }
 }
 
-
 if (!function_exists('getDeviceIcon')) {
     function getDeviceIcon($device)
     {
