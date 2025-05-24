@@ -89,6 +89,26 @@ if (!function_exists('can')) {
 if (!function_exists('getSolutionForHeader')) {
     function getSolutionForHeader()
     {
+        $solutionTypesFromSetting =  getSetting('solution_types');
+
+        $items = explode(',', $solutionTypesFromSetting);
+
+        $solutionTypes = array_map(function ($item) {
+            $trimmed = trim($item);
+            return [
+                'id' => strtolower(str_replace(' ', '-', $trimmed)),
+                'name' => $trimmed
+            ];
+        }, $items);
+
+        return $solutionTypes;
+    }
+}
+
+
+if (!function_exists('getSolutionForHeaderOld')) {
+    function getSolutionForHeaderOld()
+    {
         $solutionTypes = [
             ['id' => 'time-management', 'name' => 'Time Management'],
             ['id' => 'people-counting-solution', 'name' => 'People Counting Solution'],
