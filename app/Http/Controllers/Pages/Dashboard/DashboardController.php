@@ -37,8 +37,6 @@ class DashboardController extends Controller
 
     public function index(Request $request)
     {
-        DetectsUserEnvironment('dashboard');
-
         $userLogs = $this->getUserActivites();
 
         logActivity('Dashboard', 'Dashboard', 'View');
