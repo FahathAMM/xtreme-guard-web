@@ -90,7 +90,7 @@ class MenusTableSeeder extends Seeder
                 'menu_header_id' => $menuHeaderOrganization->id,
                 'name1' => 'Solution',
                 'name2' => 'Solution',
-                'sequence' => '1',
+                'sequence' => '30',
                 'menu_slug' => '',
                 'page_url' => "$prefix/solution",
                 'is_submenu_available' => 0,
@@ -99,6 +99,21 @@ class MenusTableSeeder extends Seeder
                 'created_at' => $currentDateTime,
                 'updated_at' => $currentDateTime,
             ],
+
+            [
+                'menu_header_id' => $menuHeaderOrganization->id,
+                'name1' => 'Inquiry',
+                'name2' => 'Inquiry',
+                'sequence' => '1',
+                'menu_slug' => '',
+                'page_url' => "$prefix/contacts",
+                'is_submenu_available' => 0,
+                'is_active' => 1,
+                'icon' => 'ri-shopping-bag-3-line',
+                'created_at' => $currentDateTime,
+                'updated_at' => $currentDateTime,
+            ],
+
 
             [
                 'menu_header_id' => $menuHeaderAdministration->id,
