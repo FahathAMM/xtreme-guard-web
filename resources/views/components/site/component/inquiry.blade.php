@@ -46,6 +46,12 @@
                      <div class="wrap">
                          <div class="cols">
                              <fieldset class="">
+
+                                 <input type="text" name="product_id" id="product_id">
+                                 <input type="text" name="product_name" id="product_name">
+                                 {{-- <input class="frm" type="text" placeholder="Your Name*" name="name"
+                                     id="name" tabindex="2" value="" aria-required="true" required=""> --}}
+
                                  <input class="frm" type="text" placeholder="Your Name*" name="name"
                                      id="name" tabindex="2" value="" aria-required="true" required="">
                                  <div class="invalid-feedback d-block invalid-msg"> </div>
@@ -112,6 +118,8 @@
              console.log(data);
              //  setValueByName('subject', data?.name || '');
              setValueByName('subject', `Inquiry Message for ${data?.name || 'Product'} `);
+             setValueByName('product_id', data?.id);
+             setValueByName('product_name', data?.name);
 
 
          }
