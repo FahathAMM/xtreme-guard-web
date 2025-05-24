@@ -32,9 +32,9 @@ class ContactController extends Controller
         if ($request->ajax()) {
 
             $permissions = [
-                'isDelete' => true,
+                'isDelete' => false,
                 'isEdit' => false,
-                'isView' => false,
+                'isView' => true,
                 'isPrint' => false
             ];
 
@@ -79,9 +79,12 @@ class ContactController extends Controller
         }
     }
 
-    public function show(string $id)
+    public function show(Contact $contact)
     {
-        //
+        return view('pages.contact.show', [
+            'title' =>   $this->modelName,
+            'contact' =>   $contact,
+        ]);
     }
 
     public function edit(string $id)
