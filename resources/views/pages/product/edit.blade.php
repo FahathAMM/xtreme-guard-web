@@ -303,7 +303,7 @@
                                 <div class="hstack gap-3 align-items-start">
                                     <div class="flex-grow-1">
                                         <div id="color_area">
-                                            @foreach ($product->colors as $color)
+                                            @foreach ($product?->colors ?? [] as $color)
                                                 <div class="d-flex p-2 color-row">
                                                     <input type="color" name="colors[]"
                                                         placeholder="select product color" value="{{ $color }}"
