@@ -74,6 +74,8 @@ class ProductController extends Controller
 
         DetectsUserEnvironment("Product Show $product->name", 'View');
 
+        // return $product;
+
         return view('site.product.show', [
             'product' => $product,
         ]);

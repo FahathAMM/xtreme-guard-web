@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('warranty')->nullable();
             $table->text('features')->nullable();
             $table->text('specifications')->nullable();
+            $table->text('colors')->nullable();
             $table->text('short_desc')->nullable();
             $table->json('tags')->nullable();
             $table->decimal('weight', 8, 2)->nullable();

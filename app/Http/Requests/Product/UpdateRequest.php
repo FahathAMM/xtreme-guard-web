@@ -23,6 +23,7 @@ class UpdateRequest extends FormRequest
             'category_id' => 'nullable|string|max:255',
             'status' => 'nullable|string|in:active,inactive',
             'tags' => 'nullable',
+            'colors' => 'nullable',
             'main_image' => 'nullable|string|max:255',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',

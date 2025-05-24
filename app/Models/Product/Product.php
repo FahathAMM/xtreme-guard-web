@@ -41,6 +41,7 @@ class Product extends Model
         'is_available',
         'sale_price',
 
+        'colors',
         'tags',
         'short_desc',
         'view_count',
@@ -48,6 +49,7 @@ class Product extends Model
 
     protected $casts = [
         'tags' => 'array',
+        'colors' => 'array',
     ];
 
     public function attributes()

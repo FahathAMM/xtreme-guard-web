@@ -285,6 +285,44 @@
                                     value="{{ $product->category_id ?? '' }}" />
                             </div>
                         </div>
+
+                        <div class="card mb-1">
+                            <div class="card-header">
+                                <div class="px-0 py-0  align-items-center d-flex">
+                                    <h5 class="card-title mb-0 flex-grow-1">Product Colors</h5>
+                                    <div>
+                                        <a id="add_color" class="btn btn-soft-secondary btn-sm">
+                                            <i class="ri-add-fill me-1 align-bottom"></i>
+                                            Add Color
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-body">
+                                <div class="hstack gap-3 align-items-start">
+                                    <div class="flex-grow-1">
+                                        <div id="color_area">
+                                            @foreach ($product->colors as $color)
+                                                <div class="d-flex p-2 color-row">
+                                                    <input type="color" name="colors[]"
+                                                        placeholder="select product color" value="{{ $color }}"
+                                                        class="form-control form-control-sm mx-2" autocomplete="off">
+                                                    <a href="javascript:void(0)"
+                                                        class="btn btn-danger btn-sm color-remove-row">
+                                                        <i class="ri-delete-bin-5-line"></i>
+                                                    </a>
+                                                </div>
+                                            @endforeach
+
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card mb-1">
                             <div class="card-header">
                                 <h5 class="card-title mb-0">Product Tags</h5>
@@ -374,6 +412,18 @@
                     $('#attached-area').append(newRow);
 
                     i++;
+                });
+
+
+                $(document).on('click', '#add_color', function() {
+                    var videoRow =
+                        `<input type="color" name="colors[]" id="colors" placeholder="select product color" value="#474b4f" class="form-control form-control-sm" autocomplete="off"> `;
+
+                    $('#color_area').append(videoRow);
+
+                });
+                $(document).on('click', '.color-remove-row', function() {
+                    $(this).closest('.color-row').remove();
                 });
 
                 $(document).on('click', '.add-video-row', function() {

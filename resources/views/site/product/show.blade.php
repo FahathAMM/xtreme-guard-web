@@ -82,9 +82,7 @@
         </div>
     </div>
 
-
     <x-site.component.inquiry />
-
 
     <!-- /breadcrumb -->
 
@@ -177,6 +175,35 @@
                                 </div>
                                 <div class="tf-product-info-choose-option">
 
+                                    <div class="variant-picker-item">
+                                        {{-- <div class="variant-picker-label mb_12">
+                                            Colors:<span
+                                                class="text-title variant-picker-label-value value-currentColor">gray</span>
+                                        </div> --}}
+                                        <div class="variant-picker-values1">
+                                            {{-- <input id="values-beige" type="radio" name="color1">
+                                            <label class="hover-tooltip tooltip-bot radius-60 color-btn" for="values-beige"
+                                                data-value="Beige" data-color="beige">
+                                                <span class="btn-checkbox bg-color-beige1"></span>
+                                                <span class="tooltip">Beige</span>
+                                            </label> --}}
+
+                                            @if (!empty($product->colors))
+                                                @foreach ($product->colors as $color)
+                                                    <div
+                                                        style="background-color: {{ $color }};
+                                                    width: 30px;
+                                                    height: 30px;
+                                                    margin: 10px 2px 10px 2px;
+                                                    display: inline-block;
+                                                    border: 2px solid #ccc;
+                                                    border-radius: 50%;">
+                                                    </div>
+                                                @endforeach
+                                            @endif
+
+                                        </div>
+                                    </div>
 
                                     {{-- <div class="tf-product-info-help">
 
