@@ -5,6 +5,7 @@ use App\Models\Category\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
+use App\Traits\DetectsUserEnvironment;
 use Illuminate\Support\Facades\Storage;
 
 if (!function_exists('getBrowser')) {
@@ -29,6 +30,41 @@ if (!function_exists('pdfToBase64')) {
         return  $b64Doc = chunk_split(base64_encode(file_get_contents($pdfPath)));
     }
 }
+
+if (!function_exists('DetectsUserEnvironment')) {
+    function DetectsUserEnvironment(string $log_form_name = '', string $log_action = ''): void
+    {
+        $clientDetails = DetectsUserEnvironment::detectClientFullDetails();
+        $device = DetectsUserEnvironment::detectDevice();
+        $ip = DetectsUserEnvironment::detectIP();
+        $os = DetectsUserEnvironment::detectOS();
+        $browser = DetectsUserEnvironment::detectBrowser();
+
+        $logData = [
+            'IP' => $ip,
+            'Device' => $device,
+            'Browser' => $browser,
+            'OS' => $os,
+            'Action' => $log_action,
+            'Form' => $log_form_name,
+            'Date' => now()->toDateTimeString(),
+        ];
+
+        if (!empty($clientDetails) && ($clientDetails['status'] ?? '') === 'success') {
+            $locationKeys = ['country', 'countryCode', 'regionName', 'city', 'region', 'lat', 'lon', 'timezone', 'isp', 'as'];
+
+            foreach ($locationKeys as $key) {
+                $logData[ucfirst($key)] = $clientDetails[$key] ?? '';
+            }
+        }
+
+        // Build message
+        $msg = implode(' | ', array_map(fn($key, $value) => "$key: $value", array_keys($logData), $logData));
+
+        Log::channel('DetectsUserEnvironment')->info($msg);
+    }
+}
+
 
 if (!function_exists('logActivity')) {
 
