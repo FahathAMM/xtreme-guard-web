@@ -26,6 +26,7 @@ class SolutionController extends Controller
     {
         $solutions = Solution::with('contents')->where('solution_type', $type)->get();
 
+        DetectsUserEnvironment("Solution By $type", 'View');
         // return $solutions;
 
         return view('site.solution.solution-by-type', [
