@@ -32,7 +32,7 @@ class ContactRepo extends BaseRepository
         $created = $this->model->create($request->validated());
 
         if ($created) {
-            WhatsappController::toSendWhatsapp('971554501483');
+            // WhatsappController::toSendWhatsapp('971554501483');
             return $created;
         }
         return false;
