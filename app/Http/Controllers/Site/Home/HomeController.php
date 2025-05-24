@@ -31,7 +31,7 @@ class HomeController extends Controller
     {
         $products = Product::orderBy('created_at', 'desc')->take(9)->with('category')->get();
         $categories = getParentCategories();
-        DetectsUserEnvironment('Home Page', 'Home Page', 'View');
+        DetectsUserEnvironment('Home Page', 'View');
 
         return view('site.home.index', [
             'categories' => $categories,
