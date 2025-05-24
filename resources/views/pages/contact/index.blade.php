@@ -39,10 +39,10 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Phone</th>
+                                {{-- <th>Phone</th> --}}
                                 <th>Subject</th>
-                                <th>Company</th>
-                                <th>Country</th>
+                                {{-- <th>Company</th> --}}
+                                {{-- <th>Country</th> --}}
                                 <th>Message</th>
                                 <th class="text-center">Action</th>
                             </tr>
@@ -88,22 +88,22 @@
                             data: 'email',
                             name: 'email'
                         },
-                        {
-                            data: 'phone',
-                            name: 'phone'
-                        },
+                        // {
+                        //     data: 'phone',
+                        //     name: 'phone'
+                        // },
                         {
                             data: 'subject',
                             name: 'subject'
                         },
-                        {
-                            data: 'company',
-                            name: 'company'
-                        },
-                        {
-                            data: 'country',
-                            name: 'country'
-                        },
+                        // {
+                        //     data: 'company',
+                        //     name: 'company'
+                        // },
+                        // {
+                        //     data: 'country',
+                        //     name: 'country'
+                        // },
                         {
                             data: 'message',
                             name: 'message'
