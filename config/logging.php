@@ -100,51 +100,9 @@ return [
             'level' => 'debug',
         ],
 
-        'ShippedToWarehouse' => [
+        'DetectsUserEnvironment' => [
             'driver' => 'single',
-            'path' => storage_path('logs/shipped-to-warehouse.log'),
-            'level' => 'debug',
-        ],
-
-        'ShippedStatus' => [
-            'driver' => 'single',
-            'path' => storage_path('logs/shipped-status.log'),
-            'level' => 'debug',
-        ],
-
-        'DeliveredStatus' => [
-            'driver' => 'single',
-            'path' => storage_path('logs/delivered-status.log'),
-            'level' => 'debug',
-        ],
-
-        'uploadedInvoice' => [
-            'driver' => 'single',
-            'path' => storage_path('logs/uploaded-invoice.log'),
-            'level' => 'debug',
-        ],
-
-        'warehouseStockUpload' => [
-            'driver' => 'single',
-            'path' => storage_path('logs/warehousestock-upload.log'),
-            'level' => 'debug',
-        ],
-
-        'sendToTrackingInfo' => [
-            'driver' => 'single',
-            'path' => storage_path('logs/send-to-tracking-info.log'),
-            'level' => 'debug',
-        ],
-
-        'ShipmentTrackingFromAramex' => [
-            'driver' => 'single',
-            'path' => storage_path('logs/shipment-tracking-aramex.log'),
-            'level' => 'debug',
-        ],
-
-        'PickupTrackingFromAramex' => [
-            'driver' => 'single',
-            'path' => storage_path('logs/shipment-pickup-aramex.log'),
+            'path' => storage_path('logs/detects-user-environment.log'),
             'level' => 'debug',
         ],
 
