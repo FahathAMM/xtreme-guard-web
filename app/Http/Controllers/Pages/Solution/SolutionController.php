@@ -130,14 +130,14 @@ class SolutionController extends Controller
         }
     }
 
-    public function destroy(Product $product)
+    public function destroy(Solution $solution)
     {
         try {
-            $deleted = $product->delete();
+            $deleted = $solution->delete();
             // $deleted = true;
             if ($deleted) {
 
-                logActivity($this->modelName . ' Delete', "Product ID " . $product->id, 'Delete');
+                logActivity($this->modelName . ' Delete', "Solution ID " . $solution->id, 'Delete');
 
                 return $this->response($this->modelName . ' successfully deleted.', $deleted, true);
             } else {
