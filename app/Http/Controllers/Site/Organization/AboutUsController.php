@@ -24,6 +24,7 @@ class AboutUsController extends Controller
 
     public function index()
     {
+        DetectsUserEnvironment("About", 'View');
         return view('site.aboutus.index');
     }
 }
