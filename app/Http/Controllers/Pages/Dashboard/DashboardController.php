@@ -12,6 +12,7 @@ use App\Mail\OrderReturnCreatedMail;
 use App\Repositories\Orders\PickupRepo;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Notification;
+use App\Notifications\ProductInquiryNotification;
 use App\Notifications\schedulerFailedNotification;
 use App\Models\Administration\UserLoginActivityLog;
 use App\Http\Controllers\Pages\Order\InvoiceController;
@@ -41,6 +42,23 @@ class DashboardController extends Controller
 
         // return  auth()->user()->hasRole('Super-Admin');
 
+        //     "product_name": "XAC-113S",
+        //     "name": "sdsdadsdasd",
+        //     "email": "fahath.mirnah@gmail.com",
+        //     "subject": "Inquiry Message for XAC-113S",
+        //     "message": "sdasdasdsadasdsad"
+
+        // $data = (object) [
+        //     'product_name' => 'XAC-113S',
+        //     'name' => 'fahath',
+        //     'email' => 'fahath.mirnah@gmail.com',
+        //     'subject' => 'Inquiry Message for XAC-113S',
+        //     'product_id' => '101',
+        //     'message' => 'sdsdadsdasd',
+        // ];
+
+        // return  Notification::route('mail', 'm.fahath@mirnah.com')
+        //     ->notify(new ProductInquiryNotification($data));
 
         $userLogs = $this->getUserActivites();
 
