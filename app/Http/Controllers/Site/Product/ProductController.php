@@ -71,7 +71,7 @@ class ProductController extends Controller
     {
         $product = Product::whereId($id)->with('gallery', 'category', 'attributes', 'files', 'videos')->first();
 
-        // return $product;
+        DetectsUserEnvironment("Product Show $product->name", 'View');
 
         return view('site.product.show', [
             'product' => $product,
