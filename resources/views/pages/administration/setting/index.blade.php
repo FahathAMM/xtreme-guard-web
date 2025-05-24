@@ -14,7 +14,7 @@
                     @csrf
                     <div class="card-body p-4">
                         <div class="row pb-2">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div style=" border: 1px solid #e2e3ea; padding: 20px 10px; border-radius: 5px; "
                                     class="mt-3 h-100 mb-0">
                                     <legend class="fs-14"
@@ -41,6 +41,9 @@
                                                         autocomplete="off">
                                                     <small style="cursor:pointer; color:blue;"
                                                         onclick="changeDefColr('474B4F', this)">Default</small>
+                                                @elseif ($setting->type == 'txtarea')
+                                                    <textarea name="{{ $setting->key }}" id="{{ $setting->key }}" class="form-control form-control-sm" rows="3"
+                                                        spellcheck="false" placeholder="enter the value">{{ $setting->value }}</textarea>
                                                 @elseif ($setting->type == 'select')
                                                     @php
                                                         $items = explode(',', $setting->type_value);
@@ -77,7 +80,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6">
+                            {{-- <div class="col-lg-6">
                                 <div style=" border: 1px solid #e2e3ea; padding: 20px 10px; border-radius: 5px; "
                                     class="mt-3 h-100 mb-0">
                                     <legend class="fs-14"
@@ -160,7 +163,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                     </div>
