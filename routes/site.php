@@ -8,7 +8,6 @@ use App\Http\Controllers\Site\Organization\AboutUsController;
 use App\Http\Controllers\Site\Organization\ContactController;
 use App\Http\Controllers\Site\Organization\DownloadController;
 
-
 // Route::get('/', function () {
 //     return view('site.test');
 // });
