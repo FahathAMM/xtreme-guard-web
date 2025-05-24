@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
+{{-- <link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}"> --}}
 
 @php
     $manifest = app()->environment('production') ? asset('manifest-production.json') : asset('manifest-local.json');
