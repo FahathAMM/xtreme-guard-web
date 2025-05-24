@@ -31,6 +31,9 @@ class DownloadController extends Controller
     {
         // return $file;
         $path = $file->path;
+
+        DetectsUserEnvironment("Download $path", 'Download');
+
         return Storage::download("public/$path");
     }
 
@@ -57,6 +60,7 @@ class DownloadController extends Controller
         // );
 
         // return $attachments;
+        DetectsUserEnvironment("Download", 'View');
 
         return view('site.download.index', [
             'modelName' => $this->modelName,
