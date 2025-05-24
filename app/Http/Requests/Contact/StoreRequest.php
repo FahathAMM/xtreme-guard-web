@@ -32,6 +32,8 @@ class StoreRequest extends FormRequest
             'subject' => 'required|string|max:255',
             'company' => 'nullable|string|max:255',
             'country' => 'nullable|string|max:100',
+            'product_name' => 'nullable|string|max:100',
+            'product_id' => 'nullable|string|max:100',
             'message' => 'required|min:10',
         ];
     }
