@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Pages\Dashboard;
 
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Jobs\TrackingOrderByJob;
@@ -41,23 +42,11 @@ class DashboardController extends Controller
 
         logActivity('Dashboard', 'Dashboard', 'View');
 
-
-        //     $countData = DB::table('products')->selectRaw('
-        //     count(*) as total_count
-        //    -- count(case when is_shipped = 1 and is_delivered = 0 then 1 end) as confirmed_count,
-        //    -- count(case when is_shipped = 1 and is_delivered = 0 then 1 end) as created_shipment_count,
-        //    -- count(case when is_delivered = 1 then 1 end) as delivered_count,
-        //    -- count(case when is_pickuped = 1 then 1 end) as return_count
-        // ')->first();
-
-        // 'title' => 'Total Orders',
-        // 'value' => 'data->total_count',
-        // 'percentage' => '+100 %',
-        // 'icon' => 'bx-dollar-circle',
-        // 'bgClass' => 'bg-success-subtle',
-        // 'link-text' => 'View Total Orders',
-        // 'link-url' => url('order/order'),
-        // 'trend' => 'success',
+        // return  $groupedVisits = DB::table('visits')
+        //     ->select('ip', DB::raw('DATE(visited_at) as visit_date'), DB::raw('COUNT(*) as visit_count'))
+        //     ->whereDate('visited_at', Carbon::today())
+        //     ->groupBy('ip', DB::raw('DATE(visited_at)'))
+        //     ->get();
 
         $countData = DB::table('products')
             ->selectRaw("
@@ -123,21 +112,19 @@ class DashboardController extends Controller
                 ")
             )
             ->unionAll(
-                DB::table('users')
+                DB::table('visits')
                     ->selectRaw("
-                    'Total Users' as title,
-                    COUNT(*) as value,
+                    'Today Visitors' as title,
+                     COUNT(DISTINCT ip) as value,
                     'fas fa-users' as icon,
-                    'View Total Files' as `linkText`,
-                    '#' as `link`,
-                    '+100' as percentage,
-                    'bg-success-subtle' as bgClass,
-                    'success' as trend
-                ")
+                    'View Today Visitors' as linkText,
+                    '#' as link,
+                    '+100%' as percentage,
+                    'bg-info-subtle' as bgClass,
+                    'info' as trend
+                ")->whereDate('visited_at', Carbon::today())
             )
             ->get();
-
-
 
         // return $countData;
 
