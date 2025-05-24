@@ -47,8 +47,8 @@
                          <div class="cols">
                              <fieldset class="">
 
-                                 <input type="text" name="product_id" id="product_id">
-                                 <input type="text" name="product_name" id="product_name">
+                                 <input type="hidden" name="product_id" id="product_id">
+                                 <input type="hidden" name="product_name" id="product_name">
                                  {{-- <input class="frm" type="text" placeholder="Your Name*" name="name"
                                      id="name" tabindex="2" value="" aria-required="true" required=""> --}}
 
