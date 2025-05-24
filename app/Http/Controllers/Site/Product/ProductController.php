@@ -38,6 +38,8 @@ class ProductController extends Controller
             })->get();
         }
 
+        DetectsUserEnvironment("Product By $category", 'View');
+
         // return [
         //     $subCategoryIds,
         //     $categoryModel,
