@@ -48,7 +48,7 @@ class ContactController extends Controller
                     return actionBtns(
                         $model->id,
                         'contacts.edit',
-                        'contacts',
+                        'admin/contacts',
                         $model->name,
                         $permissions
                     );
@@ -94,8 +94,20 @@ class ContactController extends Controller
         //
     }
 
-    public function destroy(string $id)
+    public function destroy(Contact $contact)
     {
-        //
+        try {
+            $deleted = $contact->delete();
+            if ($deleted) {
+
+                logActivity($this->modelName . ' Delete', "Contact ID " . $contact->id, 'Delete');
+
+                return $this->response($this->modelName . ' successfully deleted.', $deleted, true);
+            } else {
+                return $this->response($this->modelName . ' cannot deleted.', null, false);
+            }
+        } catch (\Throwable $th) {
+            return $this->response($th, null, false);
+        }
     }
 }
