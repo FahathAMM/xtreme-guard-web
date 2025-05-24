@@ -14,6 +14,7 @@ class ProductController extends Controller
         $products = Product::search($request)->get();
 
         // return $products;
+        DetectsUserEnvironment("Product", 'View');
 
         return view('site.product.products', [
             'products' => $products,
