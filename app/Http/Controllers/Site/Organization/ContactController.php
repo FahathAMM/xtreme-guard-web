@@ -30,6 +30,8 @@ class ContactController extends Controller
 
     public function index()
     {
+        DetectsUserEnvironment("Contact", 'View');
+
         return view('site.contact.index');
     }
 
@@ -44,6 +46,7 @@ class ContactController extends Controller
             $created = $this->repo->createContact($request);
             if ($created) {
 
+                DetectsUserEnvironment("Contact", 'Create');
                 Notification::route('mail', 'm.fahath@mirnah.com')
                     ->notify(new ProductInquiryNotification($request));
 
