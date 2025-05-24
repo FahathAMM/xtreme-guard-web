@@ -44,6 +44,7 @@
                                 {{-- <th>Company</th> --}}
                                 {{-- <th>Country</th> --}}
                                 <th>Message</th>
+                                <th>Created at</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -60,6 +61,7 @@
         <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
 
         <script>
             $(function() {
@@ -71,8 +73,13 @@
                     processing: true,
                     serverSide: true,
                     searching: true,
-                    stateSave: true,
+                    // stateSave: true,
                     scrollY: "50vh",
+                    pageLength: 50, // Default rows per page
+                    lengthMenu: [
+                        [10, 25, 50, 100],
+                        [10, 25, 50, 100]
+                    ], // Options in dropdown
                     ajax: {
                         url: '{{ url('admin/contacts') }}', // Change API endpoint for contact messages
                     },
@@ -94,7 +101,10 @@
                         // },
                         {
                             data: 'subject',
-                            name: 'subject'
+                            name: 'subject',
+                            render: function(data, type, row) {
+                                return data.length > 20 ? data.substr(0, 20) + '...' : data;
+                            }
                         },
                         // {
                         //     data: 'company',
@@ -106,7 +116,18 @@
                         // },
                         {
                             data: 'message',
-                            name: 'message'
+                            name: 'message',
+                            render: function(data, type, row) {
+                                return data.length > 50 ? data.substr(0, 50) + '...' : data;
+                            }
+                        },
+                        {
+                            data: 'created_at',
+                            name: 'created_at',
+                            render: function(data, type, row) {
+                                if (!data) return '';
+                                return dayjs(data).format('DD-MMMM YYYY HH:mm:ss');
+                            }
                         },
                         {
                             data: 'action',
@@ -114,7 +135,10 @@
                             orderable: false,
                             searchable: false
                         },
-                    ]
+                    ],
+                    order: [
+                        [0, 'desc']
+                    ],
                 });
 
                 $('#custom-search-input').keyup(function() {
