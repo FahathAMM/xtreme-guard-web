@@ -57,17 +57,13 @@ Route::prefix('admin')->middleware(['auth', 'logged.session'])->group(function (
     Route::get('solution/delete-img/{id}', [SolutionController::class, 'deleteSolutionImg']);
     Route::get('solution/change-order/{id}/{value}', [SolutionController::class, 'changeOrderById']);
 
-
     Route::resource('products', ProductController::class);
     Route::get('product/delete-img/{id}', [ProductController::class, 'deleteProductImg']);
     Route::get('product/delete-file/{id}', [ProductController::class, 'deleteProductFile']);
 
-
-
     Route::resource('contacts', ContactController::class);
 
     Route::resource('blogs', BlogController::class);
-
 
     Route::resource('administration/mail-tracking', MailTrackingController::class);
     Route::get('administration/mail-preview/{path}/{orderId}', [MailTrackingController::class, 'preview']);
@@ -80,7 +76,6 @@ Route::prefix('admin')->middleware(['auth', 'logged.session'])->group(function (
 
 Route::get('reset-login-session/{username}', [AuthenticatedSessionController::class, 'resetLoginSession']);
 Route::post('reset-login-session/{username}', [AuthenticatedSessionController::class, 'resetLoginSessionSubmit']);
-
 
 Route::get('/test-table', function () {
     return view('test');
