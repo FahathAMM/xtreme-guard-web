@@ -25,3 +25,5 @@ resources/assets
 public.zip
 
 old-git-ignore-file
+
+# git rm -r --cached public  //this removed from git chached files
