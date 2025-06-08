@@ -188,6 +188,8 @@
                                                 <span class="tooltip">Beige</span>
                                             </label> --}}
 
+                                            <h5>Available Colors</h5>
+
                                             @if (!empty($product->colors))
                                                 @foreach ($product->colors as $color)
                                                     <div
