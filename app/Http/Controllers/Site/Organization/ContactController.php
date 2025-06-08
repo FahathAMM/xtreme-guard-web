@@ -50,6 +50,9 @@ class ContactController extends Controller
                 Notification::route('mail', 'm.fahath@mirnah.com')
                     ->notify(new ProductInquiryNotification($request));
 
+                Notification::route('mail', 'ariffakil@gmail.com')
+                    ->notify(new ProductInquiryNotification($request));
+
                 return  $this->response(
                     'Your message delivered successfully. We will get back to you shortly',
                     ['data' => $created],
