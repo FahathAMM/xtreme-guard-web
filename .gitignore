@@ -1,14 +1,5 @@
 /.phpunit.cache
 /node_modules
-# /public/*
-# /public
-/public/build
-/public/hot
-/public/storage
-/public/assets/gridphp
-/public/assets/libs
-/public/assets/json
-/public/assets/images
 /app/Classes
 /storage/*.key
 /vendor
@@ -24,19 +15,13 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-public/assets1
-public/site/contact
-public/site/images
-public/site/mail
-public/site/scss
-public/site/fonts
-public/vendor
-public/index1.php
-public/logo.PNG
-public/manifest-local.json
-public/manifest-production.json
-public/indx_bk.php
-public/sw.js
-public/robots.txt
-public/offline.html
 resources/assets
+
+# public/sites
+# public/assets
+
+/public/
+
+public.zip
+
+old-git-ignore-file
