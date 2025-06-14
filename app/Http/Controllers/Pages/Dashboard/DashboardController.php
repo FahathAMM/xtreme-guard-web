@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Jobs\TrackingOrderByJob;
 use App\Mail\LowStockNotifyMail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Mail\OrderReturnCreatedMail;
 use App\Repositories\Orders\PickupRepo;
@@ -20,6 +21,7 @@ use App\Http\Controllers\Pages\Order\InvoiceController;
 use App\Http\Controllers\Pages\Application\MailController;
 use App\Http\Controllers\Pages\Order\AutomationController;
 use App\Http\Controllers\Pages\Administration\SettingController;
+use Illuminate\Support\Facades\Mail;
 
 class DashboardController extends Controller
 {
@@ -41,6 +43,30 @@ class DashboardController extends Controller
         $userLogs = $this->getUserActivites();
 
         logActivity('Dashboard', 'Dashboard', 'View');
+
+
+        // ----------
+        // Mail::raw('Test message', function ($message) {
+        //     $message->to('fahath.mirnah@gmail.com')
+        //         ->subject('Testing SMTP');
+        // });
+        // return;
+        // ----------
+
+        // // ariffakil@gmail.com
+        // $hh = Notification::route('mail', 'fahath.mirnah@gmail.com')
+        //     // Notification::route('mail', 'fahath.mirnah@gmail.com')
+        //     // Notification::route('mail', 'm.fahath@mirnah.com')
+        //     ->notify(new ProductInquiryNotification($request));
+
+        // Log::info('test mail');
+
+
+        // Notification::route('mail', 'fahath.mirnah@gmail.com')
+        //     ->notify(new ProductInquiryNotification($request));
+
+
+        // return   $hh;
 
         // return  $groupedVisits = DB::table('visits')
         //     ->select('ip', DB::raw('DATE(visited_at) as visit_date'), DB::raw('COUNT(*) as visit_count'))
