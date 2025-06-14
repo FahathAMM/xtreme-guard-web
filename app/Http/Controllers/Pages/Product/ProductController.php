@@ -133,6 +133,9 @@ class ProductController extends Controller
     public function update(UpdateRequest $request, Product $product)
     {
         try {
+
+            // return $request->validated();
+
             $updated = $this->repo->updateProduct($request, $product);
 
             if ($updated) {
