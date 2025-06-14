@@ -38,6 +38,13 @@ class UpdateRequest extends FormRequest
         ];
     }
 
+    protected function prepareForValidation()
+    {
+        if ($this->colors == null) {
+            $this->merge(['colors' => null]);
+        }
+    }
+
     // public function messages(): array
     // {
     //     return [
