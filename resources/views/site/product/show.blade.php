@@ -188,9 +188,9 @@
                                                 <span class="tooltip">Beige</span>
                                             </label> --}}
 
-                                            <h5>Available Colors</h5>
 
                                             @if (!empty($product->colors))
+                                                <h5>Available Colors</h5>
                                                 @foreach ($product->colors as $color)
                                                     <div
                                                         style="background-color: {{ $color }};
