@@ -56,7 +56,6 @@ class DashboardController extends Controller
         // // ariffakil@gmail.com
         // $hh = Notification::route('mail', 'fahath.mirnah@gmail.com')
         //     // Notification::route('mail', 'fahath.mirnah@gmail.com')
-        //     // Notification::route('mail', 'm.fahath@mirnah.com')
         //     ->notify(new ProductInquiryNotification($request));
 
         // Log::info('test mail');
