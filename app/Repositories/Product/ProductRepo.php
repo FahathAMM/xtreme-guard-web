@@ -36,6 +36,9 @@ class ProductRepo extends BaseRepository
         $attrValues = $request->value;
         $attr =  $request->attribute;
         $attachedmentName =  $request->attachment_attribute;
+        $attachedmentValue =  $request->attachment_value;
+
+        // dd($attachedmentValue);
 
         $videoNames = $request->video_name;
         $videoLinks =  $request->video_link;
@@ -73,7 +76,11 @@ class ProductRepo extends BaseRepository
                     $originalExtension = $attachment->getClientOriginalExtension();
                     $fileSize = $attachment->getSize(); // in bytes
                     // $filename = time() . '_' . $key . '.' . $originalExtension;
-                    $filename = $created->name . '.' . $originalExtension;
+
+                    // $filename = $created->name . '.' . $originalExtension;
+
+                    $orgFileName = $attachedmentName[$key];
+                    $filename = $created->name . '-' . $orgFileName . '.' . $originalExtension;
 
                     $path = $attachment->storeAs('attachment', $filename, 'public');
 
@@ -111,6 +118,7 @@ class ProductRepo extends BaseRepository
         $attrValues = $request->value;
         $attr =  $request->attribute;
         $attachedmentName =  $request->attachment_attribute;
+        $attachedmentValue =  $request->attachment_value;
 
         $videoNames = $request->video_name;
         $videoLinks =  $request->video_link;
@@ -160,12 +168,18 @@ class ProductRepo extends BaseRepository
             //     }
             // }
 
+            // $attachedmentValue =  $request->attachment_value;
+
+
             if ($request->hasFile('attachment_value')) {
                 foreach ($request->file('attachment_value') as $key => $attachment) {
                     $originalExtension = $attachment->getClientOriginalExtension();
                     $fileSize = $attachment->getSize(); // in bytes
+
+                    $orgFileName = $attachedmentName[$key];
+
                     // $filename = time() . '_' . $key . '.' . $originalExtension;
-                    $filename = $model->name . '.' . $originalExtension;
+                    $filename = $model->name . '-' . $orgFileName . '.' . $originalExtension;
 
                     $path = $attachment->storeAs('attachment', $filename, 'public');
 
